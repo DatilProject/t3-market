@@ -1,0 +1,25 @@
+npx create-react-app <name_project>  //crear el projecto
+cd <name_project>
+npm start
+
+// Curso de javascript
+https://www.youtube.com/watch?v=Z4TuS0HEJP8&list=PLPl81lqbj-4KswGEN6o4lF0cscQalpycD&index=3
+https://bluuweb.github.io/javascript/fundamentos/#var-vs-let-vs-const
+
+// react 
+https://bluuweb.github.io/react-udemy/03-jsx/#jugando
+
+// validador de formularios, Read hook form
+https://react-hook-form.com/
+
+//para generar id unicos
+npm install uuid
+
+// para los routers (para hacer paginas dinamicas)
+npm install react-router-dom
+https://reactrouter.com/web/guides/quick-start
+
+npm i react-icons
+
+font awosome (iconos)
+npm i --save @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
