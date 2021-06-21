@@ -1,0 +1,28 @@
+{
+  "name": "datil-market",
+  "version": "1.0.0",
+  "description": "API para la gestion de datos correspondientes a datil-market",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DatilProject/t3-market.git"
+  },
+  "keywords": [
+    "market",
+    "ecommerce"
+  ],
+  "author": "Robert Moreno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DatilProject/t3-market/issues"
+  },
+  "homepage": "https://github.com/DatilProject/t3-market#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
