@@ -12,8 +12,9 @@ const Panel = () => {
 
   return (
     <Container>
+      <Card body>This is some text within a card body.</Card>
       <Container className="mb-5 ">
-        <Container>
+        <Container fluid>
           <Row>
             <GiHand color="#E0AC69" size="3em" />
             <p className="my-auto">

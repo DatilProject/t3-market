@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import SideNav, {
   Toggle,
   NavItem,
@@ -55,7 +55,7 @@ const SideBar = () => {
               </SideNav.Nav>
             </SideNav>
             <main>
-              <Route path="/" exact component={<Panel />} />
+              <Route exact path="/"><Redirect to="/panel" /></Route>
               <Route path="/panel" component={(props) => <Panel />} />
               <Route path="/market" component={(props) => <Market />} />
               <Route path="/catalogue" component={(props) => <Catalogue />} />

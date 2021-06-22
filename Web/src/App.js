@@ -1,13 +1,11 @@
 import React, { Fragment } from "react";
-import Menu from "./components/Menu";
-import Home from "./components/Home";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
-    <Fragment>
-      <Menu />
-      <Home></Home>
-    </Fragment>
+    <div className="container">
+      <SideBar />
+    </div>
   );
 }
 
