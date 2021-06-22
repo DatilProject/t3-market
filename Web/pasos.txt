@@ -21,5 +21,6 @@ https://reactrouter.com/web/guides/quick-start
 
 npm i react-icons
 
-font awosome (iconos)
-npm i --save @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
+sidebar
+https://laptrinhx.com/react-side-nav-component-3509345605/
+https://thekenyandev.com/blog/building-a-react-router-sidebar-with-react/
