@@ -1,0 +1,27 @@
+.table {
+  background-color: white;
+}
+
+.row-product td {
+  padding-top: 0% !important;
+  padding-bottom: 0 !important;
+  vertical-align: middle !important;
+}
+
+/* .row-product div {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 40%;
+} */
+
+/* Catalogue Component */
+.tab :hover {
+  background-color: gainsboro;
+  cursor: pointer;
+}
+
+.active {
+  border-bottom: 4px solid #007bff;
+  color: #007bff !important;
+}
