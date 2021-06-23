@@ -10,9 +10,12 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set('port' , process.env.PORT || 3000);
 
+const authRouter = require('./routes/auth')
 const productRouter = require('./routes/product')
 
+
 app.use('/api/product', productRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) =>{
     res.status(200).send("Welcome to Datil-Market API")
