@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-.active {
+.section-active {
   border-bottom: 4px solid #007bff;
   color: #007bff !important;
 }

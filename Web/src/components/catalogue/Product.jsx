@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Figure } from "react-bootstrap";
+import { Figure } from "react-bootstrap";
 
 const Product = ({ product }) => {
   const priceWithIVA = product.price * product.iva;

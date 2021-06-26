@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { AiOutlineCamera, AiOutlineSearch } from "react-icons/ai";
+import ModalNewProduct from "./newproduct/ModalNewProduct";
 import Product from "./Product";
 
 const ProductSection = () => {
+  const [showModalNewProduct, setShowModalNewProduct] = useState(false);
+  const handleShowModalNewProduct = () => setShowModalNewProduct(true);
+
   const listProducts = [
     {
       images: "",
@@ -29,11 +33,11 @@ const ProductSection = () => {
 
   return (
     <Container className="border border-secondary p-0 shadow-sm table">
-      <Container>
-        <Row className="p-2 row justify-content-around">
-          <Col xs="3">
+      <Container className="text-center">
+        <Row className="p-2 row  text-sm-left">
+          <Col xs="12" sm="6">
             <Row>
-              <Col className="pr-1">
+              <Col xs="8" lg="5 " className="pr-0">
                 <input
                   type="text"
                   className="form-control"
@@ -42,15 +46,26 @@ const ProductSection = () => {
                   aria-describedby="basic-addon2"
                 ></input>
               </Col>
-              <AiOutlineSearch size="2em" />
+              <Col className="pl-1">
+                <AiOutlineSearch size="2em" />
+              </Col>
             </Row>
           </Col>
 
-          <Col sm={{ size: "auto", offset: 7 }}>
-            <Button variant="primary">Nuevo Producto</Button>
+          <Col xs="12" sm="6" className="text-sm-right">
+            <Button variant="primary" onClick={handleShowModalNewProduct}>
+              Nuevo Producto
+            </Button>
+            {/* TODO> VER SI EN VEZ DE PONER ESTE COMPONENTE, 
+            PONEMOS EL CODIGO AQUI O ARREGLAMOS EL PROBLEMA DE FINDNODE */}
+            <ModalNewProduct
+              show={showModalNewProduct}
+              setShow={setShowModalNewProduct}
+            />
           </Col>
         </Row>
       </Container>
+
       <Table hover responsive className="m-0 my-auto">
         <thead>
           <tr>
