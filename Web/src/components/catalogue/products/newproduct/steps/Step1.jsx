@@ -20,7 +20,7 @@ const Step1 = () => {
 
           <div className="col-12 col-lg-2 ml-lg-4">
             <select className="list-dt" id="gender" name="gender">
-              <option selected>Categoría</option>
+              <option defaultValue>Categoría</option>
               <option>Ropa</option>
               <option>Gamer</option>
               <option>Otros</option>
@@ -49,7 +49,7 @@ const Step1 = () => {
           </div>
           <div className="col-12 col-lg-2 mx-auto mx-xl-0">
             <select className="list-dt" id="unit" name="unit">
-              <option selected>Unidad</option>
+              <option defaultValue>Unidad</option>
               <option>Kg</option>
               <option>gr</option>
               <option>Otros</option>

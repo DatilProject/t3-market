@@ -1,18 +1,18 @@
 import axios from "axios";
+import { ENDPOINT_PRODUCT } from "./endPoints";
 
 //constants
 const data = {
-  products: [],
+  array: [],
 };
 
-const URL = "https://datil-market-api.herokuapp.com/api/product";
 const GET_PRODUCTS = "GET_PRODUCTS";
 
 //Reducer
 export default function productReducer(state = data, action) {
   switch (action.type) {
     case GET_PRODUCTS:
-      return { ...state, products: action.payload };
+      return { ...state, array: action.payload };
     default:
       return state;
   }
@@ -21,7 +21,7 @@ export default function productReducer(state = data, action) {
 //Actions
 export const getProductsAction = () => async (dispatch, getState) => {
   try {
-    const res = await axios.get(URL);
+    const res = await axios.get(ENDPOINT_PRODUCT);
     dispatch({
       type: GET_PRODUCTS,
       payload: res.data,

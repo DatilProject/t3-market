@@ -4,7 +4,7 @@ import { AiOutlineCamera, AiOutlineSearch } from "react-icons/ai";
 import ModalNewProduct from "./newproduct/ModalNewProduct";
 import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductsAction } from "../../redux/productDucks";
+import { getProductsAction } from "../../../redux/productDucks";
 
 const ProductSection = () => {
   const [showModalNewProduct, setShowModalNewProduct] = useState(false);
@@ -15,7 +15,7 @@ const ProductSection = () => {
     dispatch(getProductsAction());
   }, []);
 
-  const listProducts = useSelector((store) => store.products.products);
+  const listProducts = useSelector((store) => store.products.array);
 
   return (
     <Container className="border border-secondary p-0 shadow-sm table">
@@ -58,7 +58,7 @@ const ProductSection = () => {
       <Table hover responsive className="m-0 my-auto">
         <thead>
           <tr>
-            <th className="col-1">
+            <th className="col-1 text-center">
               <AiOutlineCamera size="1.7em" />
             </th>
             <th className="col-3">Nombre</th>

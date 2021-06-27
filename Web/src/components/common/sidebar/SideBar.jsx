@@ -6,14 +6,15 @@ import SideNav, {
   NavIcon,
   NavText,
 } from "@trendmicro/react-sidenav";
-import { AiOutlineShopping, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineShopping } from "react-icons/ai";
 import { BsBook } from "react-icons/bs";
-import { IoSpeedometerOutline } from "react-icons/io5";
-import "./SideBar.css";
+import { IoSpeedometerOutline, IoLogOut } from "react-icons/io5";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import Panel from "../panel/Panel";
-import Market from "../market/Market";
-import Catalogue from "../catalogue/Catalogue";
+import "./SideBar.css";
+import Panel from "../../panel/Panel";
+import Market from "../../market/Market";
+import Catalogue from "../../catalogue/Catalogue";
+import LogIn from "../../login/LogIn";
 
 const SideBar = () => {
   return (
@@ -52,6 +53,13 @@ const SideBar = () => {
                   </NavIcon>
                   <NavText>Market</NavText>
                 </NavItem>
+
+                <NavItem eventKey="logout">
+                  <NavIcon>
+                    <IoLogOut className="menu-icon" size="2rem" />
+                  </NavIcon>
+                  <NavText>Cerrar Sesión</NavText>
+                </NavItem>
               </SideNav.Nav>
             </SideNav>
             <main>
@@ -61,6 +69,7 @@ const SideBar = () => {
               <Route path="/panel" component={(props) => <Panel />} />
               <Route path="/market" component={(props) => <Market />} />
               <Route path="/catalogue" component={(props) => <Catalogue />} />
+              <Route path="/logout" component={(props) => <LogIn />} />
             </main>
           </React.Fragment>
         )}

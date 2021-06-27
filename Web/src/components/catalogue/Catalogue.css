@@ -2,12 +2,6 @@
   background-color: white;
 }
 
-.row-product td {
-  padding-top: 0% !important;
-  padding-bottom: 0 !important;
-  vertical-align: middle !important;
-}
-
 /* .row-product div {
   white-space: nowrap !important;
   overflow: hidden !important;
@@ -15,7 +9,6 @@
   max-width: 40%;
 } */
 
-/* Catalogue Component */
 .tab :hover {
   background-color: gainsboro;
   cursor: pointer;

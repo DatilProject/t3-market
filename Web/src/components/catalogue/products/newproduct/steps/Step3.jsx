@@ -7,12 +7,17 @@ const Step3 = () => {
       <div className="form-card">
         <div className="form-group">
           <h2 className="fs-title mb-3">Fotos</h2>
-          <textarea
+          {/* <textarea
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="Aqui Poner Fotos"
-          ></textarea>
+          ></textarea> */}
+          <input
+            type="file"
+            className="form-control-file"
+            id="exampleFormControlFile1"
+          ></input>
         </div>
       </div>
       <Button variant="secondary" className="previous">

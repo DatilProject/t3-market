@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Fade } from "react-bootstrap";
-import ProductSection from "./ProductSection";
-import CategorySection from "./CategorySection";
+import ProductSection from "./products/ProductSection";
+import CategorySection from "./categories/CategorySection";
 import "./Catalogue.css";
 
 const Catalogue = () => {

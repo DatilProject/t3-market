@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import ToggleButton from "../../../common/toggle/ToggleButton";
+import ToggleButton from "../../../../common/toggle/ToggleButton";
 
 const Step2 = () => {
   return (

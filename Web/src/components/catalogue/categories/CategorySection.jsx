@@ -1,16 +1,17 @@
 import React from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
-import { AiOutlineCamera, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import Category from "./Category";
 
 const ProductSection = () => {
-  const listProducts = [
+  const listCategories = [
     {
       name: "Categoria 1",
-      images: "",
+      numProductos: 55,
     },
     {
       name: "Categoria 2",
-      images: "",
+      numProductos: 55,
     },
   ];
 
@@ -43,18 +44,15 @@ const ProductSection = () => {
       <Table hover responsive className="m-0 my-auto">
         <thead>
           <tr>
-            <th className="col-1">
-              <AiOutlineCamera size="1.7em" />
-            </th>
-            <th className="col-3">Nombre</th>
-            <th className="col-1">Cantidad de Productos</th>
+            <th className="col-5">Nombre</th>
+            <th className="col-5">Cantidad de Productos</th>
             <th className="col-1"></th>
           </tr>
         </thead>
         <tbody>
-          {/* {listProducts.map((product, index) => (
-            <Product key={index} product={product} />
-          ))} */}
+          {listCategories.map((category, index) => (
+            <Category key={index} category={category} />
+          ))}
         </tbody>
       </Table>
     </Container>

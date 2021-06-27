@@ -24,3 +24,6 @@ npm i react-icons
 sidebar
 https://laptrinhx.com/react-side-nav-component-3509345605/
 https://thekenyandev.com/blog/building-a-react-router-sidebar-with-react/
+
+imagenes
+react-standalone-form

@@ -1,14 +1,18 @@
 import React from "react";
 import { Figure } from "react-bootstrap";
+import ToggleButton from "../../common/toggle/ToggleButton";
+import OverOptions from "../OverOptions";
+import "./Product.css";
 
 const Product = ({ product }) => {
   const priceWithIVA = product.price * product.iva;
+
   return (
     <tr className="row-product">
-      <td>
-        <Figure>
+      <td className="text-center">
+        <Figure className="my-auto">
           <Figure.Image
-            className="my-auto"
+            className="my-auto product-image"
             width={171}
             height={180}
             alt="Producto"
@@ -23,11 +27,15 @@ const Product = ({ product }) => {
         </div>
       </td>
       <td>{product.category}</td>
-      <td>{product.price}</td>
-      <td>{priceWithIVA}</td>
+      <td>{"$" + product.price}</td>
+      <td>{"$" + priceWithIVA}</td>
       <td>{product.stock}</td>
-      <td>{product.onSale}</td>
-      <td></td>
+      <td>
+        <ToggleButton active={product.onSale} />
+      </td>
+      <td>
+        <OverOptions />
+      </td>
     </tr>
   );
 };

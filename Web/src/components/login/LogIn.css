@@ -1,39 +1,13 @@
-img {
-  max-width: 20%;
-}
-
-.btn-facebook {
-  background-color: #3b5998;
-  color: white;
-}
-
-.btn-twitter {
-  background-color: #00acee;
-  color: white;
-}
-
-html {
-  background-color: #f7f8f8;
-}
-
 #login-container {
   background-color: white;
 }
 
-.btn-primary {
-  background-color: #333333;
-  border: #333333;
+#login-button button {
   margin: 10px;
+  width: 90%;
 }
 
-#forget-pwd {
-  color: gray;
-}
 #errorCont {
   align-items: center;
   margin: 50px;
-}
-#botones {
-  display: flex;
-  justify-content: center;
 }

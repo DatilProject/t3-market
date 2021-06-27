@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./NewProduct.css";
 import eventsMultiSteps from "./NewProductosActions.js";
 import Step1 from "./steps/Step1";
@@ -8,10 +8,10 @@ import Step4 from "./steps/Step4";
 
 const NewProducto = () => {
   eventsMultiSteps();
-  const [errorForm, seterrorForm] = useState("valiste");
+  // const [errorForm, seterrorForm] = useState("valiste");
 
   return (
-    <div className="container-fluid" id="ponerAdopcion">
+    <div className="container-fluid" id="new-product">
       {/* <div className="row justify-content-center">
         <div className="col-11 col-sm-9 col-md-9 col-lg-10 text-center p-0 mb-2"> */}
       <div className="progressbar">
@@ -29,7 +29,7 @@ const NewProducto = () => {
             <Step2 />
             <Step3 />
             <Step4 />
-            <p id="errorAdopcion">{errorForm}</p>
+            {/* <p id="errorAdopcion">{errorForm}</p> */}
           </form>
           {/* </div> */}
           {/* </div>
