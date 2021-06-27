@@ -8,20 +8,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      // item_id: {
-      //   type: Sequelize.INTEGER
-      // },
-      // order_id: {
-      //   type: Sequelize.INTEGER
-      // },
-      // references: {
-      //   model:'item',
-      //   key:'id'
-      // },
-      // references: {
-      //   model:'order',
-      //   key:'id'
-      // },
+      item_id: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references: {
+          model:'item',
+          key:'id'
+        },
+      },
+      order_id: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references: {
+          model:'order',
+          key:'id'
+        },
+      },
       discount: {
         type: Sequelize.FLOAT,
         allowNull:true
@@ -30,11 +32,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull:false
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

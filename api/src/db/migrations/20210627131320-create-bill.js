@@ -20,15 +20,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      // order_id: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   unique:true
-      // },
-      // references:{
-      //   model:'order',
-      //   key:id
-      // },
+      order_id: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model:'order',
+          key:id
+        }
+      },
       subtotal: {
         type: Sequelize.FLOAT,
         allowNull: false
@@ -37,11 +36,11 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

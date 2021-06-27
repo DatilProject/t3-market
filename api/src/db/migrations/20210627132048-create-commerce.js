@@ -28,15 +28,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      // references: {
-      //   model:'market',
-      //   key:'id'
-      // },
-      createdAt: {
+      market_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model:'market',
+          key:'id'
+        },
+      },
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

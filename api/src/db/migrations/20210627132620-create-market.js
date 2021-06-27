@@ -12,25 +12,27 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull:true
       },
-      // template_id: {
-      //   type: Sequelize.INTEGER
-      // },
-      // theme_id: {
-      //   type: Sequelize.INTEGER
-      // },
-      // references: {
-      //   model:'template',
-      //   key:'id'
-      // },
-      // references: {
-      //   model:'theme',
-      //   key:'id'
-      // },
-      createdAt: {
+      template_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model:'template',
+          key:'id'
+        },
+      },
+      theme_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model:'theme',
+          key:'id'
+        },
+      },
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

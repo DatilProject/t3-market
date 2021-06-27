@@ -8,22 +8,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      // client_id: {
-      //   type: Sequelize.INTEGER
-      // },
-      // references: {
-      //   model:'client',
-      //   key:'id'
-      // },
+      client_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model:'client',
+          key:'id'
+        },
+      },
       is_paid_up: {
         type: Sequelize.BOOLEAN,
         allowNull:false
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

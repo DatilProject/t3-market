@@ -20,10 +20,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      // references: {
-      //   model: 'account_credentials',
-      //   key: 'id'
-      // },
+      account_credentials_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'account_credentials',
+          key: 'id'
+        },
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

@@ -16,13 +16,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull:true
       },
-      // category_id: {
-      //   type: Sequelize.INTEGER
-      // },
-      // references: {
-      //   model:'category',
-      //   key:'id'
-      // },
+      category_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model:'category',
+          key:'id'
+        },
+      },
       description: {
         type: Sequelize.STRING,
         allowNull:false
