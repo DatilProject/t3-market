@@ -1,31 +1,26 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 const Step3 = () => {
   return (
     <fieldset>
       <div className="form-card">
         <div className="form-group">
-          <h2 className="fs-title mb-3">Motivo de la adopción</h2>
+          <h2 className="fs-title mb-3">Fotos</h2>
           <textarea
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
-            placeholder="Motivo"
+            placeholder="Aqui Poner Fotos"
           ></textarea>
         </div>
       </div>
-      <input
-        type="button"
-        name="previous"
-        className="previous action-button-previous"
-        value="Atrás"
-      />
-      <input
-        type="button"
-        name="save"
-        className="next action-button"
-        value="Guardar"
-      />
+      <Button variant="secondary" className="previous">
+        Atrás
+      </Button>
+      <Button variant="primary" className="next">
+        Siguiente
+      </Button>
     </fieldset>
   );
 };

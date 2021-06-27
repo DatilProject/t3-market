@@ -1,133 +1,111 @@
 import React from "react";
+import { Button } from "react-bootstrap";
+import ToggleButton from "../../../common/toggle/ToggleButton";
 
 const Step2 = () => {
   return (
     <fieldset>
       <div className="form-card">
-        <h2 className="fs-title mb-3">Información de la mascota</h2>
+        <h2 className="fs-title mb-3">Datos de Venta</h2>
 
         <div className="from-row mx-md-n1">
-          <label className="col-5 d-none d-xl-inline-block" htmlFor="pet-name">
-            Nombre
-          </label>
-          <label
-            className="col-5 ml-md-4 d-none d-xl-inline-block"
-            htmlFor="pet-age"
-          >
-            Edad (años)
-          </label>
-          <label
-            className="col-1 ml-5 d-none d-xl-inline-block px-md-1"
-            htmlFor="pet-gender"
-          >
-            Género
+          <label className="col-6 d-none d-xl-inline-block mb-0">Precio</label>
+          <label className="col-5 ml-4 d-none d-xl-inline-block mb-0">
+            Precio sin Subsidio
           </label>
         </div>
         <div className="form-row">
-          <div className="col-12 col-lg-5">
-            <input
-              type="text"
-              id="pet-name"
-              name="pet-name"
-              placeholder="Nombre"
-            />
+          <div className="col-12 col-lg-6">
+            <div className="container p-0">
+              <input
+                className="m-0"
+                type="text"
+                name="uname"
+                placeholder="Precio $ 0.00"
+              />
+              <p className="ml-2">Valor sin impuestos</p>
+            </div>
           </div>
-          <div className="col-12 col-lg-5 mx-auto">
-            <input
-              type="number"
-              id="pet-age"
-              name="pet-age"
-              placeholder="Edad"
-            />
-          </div>
-          <div className="col-12 col-lg-1 mx-auto">
-            <select className="list-dt" id="pet-gender" name="pet-gender">
-              <option selected>Género</option>
-              <option>Macho</option>
-              <option>Hembra</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="form-row">
-          <label className="col-6 d-none d-xl-inline-block">Tipo</label>
-          <label className="col-5 ml-1 d-none d-xl-inline-block ">Raza</label>
-        </div>
-        <div className="form-row">
-          <div className="col-12 col-lg-5 ">
-            <input
-              list="pet-types"
-              name="pet-type"
-              id="pet-type"
-              placeholder="Tipo"
-            />
-            <datalist id="pet-types">
-              <option value="Perro"></option>
-              <option value="Gato"></option>
-              <option value="Loro"></option>
-              <option value="Tortuga"></option>
-            </datalist>
-          </div>
-
-          <div className="col-12 col-lg-5 mx-auto">
-            <input
-              list="type-races"
-              name="type-race"
-              id="type-race"
-              placeholder="Raza"
-            />
-            <datalist id="type-races">
-              <option value="Labrador"></option>
-              <option value="Schnauzer"></option>
-              <option value="Chiguagua"></option>
-              <option value="Pitbull"></option>
-            </datalist>
+          <div className="col-12 col-lg-5 ml-lg-4">
+            <div className="container p-0">
+              <input
+                className="m-0"
+                type="text"
+                name="uname"
+                placeholder="Precio sin Sudsidios $ 0.00"
+              />
+              <p className="ml-2">Valor sin impuestos</p>
+            </div>
           </div>
         </div>
 
-        <div className="form-row">
-          <label className="col-6 d-none d-xl-inline-block">Color</label>
-          <label className="col-5 ml-1 d-none d-xl-inline-block ">
-            Esterilizado
+        <div className="from-row mx-md-n1">
+          <label className="col-6 d-none d-xl-inline-block mb-0">IVA</label>
+          <label className="col-5 ml-4 d-none d-xl-inline-block mb-0">
+            ICE
           </label>
         </div>
         <div className="form-row">
-          <div className="col-12 col-lg-5">
-            <input
-              type="text"
-              id="pet-color"
-              name="pet-color"
-              placeholder="Color"
-            />
+          <div className="col-12 col-lg-6">
+            <input type="text" name="uname" placeholder="IVA" />
           </div>
-          <div className="col-12 col-lg-5 mx-auto mb-3">
-            <select className="list-dt" id="pet-esteril" name="pet-esteril">
-              <option selected>Esterelizado</option>
-              <option>Si</option>
-              <option>No</option>
-            </select>
+          <div className="col-12 col-lg-5 ml-lg-4">
+            <input type="text" name="uname" placeholder="ICE" />
           </div>
         </div>
 
+        <div className="from-row mx-md-n1 sell-on-granel">
+          <div className="row ml-2">
+            <ToggleButton active={false} />
+            <div className="col-auto font-weight-bold d-xl-inline-block mb-0 my-auto">
+              Venta Granel
+            </div>
+            <p className="font-weight-light my-auto">
+              (Marca esta opción para habilitar este producto para venta al
+              granel)
+            </p>
+          </div>
+        </div>
+
+        <div className="from-row mx-md-n1 sell-on-market">
+          <div className="row ml-2">
+            <ToggleButton active={false} />
+            <div className="col-auto font-weight-bold d-xl-inline-block mb-0 my-auto">
+              Market
+            </div>
+            <p className="font-weight-light my-auto">
+              (Marca esta opción para publicar este producto para en tu{" "}
+              <strong>tienda en línea</strong>)
+            </p>
+          </div>
+        </div>
+
+        <div className="from-row mx-md-n1 mt-3">
+          <label className="col-6 d-none d-xl-inline-block mb-0">
+            Costo Unitario
+          </label>
+        </div>
         <div className="form-row">
-          <div className="col-1" id="pet-picture"></div>
-          <div className="col">
-            <input type="file" name="picture" id="picture" />
+          <div className="col-12 col-lg-6">
+            <div className="container p-0">
+              <input
+                className="m-0"
+                type="text"
+                name="uname"
+                placeholder="Costo Unitario $ 0.00"
+              />
+              <p className="ml-2">Valor sin impuestos</p>
+            </div>
           </div>
         </div>
       </div>
-      <input
-        type="button"
-        name="previous"
-        className="previous action-button-previous"
-        value="Atrás"
-      />
-      <input
-        type="button"
-        name="next"
-        className="next action-button"
-        value="Siguiente"
-      />
+
+      <Button variant="secondary" className="previous">
+        Atrás
+      </Button>
+      <Button variant="primary" className="next">
+        Siguiente
+      </Button>
     </fieldset>
   );
 };

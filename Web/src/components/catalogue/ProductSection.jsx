@@ -1,35 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { AiOutlineCamera, AiOutlineSearch } from "react-icons/ai";
 import ModalNewProduct from "./newproduct/ModalNewProduct";
 import Product from "./Product";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsAction } from "../../redux/productDucks";
 
 const ProductSection = () => {
   const [showModalNewProduct, setShowModalNewProduct] = useState(false);
   const handleShowModalNewProduct = () => setShowModalNewProduct(true);
+  const dispatch = useDispatch();
 
-  const listProducts = [
-    {
-      images: "",
-      name: "Producto de test",
-      mainCode: "Xtesd-kkdsn",
-      category: "Test",
-      price: 44,
-      iva: 12,
-      stock: 44,
-      onSale: true,
-    },
-    {
-      images: "",
-      name: "Producto de test 2",
-      mainCode: "Xtesd-kkkk-4",
-      category: "Test2",
-      price: 14,
-      iva: 10,
-      stock: 22,
-      onSale: true,
-    },
-  ];
+  useEffect(() => {
+    dispatch(getProductsAction());
+  }, []);
+
+  const listProducts = useSelector((store) => store.products.products);
 
   return (
     <Container className="border border-secondary p-0 shadow-sm table">
@@ -47,7 +33,10 @@ const ProductSection = () => {
                 ></input>
               </Col>
               <Col className="pl-1">
-                <AiOutlineSearch size="2em" />
+                <AiOutlineSearch
+                  size="2em"
+                  // onClick={() => dispatch(getProductsAction())}
+                />
               </Col>
             </Row>
           </Col>

@@ -1,13 +1,17 @@
-import React, { Fragment } from "react";
+import React from "react";
 import SideBar from "./components/common/SideBar";
-import LogIn from "./components/login/LogIn";
+// import LogIn from "./components/login/LogIn";
+import generateStore from "./redux/store";
+import { Provider } from "react-redux";
 
 function App() {
+  const store = generateStore();
+
   return (
-    <Fragment>
+    <Provider store={store}>
       <SideBar />
       {/* <LogIn /> */}
-    </Fragment>
+    </Provider>
   );
 }
 

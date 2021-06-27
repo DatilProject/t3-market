@@ -4,6 +4,15 @@
   margin-top: 20px;
 }
 
+.form-row p {
+  font-size: 0.7em;
+}
+
+.sell-on-granel p,
+.sell-on-market p {
+  font-size: 0.9em;
+}
+
 #form_persona fieldset .form-card {
   background: white;
   border: 0 none;
@@ -171,11 +180,13 @@ select.list-dt:focus {
 }
 
 .fit-image {
-  width: 100%;
+  min-width: 7rem;
   object-fit: cover;
 }
 
-label {
+label,
+.sell-on-granel div,
+.sell-on-market div {
   color: #2c3e50;
   font-weight: bold;
   margin-left: -0.5%;

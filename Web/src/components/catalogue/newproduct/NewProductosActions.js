@@ -76,7 +76,7 @@ export const eventsMultiSteps = () => {
     });
 
     $(".submit").click(function () {
-      window.location = "/";
+      window.location = "/catalogue";
       return false;
     });
   });
