@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-
+const db = require('./db/db');
 require('dotenv').config();
 
 app.use(morgan('dev'));
