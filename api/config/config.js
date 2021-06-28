@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
     "development": {
       "username": "postgres",
-      "password": null,
+      "password": "postgres",
       "database": "datil_market",
       "host": "localhost",
       "dialect": "postgres"
