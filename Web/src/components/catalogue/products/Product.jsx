@@ -5,7 +5,11 @@ import OverOptions from "../OverOptions";
 import "./Product.css";
 
 const Product = ({ product }) => {
-	const priceWithIVA = product.price * product.iva;
+	const priceWithIVA = (product.price * (1 * product.iva.percentage)) / 100;
+	var srcImg = "";
+	if (product.images.length > 0) {
+		srcImg = product.images[0].location;
+	}
 
 	return (
 		<tr className="row-product">
@@ -16,22 +20,22 @@ const Product = ({ product }) => {
 						width={171}
 						height={180}
 						alt="Producto"
-						src={product.images[0]}
+						src={srcImg}
 					/>
 				</Figure>
 			</td>
 			<td>{product.name}</td>
 			<td>
 				<div>
-					<div className="m-0 p-0">{product.mainCode}</div>
+					<div className="m-0 p-0">{product.main_code}</div>
 				</div>
 			</td>
-			<td>{product.category}</td>
+			<td>{product.category.name}</td>
 			<td>{"$" + product.price}</td>
 			<td>{"$" + priceWithIVA}</td>
 			<td>{product.stock}</td>
 			<td>
-				<ToggleButton active={product.onSale} />
+				<ToggleButton active={product.on_sale} />
 			</td>
 			<td>
 				<OverOptions />
