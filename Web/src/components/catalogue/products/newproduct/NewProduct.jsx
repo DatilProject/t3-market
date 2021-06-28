@@ -16,30 +16,35 @@ const NewProducto = () => {
     unit: 0,
     mainCode: "",
     auxiliaryCode: "",
-    description: "",
     onSale: false,
     price: 0,
     iva: 0,
-    images: [],
-
     stock: 0,
     ice: 0,
+    images: [],
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
 
-  const onSubmit = (data, event) => {
-    console.log(data);
+  // const onSubmit = (data, event) => {
+  //   console.log(data);
+  //   setProduct({
+  //     ...product,
+  //     [event.target.name]: event.target.value,
+  //   });
+  //   // event.target.reset();
+  //   // console.log(datos);
+  // };
+
+  const setValueInput = (event) => {
     setProduct({
       ...product,
       [event.target.name]: event.target.value,
     });
-    // event.target.reset();
-    // console.log(datos);
   };
 
   return (
@@ -59,13 +64,14 @@ const NewProducto = () => {
               <li className="col pl-lg-5 pr-lg-5" id="finish"></li>
             </ul>
           </div>
-          <form id="form-new-product" onSubmit={handleSubmit(onSubmit)}>
-            <Step1 />
-            <Step2 />
-            <Step3 />
+          {/* onSubmit={handleSubmit(onSubmit)} */}
+          <div id="form-new-product">
+            <Step1 setValueInput={setValueInput} />
+            <Step2 setValueInput={setValueInput} />
+            <Step3 setValueInput={setValueInput} />
             <Step4 />
-            {/* <p id="errorAdopcion">{errorForm}</p> */}
-          </form>
+          </div>
+          {/* <p id="errorAdopcion">{errorForm}</p> */}
           {/* </div> */}
           {/* </div>
           </div> */}

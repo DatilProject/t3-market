@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-const Step1 = () => {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm();
+const Step1 = (props) => {
+  const setValueInput = props.setValueInput;
+  const [productInfo, setProductInfo] = useState({
+    name: "",
+    category: "",
+    weight: 0,
+    unit: 0,
+    mainCode: "",
+    auxiliaryCode: "",
+    description: "",
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // const validateInputs2 = (event) => {
+  //   event.preventDefault();
+  //   console.log(event.target.value);
+  //   console.log(productInfo);
+  // };
 
   return (
     <fieldset>
@@ -27,17 +44,23 @@ const Step1 = () => {
               id="name"
               name="name"
               placeholder="Nombre"
+              onChange={setValueInput}
               // {...register("name", {
               //   required: { value: true, message: "Nombre requerido" },
               // })}
             />
-            {/* <span className="text-danger text-small d-block mb-2 fw-bold  ">
+            <span className="text-danger text-small d-block mb-2 fw-bold  ">
               {errors?.name?.message}
-            </span> */}
+            </span>
           </div>
 
           <div className="col-12 col-lg-2 ml-lg-4">
-            <select className="list-dt" id="category" name="category">
+            <select
+              className="list-dt"
+              id="category"
+              name="category"
+              onChange={setValueInput}
+            >
               <option defaultValue>Categoría</option>
               <option>Ropa</option>
               <option>Gamer</option>
@@ -64,13 +87,25 @@ const Step1 = () => {
               rows="4"
               placeholder="Descripcion"
               name="description"
+              onChange={setValueInput}
             ></textarea>
           </div>
           <div className="col-12 col-lg-2 mx-auto mx-xl-4">
-            <input type="tel" name="weight" id="weight" placeholder="Peso" />
+            <input
+              type="tel"
+              name="weight"
+              id="weight"
+              placeholder="Peso"
+              onChange={setValueInput}
+            />
           </div>
           <div className="col-12 col-lg-2 mx-auto mx-xl-0">
-            <select className="list-dt" id="unit" name="unit">
+            <select
+              className="list-dt"
+              id="unit"
+              name="unit"
+              onChange={setValueInput}
+            >
               <option defaultValue>Unidad</option>
               <option>Kg</option>
               <option>gr</option>
@@ -86,17 +121,24 @@ const Step1 = () => {
         </div>
         <div className="form-row">
           <div className="col-12 col-xl-7">
-            <input type="text" name="mainCode" placeholder="Código Principal" />
+            <input
+              type="text"
+              name="mainCode"
+              placeholder="Código Principal"
+              onChange={setValueInput}
+            />
           </div>
           <div className="col-12 col-lg-4 ml-lg-4">
             <input
               type="text"
               name="auxiliaryCode"
               placeholder="Código Auxiliar"
+              onChange={setValueInput}
             />
           </div>
         </div>
       </div>
+
       <Button variant="primary" className="next">
         Siguiente
       </Button>

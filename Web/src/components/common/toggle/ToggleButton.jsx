@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ToggleButton.css";
 
-const ToggleButton = ({ active = true }) => {
+const ToggleButton = ({ active = true, onChange, name }) => {
   const [activate, setActive] = useState(active);
   const isActive = (isActive) => (isActive ? "toggle-active" : "");
 
@@ -9,7 +9,9 @@ const ToggleButton = ({ active = true }) => {
     <label className="switch my-auto">
       <input
         type="checkbox"
+        name={name}
         onClick={() => setActive(!activate)}
+        // onChange={onChange}
         className={isActive(activate)}
       />
       <span className="slider round"></span>

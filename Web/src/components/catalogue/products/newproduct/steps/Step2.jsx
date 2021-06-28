@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import ToggleButton from "../../../../common/toggle/ToggleButton";
 
-const Step2 = () => {
+const Step2 = (props) => {
+  const setValueInput = props.setValueInput;
+  const [onMarket, setOnMarket] = useState(false);
+
   return (
     <fieldset>
       <div className="form-card">
@@ -20,7 +23,8 @@ const Step2 = () => {
               <input
                 className="m-0"
                 type="text"
-                name="uname"
+                name="price"
+                onChange={setValueInput}
                 placeholder="Precio $ 0.00"
               />
               <p className="ml-2">Valor sin impuestos</p>
@@ -47,16 +51,30 @@ const Step2 = () => {
         </div>
         <div className="form-row">
           <div className="col-12 col-lg-6">
-            <input type="text" name="uname" placeholder="IVA" />
+            <input
+              type="text"
+              name="iva"
+              placeholder="IVA"
+              onChange={setValueInput}
+            />
           </div>
           <div className="col-12 col-lg-5 ml-lg-4">
-            <input type="text" name="uname" placeholder="ICE" />
+            <input
+              type="text"
+              name="ice"
+              placeholder="ICE"
+              onChange={setValueInput}
+            />
           </div>
         </div>
 
         <div className="from-row mx-md-n1 sell-on-granel">
           <div className="row ml-2">
-            <ToggleButton active={false} />
+            <ToggleButton
+              active={onMarket}
+              name="onSale"
+              onChange={setValueInput}
+            />
             <div className="col-auto font-weight-bold d-xl-inline-block mb-0 my-auto">
               Venta Granel
             </div>

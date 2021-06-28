@@ -1,7 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const Step3 = () => {
+const Step3 = (props) => {
+  const setValueInput = props.setValueInput;
+
   return (
     <fieldset>
       <div className="form-card">
