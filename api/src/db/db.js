@@ -1,3 +1,4 @@
+const { Model } = require("sequelize");
 const Sequelize = require("sequelize");
 const config = require('../../config/config');
 
@@ -25,3 +26,8 @@ const Product = ProductModel(conn,Sequelize);
 
 console.log(Product)
 module.exports = {config}
+
+
+Product.findAll();
+
+module.exports = {conn, Product}
