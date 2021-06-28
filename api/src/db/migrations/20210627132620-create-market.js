@@ -14,7 +14,7 @@ module.exports = {
       },
       template_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model:'template',
           key:'id'
@@ -22,7 +22,7 @@ module.exports = {
       },
       theme_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model:'theme',
           key:'id'

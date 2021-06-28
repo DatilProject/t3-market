@@ -26,31 +26,39 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false
       },
       name: {
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false
       },
       on_sale: {
         type: Sequelize.BOOLEAN,
-        allowNull:false
+        allowNull: false
       },
       price: {
         type: Sequelize.FLOAT,
-        allowNull:false
+        allowNull: false
       },
       stock: {
         type: Sequelize.INTEGER,
-        allowNull:false
+        allowNull: false
       },
       ice_id: {
         type: Sequelize.INTEGER,
-        allowNull:false
+        allowNull: true
       },
       iva_id: {
         type: Sequelize.INTEGER,
-        allowNull:false
+        allowNull: false
+      },
+      market_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'market',
+          key: 'id'
+        }
       },
       created_at: {
         allowNull: false,

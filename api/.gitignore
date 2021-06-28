@@ -24,3 +24,5 @@ yarn-error.log*
 
 #eviroment var
 .env
+
+package-lock.json

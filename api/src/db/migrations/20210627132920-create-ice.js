@@ -4,7 +4,7 @@ module.exports = {
     await queryInterface.createTable('ice', {
       id: {
         allowNull: false,
-        autoIncrement: true,
+        autoIncrement: false,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
