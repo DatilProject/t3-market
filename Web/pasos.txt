@@ -28,3 +28,17 @@ https://thekenyandev.com/blog/building-a-react-router-sidebar-with-react/
 imagenes
 react-standalone-form
 npm install universal-cookie
+
+1.	Descargar el modulo con: npm install eslint -D
+2.	Correr: npx eslint --init
+3.	selección de opciones, necesarias
+4. crear varuables para correr
+5. instalar pluggin eslint y prettier vs
+6. pegar estas lineas: SHIT+CTRL+P y setting
+   "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+    "prettier.requireConfig": true
+7. crear archivo de prettier json
+8. npm i -D eslint-config-prettier
+npm i -D eslint-plugin-prettier prettier
+

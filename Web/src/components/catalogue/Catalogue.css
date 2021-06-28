@@ -1,20 +1,13 @@
 .table {
-  background-color: white;
+	background-color: white;
 }
 
-/* .row-product div {
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  max-width: 40%;
-} */
-
 .tab :hover {
-  background-color: gainsboro;
-  cursor: pointer;
+	background-color: gainsboro;
+	cursor: pointer;
 }
 
 .section-active {
-  border-bottom: 4px solid #007bff;
-  color: #007bff !important;
+	border-bottom: 4px solid #007bff;
+	color: #007bff !important;
 }
