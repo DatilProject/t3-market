@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import eventsMultiSteps from "./NewProductosActions.js";
 import "./NewProduct.css";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
+import { useDispatch } from "react-redux";
+import { postProductsAction } from "../../../../redux/productDucks";
 
 const NewProducto = () => {
 	eventsMultiSteps();
+	const dispatch = useDispatch();
+
 	const [product, setProduct] = useState({
 		name: "",
+		description: "",
 		category: "",
 		weight: 0,
 		unit: 0,
@@ -24,21 +28,33 @@ const NewProducto = () => {
 		images: [],
 	});
 
-	// const {
-	//   register,
-	//   handleSubmit,
-	//   formState: { errors },
-	// } = useForm();
-
-	// const onSubmit = (data, event) => {
-	//   console.log(data);
-	//   setProduct({
-	//     ...product,
-	//     [event.target.name]: event.target.value,
-	//   });
-	//   // event.target.reset();
-	//   // console.log(datos);
-	// };
+	function getJsonProduct(product) {
+		const JsonProduct = {
+			name: product.name,
+			category: {
+				name: product.category,
+			},
+			weight: product.weight,
+			unit: product.unit,
+			main_code: product.mainCode,
+			auxiliary_code: product.auxiliaryCode,
+			description: product.description,
+			on_sale: product.onSale,
+			price: product.price,
+			stock: product.stock,
+			marketId: 1,
+			iva: {
+				name: product.iva + "%",
+				percentage: product.iva,
+			},
+			ice: {
+				name: product.ice + "%",
+				percentage: product.ice,
+			},
+			images: [],
+		};
+		return JsonProduct;
+	}
 
 	const setValueInput = (event) => {
 		setProduct({
@@ -47,10 +63,16 @@ const NewProducto = () => {
 		});
 	};
 
+	const submitNewForm = () => {
+		// event.preventDefault();
+
+		console.log("Enviando");
+		const newProduct = getJsonProduct(product);
+		dispatch(postProductsAction(newProduct));
+	};
+
 	return (
 		<div className="container-fluid" id="new-product">
-			{/* <div className="row justify-content-center">
-        <div className="col-11 col-sm-9 col-md-9 col-lg-10 text-center p-0 mb-2"> */}
 			<div className="progressbar">
 				<div className="col-12 col-md-12 p-0">
 					<div id="container-progressbar">
@@ -61,17 +83,13 @@ const NewProducto = () => {
 							<li className="col pl-lg-5 pr-lg-5" id="finish"></li>
 						</ul>
 					</div>
-					{/* onSubmit={handleSubmit(onSubmit)} */}
+
 					<div id="form-new-product">
 						<Step1 setValueInput={setValueInput} />
 						<Step2 setValueInput={setValueInput} />
-						<Step3 setValueInput={setValueInput} />
+						<Step3 setValueInput={setValueInput} submitNewForm={submitNewForm} />
 						<Step4 />
 					</div>
-					{/* <p id="errorAdopcion">{errorForm}</p> */}
-					{/* </div> */}
-					{/* </div>
-          </div> */}
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,8 @@ import OverOptions from "../OverOptions";
 import "./Product.css";
 
 const Product = ({ product }) => {
-	const priceWithIVA = (product.price * (1 * product.iva.percentage)) / 100;
+	var priceWithIVA = (product.price * (1 * product.iva.percentage)) / 100;
+	priceWithIVA = Number(priceWithIVA.toFixed(2));
 	var srcImg = "";
 	if (product.images.length > 0) {
 		srcImg = product.images[0].location;

@@ -16,8 +16,6 @@ const ProductSection = () => {
 	}, []);
 
 	const listProducts = useSelector((store) => store.products.array);
-	// const listProducts = [];
-	console.log(listProducts);
 
 	return (
 		<Container className="border border-secondary p-0 shadow-sm table">

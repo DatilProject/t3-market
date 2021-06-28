@@ -23,7 +23,6 @@ const LogIn = () => {
 	} = useForm();
 
 	const onSubmit = (data, event) => {
-		console.log(data);
 		setUser({
 			...user,
 			[event.target.name]: event.target.value,

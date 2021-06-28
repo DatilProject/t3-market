@@ -19,7 +19,7 @@ const Step3 = (props) => {
 			<Button variant="secondary" className="previous">
 				Atrás
 			</Button>
-			<Button variant="primary" className="next">
+			<Button variant="primary" onClick={props.submitNewForm} className="next">
 				Siguiente
 			</Button>
 		</fieldset>
