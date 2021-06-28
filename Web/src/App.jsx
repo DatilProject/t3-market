@@ -1,15 +1,14 @@
 import React from "react";
-import SideBar from "./components/common/sidebar/SideBar";
 import generateStore from "./redux/store";
 import { Provider } from "react-redux";
+import Routes from "./components/Routes";
 
 function App() {
   const store = generateStore();
 
   return (
     <Provider store={store}>
-      <SideBar />
-      {/* <LogIn /> */}
+      <Routes />
     </Provider>
   );
 }

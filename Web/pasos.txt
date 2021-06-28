@@ -27,3 +27,4 @@ https://thekenyandev.com/blog/building-a-react-router-sidebar-with-react/
 
 imagenes
 react-standalone-form
+npm install universal-cookie

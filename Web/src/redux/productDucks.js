@@ -19,7 +19,7 @@ export default function productReducer(state = data, action) {
 }
 
 //Actions
-export const getProductsAction = () => async (dispatch, getState) => {
+export const getProductsAction = () => async (dispatch) => {
   try {
     const res = await axios.get(ENDPOINT_PRODUCT);
     dispatch({

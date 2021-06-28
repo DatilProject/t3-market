@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { Container, Row, Col, Figure, Button } from "react-bootstrap";
 import LogoDatil from "./../../assets/logo_datil.png";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { getAuthAction } from "../../redux/authDucks";
+import Cookies from "universal-cookie";
 import "./LogIn.css";
+const cookies = new Cookies();
 
 const LogIn = () => {
-  const [datos, setDatos] = useState({
+  const dispatch = useDispatch();
+  const userLogIn = useSelector((store) => store.auth);
+  const [user, setUser] = useState({
     username: "",
     password: "",
   });
@@ -15,20 +21,33 @@ const LogIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // const [error, seterror] = useState("alog mal");
 
   const onSubmit = (data, event) => {
     console.log(data);
-    setDatos({
-      ...datos,
+    setUser({
+      ...user,
       [event.target.name]: event.target.value,
     });
-    event.target.reset();
-    console.log(datos);
+    dispatch(getAuthAction(data));
+
+    if (userLogIn.auth) {
+      cookies.set("token", userLogIn.token, { path: "/" });
+      cookies.set("user", userLogIn.user, { path: "/" });
+      window.location.href = "./panel";
+    } else {
+      alert("Usuario o Contaseña Incorrectos");
+    }
   };
 
+  const isLogIn = () => {
+    if (cookies.get("token")) {
+      window.location.href = "./panel";
+    }
+  };
+  isLogIn();
+
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
+    <Container>
       <Container
         id="login-container"
         className="col-11 col-lg-6 border border-light mb-5 mt-5"
@@ -54,20 +73,20 @@ const LogIn = () => {
                 <h3>Inicia sesión en Dátil</h3>
               </Col>
               <div className="card-body">
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-group">
                     <label className="font-weight-bold">Usuario</label>
                     <input
                       type="text"
                       className="form-control"
                       name="username"
-                      // {...register("username", {
-                      //   required: { value: true, message: "Required" },
-                      // })}
+                      {...register("username", {
+                        required: { value: true, message: "Usuario requerido" },
+                      })}
                     />
-                    <div className="invalid-feedback">
-                      <div>Usuario requerido</div>
-                    </div>
+                    <span className="text-danger text-small d-block mb-2 fw-bold  ">
+                      {errors?.username?.message}
+                    </span>
                   </div>
                   <div className="form-group">
                     <label className="font-weight-bold">Contraseña</label>
@@ -75,10 +94,16 @@ const LogIn = () => {
                       type="password"
                       name="password"
                       className="form-control"
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Contraseña requerida",
+                        },
+                      })}
                     />
-                    <div className="invalid-feedback">
-                      <div>Contraseña requerida</div>
-                    </div>
+                    <span className="text-danger text-small d-block mb-2 fw-bold  ">
+                      {errors?.password?.message}
+                    </span>
                   </div>
 
                   <Row id="login-button">

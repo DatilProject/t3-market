@@ -2,9 +2,11 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 import productReducer from "./productDucks";
+import authReducer from "./authDucks";
 
 const rootReducer = combineReducers({
   products: productReducer,
+  auth: authReducer,
   // categories: categoryReducer
 });
 

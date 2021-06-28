@@ -1,6 +1,7 @@
-import React from "react";
-import "./NewProduct.css";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import eventsMultiSteps from "./NewProductosActions.js";
+import "./NewProduct.css";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
@@ -8,7 +9,38 @@ import Step4 from "./steps/Step4";
 
 const NewProducto = () => {
   eventsMultiSteps();
-  // const [errorForm, seterrorForm] = useState("valiste");
+  const [product, setProduct] = useState({
+    name: "",
+    category: "",
+    weight: 0,
+    unit: 0,
+    mainCode: "",
+    auxiliaryCode: "",
+    description: "",
+    onSale: false,
+    price: 0,
+    iva: 0,
+    images: [],
+
+    stock: 0,
+    ice: 0,
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data, event) => {
+    console.log(data);
+    setProduct({
+      ...product,
+      [event.target.name]: event.target.value,
+    });
+    // event.target.reset();
+    // console.log(datos);
+  };
 
   return (
     <div className="container-fluid" id="new-product">
@@ -18,13 +50,16 @@ const NewProducto = () => {
         <div className="col-12 col-md-12 p-0">
           <div id="container-progressbar">
             <ul id="progressbar" className="text-center pl-3">
-              <li className="col active pl-lg-5 pr-lg-5" id="dueño"></li>
-              <li className="col pl-lg-5 pr-lg-5" id="mascota"></li>
-              <li className="col pl-lg-5 pr-lg-5" id="motivo"></li>
+              <li
+                className="col active pl-lg-5 pr-lg-5"
+                id="step-info-product"
+              ></li>
+              <li className="col pl-lg-5 pr-lg-5" id="step-info-price"></li>
+              <li className="col pl-lg-5 pr-lg-5" id="step-photos"></li>
               <li className="col pl-lg-5 pr-lg-5" id="finish"></li>
             </ul>
           </div>
-          <form id="form_persona">
+          <form id="form-new-product" onSubmit={handleSubmit(onSubmit)}>
             <Step1 />
             <Step2 />
             <Step3 />

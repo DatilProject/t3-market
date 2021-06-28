@@ -1,4 +1,4 @@
-#form_persona {
+#form-new-product {
   text-align: center;
   position: relative;
   margin-top: 20px;
@@ -13,7 +13,7 @@
   font-size: 0.9em;
 }
 
-#form_persona fieldset .form-card {
+#form-new-product fieldset .form-card {
   background: white;
   border: 0 none;
   border-radius: 0px;
@@ -25,7 +25,7 @@
   position: relative;
 }
 
-#form_persona fieldset {
+#form-new-product fieldset {
   background: white;
   border: 0 none;
   border-radius: 0.5rem;
@@ -36,17 +36,17 @@
   position: relative;
 }
 
-#form_persona fieldset:not(:first-of-type) {
+#form-new-product fieldset:not(:first-of-type) {
   display: none;
 }
 
-#form_persona fieldset .form-card {
+#form-new-product fieldset .form-card {
   text-align: left;
   color: #9e9e9e;
 }
 
-#form_persona input,
-#form_persona textarea {
+#form-new-product input,
+#form-new-product textarea {
   padding: 0px 8px 4px 8px;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -60,8 +60,8 @@
   letter-spacing: 1px;
 }
 
-#form_persona input:focus,
-#form_persona textarea:focus {
+#form-new-product input:focus,
+#form-new-product textarea:focus {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -119,19 +119,19 @@ select.list-dt:focus {
   position: relative;
 }
 
-#progressbar #dueño:before {
+#progressbar #step-info-product:before {
   font-family: FontAwesome;
   content: "\f000";
   font-size: 250%;
 }
 
-#progressbar #mascota:before {
+#progressbar #step-info-price:before {
   font-family: FontAwesome;
   content: "\f155";
   font-size: 250%;
 }
 
-#progressbar #motivo:before {
+#progressbar #step-photos:before {
   font-family: FontAwesome;
   content: "\f030";
   font-size: 250%;
@@ -192,7 +192,7 @@ label,
   margin-left: -0.5%;
 }
 
-#gender {
+#category {
   max-width: 175%;
 }
 
@@ -211,7 +211,7 @@ label,
 }
 
 @media (min-width: 990px) {
-  #gender {
+  #category {
     width: 275% !important;
   }
 }

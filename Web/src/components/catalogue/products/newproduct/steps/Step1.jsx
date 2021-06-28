@@ -1,7 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 const Step1 = () => {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
+
   return (
     <fieldset>
       <div className="form-card p-4">
@@ -15,11 +22,22 @@ const Step1 = () => {
         </div>
         <div className="form-row">
           <div className="col-12 col-lg-7">
-            <input type="text" id="uname" name="uname" placeholder="Nombre" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Nombre"
+              // {...register("name", {
+              //   required: { value: true, message: "Nombre requerido" },
+              // })}
+            />
+            {/* <span className="text-danger text-small d-block mb-2 fw-bold  ">
+              {errors?.name?.message}
+            </span> */}
           </div>
 
           <div className="col-12 col-lg-2 ml-lg-4">
-            <select className="list-dt" id="gender" name="gender">
+            <select className="list-dt" id="category" name="category">
               <option defaultValue>Categoría</option>
               <option>Ropa</option>
               <option>Gamer</option>
@@ -42,10 +60,14 @@ const Step1 = () => {
         </div>
         <div className="form-row">
           <div className="col-12 col-lg-7">
-            <textarea rows="4" placeholder="Descripcion"></textarea>
+            <textarea
+              rows="4"
+              placeholder="Descripcion"
+              name="description"
+            ></textarea>
           </div>
           <div className="col-12 col-lg-2 mx-auto mx-xl-4">
-            <input type="tel" name="phone" id="phone" placeholder="Peso" />
+            <input type="tel" name="weight" id="weight" placeholder="Peso" />
           </div>
           <div className="col-12 col-lg-2 mx-auto mx-xl-0">
             <select className="list-dt" id="unit" name="unit">
@@ -64,13 +86,12 @@ const Step1 = () => {
         </div>
         <div className="form-row">
           <div className="col-12 col-xl-7">
-            <input type="text" name="address" placeholder="Código Principal" />
+            <input type="text" name="mainCode" placeholder="Código Principal" />
           </div>
           <div className="col-12 col-lg-4 ml-lg-4">
             <input
               type="text"
-              id="user-cuidad"
-              name="user-cuidad"
+              name="auxiliaryCode"
               placeholder="Código Auxiliar"
             />
           </div>

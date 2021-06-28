@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { BiCheck } from "react-icons/bi";
 import { GiHand } from "react-icons/gi";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 const Panel = () => {
-  const [user, setuser] = useState({});
-
-  useEffect(() => {
-    //TODO: fill with login
-    const log_user = { username: "Josue" };
-    setuser(log_user);
-  }, []);
+  const user = cookies.get("user");
 
   return (
     <Container fluid className="section-container">
@@ -20,7 +16,7 @@ const Panel = () => {
         <Row noGutters className="p-4">
           <GiHand color="#E0AC69" size="3.5em" />
           <h5 className="my-auto ml-3">
-            ¡Hola <strong> {user.username}</strong> !
+            ¡Hola <strong> {user.name}</strong> !
           </h5>
         </Row>
       </Container>
@@ -52,8 +48,6 @@ const Panel = () => {
           </Container>
         </Card>
       </Container>
-
-      <Container></Container>
     </Container>
   );
 };

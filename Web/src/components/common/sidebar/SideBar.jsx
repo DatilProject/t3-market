@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import SideNav, {
   Toggle,
   NavItem,
@@ -14,9 +14,24 @@ import "./SideBar.css";
 import Panel from "../../panel/Panel";
 import Market from "../../market/Market";
 import Catalogue from "../../catalogue/Catalogue";
-import LogIn from "../../login/LogIn";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
+const isNotLogIn = () => {
+  if (!cookies.get("token")) {
+    window.location.href = "./";
+  }
+};
 
 const SideBar = () => {
+  isNotLogIn();
+
+  const logOut = () => {
+    cookies.remove("token", { path: "/" });
+    cookies.remove("user", { path: "/" });
+    window.location.href = "./";
+  };
+
   return (
     <Router>
       <Route
@@ -54,7 +69,7 @@ const SideBar = () => {
                   <NavText>Market</NavText>
                 </NavItem>
 
-                <NavItem eventKey="logout">
+                <NavItem eventKey="logout" onClick={() => logOut()}>
                   <NavIcon>
                     <IoLogOut className="menu-icon" size="2rem" />
                   </NavIcon>
@@ -63,13 +78,9 @@ const SideBar = () => {
               </SideNav.Nav>
             </SideNav>
             <main>
-              <Route exact path="/">
-                <Redirect to="/panel" />
-              </Route>
               <Route path="/panel" component={(props) => <Panel />} />
               <Route path="/market" component={(props) => <Market />} />
               <Route path="/catalogue" component={(props) => <Catalogue />} />
-              <Route path="/logout" component={(props) => <LogIn />} />
             </main>
           </React.Fragment>
         )}
