@@ -17,7 +17,6 @@ app.set('port' , process.env.PORT || 3000);
 const authRouter = require('./routes/auth')
 const productRouter = require('./routes/product')
 const categoryRouter = require('./routes/category')
-const authRouter = require('./routes/auth')
 
 
 app.use('/api/product', productRouter);
