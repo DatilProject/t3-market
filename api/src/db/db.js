@@ -71,7 +71,7 @@ AccountCredentials.hasOne(Commerce);
 Commerce.belongsTo(AccountCredentials);
 
 
-conn.sync({force:false})
+conn.sync({force:true})
 .then(()=> {
     console.log("Postgres connnection successful");
 })
