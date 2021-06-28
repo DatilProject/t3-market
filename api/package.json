@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/DatilProject/t3-market#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "datomic-client-js": "^0.1.9",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
