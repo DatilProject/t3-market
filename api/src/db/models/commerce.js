@@ -18,9 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     id_type: DataTypes.STRING,
     phone: DataTypes.STRING,
-    market_id: DataTypes.INTEGER,
     trade_name: DataTypes.STRING,
-    account_credentials_id: DataTypes.INTEGER
+    accountId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'commerce',

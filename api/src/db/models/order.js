@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   order.init({
-    client_id: DataTypes.INTEGER,
+    clientId: DataTypes.INTEGER,
     is_paid_up: DataTypes.BOOLEAN
   }, {
     sequelize,

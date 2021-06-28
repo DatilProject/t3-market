@@ -1,44 +1,47 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('client', {
+    await queryInterface.createTable('commerces', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false
+      business_name: {
+        type: Sequelize.STRING
       },
-      address: {
-        type: Sequelize.STRING,
-        allowNull: false
+      email: {
+        type: Sequelize.STRING
+      },
+      id_type: {
+        type: Sequelize.STRING
       },
       phone: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
-      account_credentials_id: {
+      trade_name: {
+        type: Sequelize.STRING
+      },
+      accountId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'account_credentials',
+          model: 'accounts',
           key: 'id'
-        },
+        }
       },
-      created_at: {
-        allowNull: false,
+      createdAt: {
+        allowNull: true,
         type: Sequelize.DATE
       },
-      updated_at: {
-        allowNull: false,
+      updatedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('client');
+    await queryInterface.dropTable('commerces');
   }
 };

@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   market.init({
     url: DataTypes.STRING,
-    template_id: DataTypes.INTEGER,
-    theme_id: DataTypes.INTEGER
+    templateId: DataTypes.INTEGER,
+    themeId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'market',

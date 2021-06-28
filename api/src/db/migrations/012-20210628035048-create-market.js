@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('market', {
+    await queryInterface.createTable('markets', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,36 +9,35 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       url: {
-        type: Sequelize.STRING,
-        allowNull:true
+        type: Sequelize.STRING
       },
-      template_id: {
+      templateId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model:'template',
-          key:'id'
-        },
-      },
-      theme_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model:'theme',
-          key:'id'
-        },
-      },
-      created_at: {
         allowNull: false,
+        references: {
+          model: 'templates',
+          key: 'id'
+        }
+      },
+      themeId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'themes',
+          key: 'id'
+        }
+      },
+      createdAt: {
+        allowNull: true,
         type: Sequelize.DATE
       },
-      updated_at: {
-        allowNull: false,
+      updatedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('market');
+    await queryInterface.dropTable('markets');
   }
 };

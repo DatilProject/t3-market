@@ -4,29 +4,27 @@ module.exports = {
     await queryInterface.createTable('iva', {
       id: {
         allowNull: false,
-        autoIncrement: false,
+        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
-        allowNull:false
+        type: Sequelize.STRING
       },
       percentage: {
-        type: Sequelize.FLOAT,
-        allowNull:false
+        type: Sequelize.FLOAT
       },
-      created_at: {
-        allowNull: false,
+      createdAt: {
+        allowNull: true,
         type: Sequelize.DATE
       },
-      updated_at: {
-        allowNull: false,
+      updatedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('iva');
+    await queryInterface.dropTable('ivas');
   }
 };
