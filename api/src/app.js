@@ -16,9 +16,11 @@ app.set('port' , process.env.PORT || 3000);
 
 const productRouter = require('./routes/product')
 const categoryRouter = require('./routes/category')
+const authRouter = require('./routes/auth')
 
 app.use('/api/product', productRouter);
 app.use('/api/category', categoryRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) =>{
     res.status(200).send("Welcome to Datil-Market API")
