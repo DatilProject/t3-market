@@ -1,0 +1,13 @@
+#login-container {
+	background-color: white;
+}
+
+#login-button button {
+	margin: 10px;
+	width: 90%;
+}
+
+#errorCont {
+	align-items: center;
+	margin: 50px;
+}

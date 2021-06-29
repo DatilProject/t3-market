@@ -1,8 +1,29 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
-import App from "./App";
+import SideBar from "./components/common/sidebar/SideBar";
 
-test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("SideBar Page Sections", () => {
+	it("Must display a Panel section", () => {
+		render(<SideBar />);
+		const linkElement = screen.getByText(/Panel/i);
+		expect(linkElement).toBeInTheDocument;
+	});
+
+	it("Must display a Catalogue section", () => {
+		render(<SideBar />);
+		const linkElement = screen.getByText(/Catalogo/i);
+		expect(linkElement).toBeInTheDocument;
+	});
+
+	it("Must display a Market section", () => {
+		render(<SideBar />);
+		const linkElement = screen.getByText(/Market/i);
+		expect(linkElement).toBeInTheDocument;
+	});
+
+	it("Must display a logout section", () => {
+		render(<SideBar />);
+		const linkElement = screen.getByText(/Cerrar Sesión/i);
+		expect(linkElement).toBeInTheDocument;
+	});
 });
