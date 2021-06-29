@@ -23,11 +23,11 @@ const LogIn = () => {
 	} = useForm();
 
 	const onSubmit = (data, event) => {
+		dispatch(getAuthAction(data));
 		setUser({
 			...user,
 			[event.target.name]: event.target.value,
 		});
-		dispatch(getAuthAction(data));
 
 		if (userLogIn.auth) {
 			cookies.set("token", userLogIn.token, { path: "/" });

@@ -8,6 +8,8 @@ const data = {
 
 const GET_PRODUCTS = "GET_PRODUCTS";
 const POST_PRODUCTS = "POST_PRODUCTS";
+const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
+const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 
 //Reducer
 export default function productReducer(state = data, action) {
@@ -15,7 +17,12 @@ export default function productReducer(state = data, action) {
 		case GET_PRODUCTS:
 			return { ...state, array: action.payload };
 		case POST_PRODUCTS:
-			return;
+			return state;
+		case UPDATE_PRODUCTS:
+			return state;
+		case DELETE_PRODUCTS:
+			window.location.href = "./catalogue";
+			return state;
 		default:
 			return state;
 	}
@@ -36,10 +43,20 @@ export const getProductsAction = () => async (dispatch) => {
 
 export const postProductsAction = (product) => async (dispatch) => {
 	try {
-		console.log(product);
 		const res = await axios.post(ENDPOINT_PRODUCT, product);
 		dispatch({
 			type: POST_PRODUCTS,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const deleteProductsAction = (IdProduct) => async (dispatch) => {
+	try {
+		const res = await axios.delete(ENDPOINT_PRODUCT + IdProduct);
+		dispatch({
+			type: DELETE_PRODUCTS,
 		});
 	} catch (error) {
 		console.log(error);

@@ -32,7 +32,8 @@ const Panel = () => {
 							<ListGroup variant="flush">
 								<ListGroup.Item>
 									<BiCheck size="2rem" />
-									Solicita al SRI autorización para emisión de comprobantes electrónicos
+									Solicita al SRI autorización para emisión de comprobantes
+									electrónicos
 								</ListGroup.Item>
 								<ListGroup.Item>
 									<BiCheck size="2rem" />

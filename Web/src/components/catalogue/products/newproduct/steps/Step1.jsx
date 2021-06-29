@@ -1,30 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { getCategoryAction } from "../../../../../redux/categoryDucks";
 
 const Step1 = (props) => {
 	const setValueInput = props.setValueInput;
-	const [productInfo, setProductInfo] = useState({
-		name: "",
-		category: "",
-		weight: 0,
-		unit: 0,
-		mainCode: "",
-		auxiliaryCode: "",
-		description: "",
-	});
+	const dispatch = useDispatch();
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+	useEffect(() => {
+		dispatch(getCategoryAction());
+	}, []);
 
-	// const validateInputs2 = (event) => {
-	//   event.preventDefault();
-	//   console.log(event.target.value);
-	//   console.log(productInfo);
-	// };
+	const listCategories = useSelector((store) => store.categories.array);
 
 	return (
 		<fieldset>
@@ -47,9 +34,9 @@ const Step1 = (props) => {
 							//   required: { value: true, message: "Nombre requerido" },
 							// })}
 						/>
-						<span className="text-danger text-small d-block mb-2 fw-bold  ">
+						{/* <span className="text-danger text-small d-block mb-2 fw-bold  ">
 							{errors?.name?.message}
-						</span>
+						</span> */}
 					</div>
 
 					<div className="col-12 col-lg-2 ml-lg-4">
@@ -60,9 +47,11 @@ const Step1 = (props) => {
 							onChange={setValueInput}
 						>
 							<option defaultValue>Categoría</option>
-							<option>Ropa</option>
-							<option>Gamer</option>
-							<option>Otros</option>
+							{listCategories.map((category) => (
+								<option key={category.id} id={category.id}>
+									{category.name}
+								</option>
+							))}
 						</select>
 					</div>
 				</div>

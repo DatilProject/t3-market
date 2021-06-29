@@ -3,11 +3,12 @@ import thunk from "redux-thunk";
 
 import productReducer from "./productDucks";
 import authReducer from "./authDucks";
+import categoryReducer from "./categoryDucks";
 
 const rootReducer = combineReducers({
 	products: productReducer,
 	auth: authReducer,
-	// categories: categoryReducer
+	categories: categoryReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

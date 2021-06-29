@@ -5,10 +5,8 @@ const Category = ({ category }) => {
 	return (
 		<tr>
 			<td>{category.name}</td>
-			<td>{category.numProductos}</td>
-			<td>
-				<OverOptions />
-			</td>
+			<td>{category.id}</td>
+			<td>{/* <OverOptions /> */}</td>
 		</tr>
 	);
 };

@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 import Category from "./Category";
+import { useSelector, useDispatch } from "react-redux";
+import { getCategoryAction } from "../../../redux/categoryDucks";
 
 const ProductSection = () => {
-	const listCategories = [
-		{
-			name: "Categoria 1",
-			numProductos: 55,
-		},
-		{
-			name: "Categoria 2",
-			numProductos: 55,
-		},
-	];
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getCategoryAction());
+	}, []);
+
+	const listCategories = useSelector((store) => store.categories.array);
 
 	return (
 		<Container className="border border-secondary p-0 shadow-sm table">

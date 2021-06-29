@@ -43,14 +43,11 @@ const NewProducto = () => {
 			price: product.price,
 			stock: product.stock,
 			marketId: 1,
-			iva: {
-				name: product.iva + "%",
-				percentage: product.iva,
-			},
-			ice: {
-				name: product.ice + "%",
-				percentage: product.ice,
-			},
+			categoryId: 1,
+			ivaId: 2,
+			iceId: 1,
+			iva: product.iva,
+			ice: product.ice,
 			images: [],
 		};
 		return JsonProduct;
@@ -64,9 +61,6 @@ const NewProducto = () => {
 	};
 
 	const submitNewForm = () => {
-		// event.preventDefault();
-
-		console.log("Enviando");
 		const newProduct = getJsonProduct(product);
 		dispatch(postProductsAction(newProduct));
 	};

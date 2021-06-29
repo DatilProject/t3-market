@@ -11,3 +11,10 @@
 	border-bottom: 4px solid #007bff;
 	color: #007bff !important;
 }
+
+/* Over options */
+.update-opcion :hover,
+.delete-opcion :hover {
+	background-color: gainsboro;
+	cursor: pointer;
+}

@@ -3,14 +3,23 @@ import { Figure } from "react-bootstrap";
 import ToggleButton from "../../common/toggle/ToggleButton";
 import OverOptions from "../OverOptions";
 import "./Product.css";
+import { useDispatch } from "react-redux";
+import { deleteProductsAction } from "../../../redux/productDucks";
 
 const Product = ({ product }) => {
+	const dispatch = useDispatch();
+
 	var priceWithIVA = (product.price * (1 * product.iva.percentage)) / 100;
 	priceWithIVA = Number(priceWithIVA.toFixed(2));
+
 	var srcImg = "";
 	if (product.images.length > 0) {
 		srcImg = product.images[0].location;
 	}
+
+	const deleteProduct = () => {
+		dispatch(deleteProductsAction(product.id));
+	};
 
 	return (
 		<tr className="row-product">
@@ -39,7 +48,7 @@ const Product = ({ product }) => {
 				<ToggleButton active={product.on_sale} />
 			</td>
 			<td>
-				<OverOptions />
+				<OverOptions deleteFunction={deleteProduct} />
 			</td>
 		</tr>
 	);
