@@ -25,6 +25,9 @@
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
 		"react/prop-types": "off",
 		"no-unused-vars": "off",
-		"no-constant-condition": "off"
+		"no-constant-condition": "off",
+		"react/react-in-jsx-scope": "off",
+		"jest/valid-expect": "off",
+		"no-unused-expressions": "off"
 	}
 }

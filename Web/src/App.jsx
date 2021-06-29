@@ -5,9 +5,11 @@ import Routes from "./components/Routes";
 
 function App() {
 	const store = generateStore();
+
 	return (
 		<Provider store={store}>
 			<Routes />
+			{/* <h1>Inicia sesión en Dátil</h1> */}
 		</Provider>
 	);
 }

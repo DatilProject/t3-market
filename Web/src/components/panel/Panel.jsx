@@ -9,6 +9,7 @@ const cookies = new Cookies();
 
 const Panel = () => {
 	const user = cookies.get("user");
+	const nameUser = user["name"];
 
 	return (
 		<Container fluid className="section-container">
@@ -16,7 +17,7 @@ const Panel = () => {
 				<Row noGutters className="p-4">
 					<GiHand color="#E0AC69" size="3.5em" />
 					<h5 className="my-auto ml-3">
-						¡Hola <strong> {user.name}</strong> !
+						¡Hola <strong> {nameUser}</strong> !
 					</h5>
 				</Row>
 			</Container>
