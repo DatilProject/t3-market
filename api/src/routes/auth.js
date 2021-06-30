@@ -40,7 +40,7 @@ let getUser = (email)=>{
 
 router.post('/', async (req, res, next) => {
     let data = {
-        id: 3,
+        id: 1,
         email: 'rodemore@espol.edu.ec',
         username: 'rodemore',
         name: "Robert Moreno",
