@@ -41,10 +41,11 @@ let getUser = (email)=>{
 router.post('/', async (req, res, next) => {
     let data = {
         id: 3,
-        email: 'josdavil@espol.edu.ec',
-        username: 'josdavil',
-        name: "Josue Davalos",
-        phone: "0912182112"
+        email: 'rodemore@espol.edu.ec',
+        username: 'rodemore',
+        name: "Robert Moreno",
+        phone: "0995091644",
+        address: "Prosperina Coop. 31 Agosto"
     }
     try {    
         let user = getUser(req.body.email)
