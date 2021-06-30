@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthAction } from "../../redux/authDucks";
 import Cookies from "universal-cookie";
-import { Provider } from "react-redux";
+import { Link } from "react-router-dom";
+
 import "./LogIn.css";
 const cookies = new Cookies();
 
@@ -33,7 +34,7 @@ const LogIn = () => {
 		if (userLogIn.auth) {
 			cookies.set("token", userLogIn.token, { path: "/" });
 			cookies.set("user", userLogIn.user, { path: "/" });
-			window.location.href = "./panel";
+			window.location.href = "./#/panel";
 		} else {
 			alert("Usuario o Contaseña Incorrectos");
 		}
@@ -41,7 +42,7 @@ const LogIn = () => {
 
 	const isLogIn = () => {
 		if (cookies.get("token")) {
-			window.location.href = "./panel";
+			window.location.href = "./#/panel";
 		}
 	};
 	isLogIn();

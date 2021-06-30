@@ -4,12 +4,11 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { BiCheck } from "react-icons/bi";
 import { GiHand } from "react-icons/gi";
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
+import { getValueFromCookie, isNotLogIn } from "../utils/auth";
 
 const Panel = () => {
-	const user = cookies.get("user");
-	const nameUser = user["name"];
+	// isNotLogIn();
+	const nameUser = ""; //getValueFromCookie("user");
 
 	return (
 		<Container fluid className="section-container">

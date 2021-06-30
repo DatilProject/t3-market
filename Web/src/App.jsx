@@ -9,7 +9,6 @@ function App() {
 	return (
 		<Provider store={store}>
 			<Routes />
-			{/* <h1>Inicia sesión en Dátil</h1> */}
 		</Provider>
 	);
 }
