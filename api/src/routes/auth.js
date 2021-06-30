@@ -55,19 +55,11 @@ let getUser = (email)=>{
 }
 
 router.post('/', async (req, res, next) => {
-    let data = {
-        id: 1,
-        email: 'rodemore@espol.edu.ec',
-        username: 'rodemore',
-        name: "Robert Moreno",
-        phone: "0995091644",
-        address: "Prosperina Coop. 31 Agosto"
-    }
     try {    
         let user = getUser(req.body.email)
         if(bcrypt.compareSync(req.body.password,user.password)){
             let token = jwt.sign( {email: user.email}, "SECRETTOKEN", {expiresIn: '24h'});
-            return res.json({auth:true, token:token, user:data});
+            return res.json({auth:true, token:token, user:user});
             
         }
         throw new Error({'message':'Invalid email or password'});
