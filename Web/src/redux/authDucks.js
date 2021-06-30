@@ -1,4 +1,6 @@
 import { ENDPOINT_AUTH } from "./endPoints";
+import { setCokies } from "../components/utils/auth";
+import { root } from "../components/utils/constants";
 
 const data = {
 	auth: false,
@@ -11,6 +13,17 @@ const GET_AUTH = "GET_AUTH";
 export default function authReducer(state = data, action) {
 	switch (action.type) {
 		case GET_AUTH:
+			var userLogIn = {
+				auth: action.payload.auth,
+				token: action.payload.token,
+				user: action.payload.user,
+			};
+			if (userLogIn.auth) {
+				setCokies(userLogIn);
+				window.location.href = root + "/panel";
+			} else {
+				alert("Usuario o Contaseña Incorrectos");
+			}
 			return {
 				...state,
 				auth: action.payload.auth,

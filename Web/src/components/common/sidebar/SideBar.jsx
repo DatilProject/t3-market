@@ -9,9 +9,13 @@ import "./SideBar.css";
 import Panel from "../../panel/Panel";
 import Market from "../../market/Market";
 import Catalogue from "../../catalogue/Catalogue";
-import { logOut } from "../../utils/auth";
+import { logOut, isLogIn } from "../../utils/auth";
 
 const SideBar = () => {
+	if (!isLogIn()) {
+		window.location.href = "./";
+	}
+
 	return (
 		// <Router>
 		<Route

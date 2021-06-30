@@ -1,10 +1,9 @@
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
-export const isNotLogIn = () => {
-	if (!cookies.get("token")) {
-		window.location.href = "./";
-	}
+export const setCokies = (user) => {
+	cookies.set("token", user.token, { path: "/" });
+	cookies.set("user", user.user, { path: "/" });
 };
 
 export const isLogIn = () => {
@@ -12,7 +11,7 @@ export const isLogIn = () => {
 };
 
 export const getValueFromCookie = (key) => {
-	const value = cookies.get(key);
+	const value = cookies.get("user")[key];
 	return value;
 };
 

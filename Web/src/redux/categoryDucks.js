@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ENDPOINT_CATEGORY } from "./endPoints";
+import { root } from "../components/utils/constants";
 
 //constants
 const data = {
@@ -21,7 +22,7 @@ export default function categoryReducer(state = data, action) {
 		case UPDATE_CATEGORY:
 			return state;
 		case DELETE_CATEGORY:
-			window.location.href = "./catalogue";
+			window.location.href = root + "/catalogue";
 			return state;
 		default:
 			return state;

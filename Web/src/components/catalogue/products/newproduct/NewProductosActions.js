@@ -1,4 +1,5 @@
 import $ from "jquery";
+import { root } from "../../../utils/constants";
 
 export const eventsMultiSteps = () => {
 	$(document).ready(function () {
@@ -72,7 +73,8 @@ export const eventsMultiSteps = () => {
 		});
 
 		$(".submit").click(function () {
-			window.location = "/catalogue";
+			window.location.reload();
+			// window.location = "./";
 			return false;
 		});
 	});

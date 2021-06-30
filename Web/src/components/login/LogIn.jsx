@@ -4,11 +4,9 @@ import LogoDatil from "./../../assets/logo_datil.png";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthAction } from "../../redux/authDucks";
-import Cookies from "universal-cookie";
-import { Link } from "react-router-dom";
-
+import { setCokies, isLogIn } from "../utils/auth";
+import { root } from "../utils/constants";
 import "./LogIn.css";
-const cookies = new Cookies();
 
 const LogIn = () => {
 	const dispatch = useDispatch();
@@ -30,22 +28,11 @@ const LogIn = () => {
 			...user,
 			[event.target.name]: event.target.value,
 		});
-
-		if (userLogIn.auth) {
-			cookies.set("token", userLogIn.token, { path: "/" });
-			cookies.set("user", userLogIn.user, { path: "/" });
-			window.location.href = "./#/panel";
-		} else {
-			alert("Usuario o Contaseña Incorrectos");
-		}
 	};
 
-	const isLogIn = () => {
-		if (cookies.get("token")) {
-			window.location.href = "./#/panel";
-		}
-	};
-	isLogIn();
+	if (isLogIn()) {
+		window.location.href = root + "/panel";
+	}
 
 	return (
 		<Container>

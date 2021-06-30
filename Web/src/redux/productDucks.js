@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ENDPOINT_PRODUCT } from "./endPoints";
+import { root } from "../components/utils/constants";
 
 //constants
 const data = {
@@ -21,7 +22,7 @@ export default function productReducer(state = data, action) {
 		case UPDATE_PRODUCTS:
 			return state;
 		case DELETE_PRODUCTS:
-			window.location.href = "./catalogue";
+			window.location.reload();
 			return state;
 		default:
 			return state;

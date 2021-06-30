@@ -1,14 +1,14 @@
 import React from "react";
 import generateStore from "./redux/store";
 import { Provider } from "react-redux";
-import Routes from "./components/Routes";
+import Body from "./components/Body";
 
 function App() {
 	const store = generateStore();
 
 	return (
 		<Provider store={store}>
-			<Routes />
+			<Body />
 		</Provider>
 	);
 }
