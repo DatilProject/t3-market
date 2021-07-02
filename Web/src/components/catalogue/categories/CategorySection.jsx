@@ -3,7 +3,7 @@ import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 import Category from "./Category";
 import { useSelector, useDispatch } from "react-redux";
-import { getCategoryAction } from "../../../redux/categoryDucks";
+import { getCategoryAction } from "../../../redux/ducks/categoryDucks";
 
 const ProductSection = () => {
 	const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import productReducer from "./productDucks";
-import authReducer from "./authDucks";
-import categoryReducer from "./categoryDucks";
+import productReducer from "./ducks/productDucks";
+import authReducer from "./ducks/authDucks";
+import categoryReducer from "./ducks/categoryDucks";
 
 const rootReducer = combineReducers({
 	products: productReducer,

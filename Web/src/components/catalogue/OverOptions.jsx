@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
@@ -9,17 +9,18 @@ const OverOptions = (props) => {
 	return (
 		<Container>
 			<Row>
-				<FiEdit2
-					className="border border-secondary p-1 mr-1 rounded update-opcion"
-					size="1.7em"
-				/>
+				<Col className="p-0 update-opcion text-center">
+					<FiEdit2 className="border border-secondary p-1 mr-1 rounded" size="1.7em" />
+				</Col>
 
-				<RiDeleteBin6Line
-					className="border border-secondary p-1 rounded delete-opcion"
-					size="1.7em"
-					color="#Dd4e1a"
-					onClick={deleteFunction}
-				/>
+				<Col className="p-0 delete-opcion">
+					<RiDeleteBin6Line
+						className="border border-secondary p-1 rounded"
+						size="1.7em"
+						color="#Dd4e1a"
+						onClick={deleteFunction}
+					/>
+				</Col>
 			</Row>
 		</Container>
 	);

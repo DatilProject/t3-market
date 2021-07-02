@@ -11,8 +11,10 @@ export const isLogIn = () => {
 };
 
 export const getValueFromCookie = (key) => {
-	const value = cookies.get("user")[key];
-	return value;
+	if (isLogIn()) {
+		const value = cookies.get("user")[key];
+		return value;
+	}
 };
 
 export const logOut = () => {

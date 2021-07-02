@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SideBar from "./components/common/sidebar/SideBar";
+import SideBar from "../src/components/common/sidebar/SideBar";
 
 describe("SideBar Page Sections", () => {
 	it("Must display a Panel section", () => {

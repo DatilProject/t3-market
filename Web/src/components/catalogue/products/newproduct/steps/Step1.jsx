@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { getCategoryAction } from "../../../../../redux/categoryDucks";
+import { getCategoryAction } from "../../../../../redux/ducks/categoryDucks";
 
 const Step1 = (props) => {
 	const setValueInput = props.setValueInput;
@@ -29,6 +29,7 @@ const Step1 = (props) => {
 							id="name"
 							name="name"
 							placeholder="Nombre"
+							defaultValue=""
 							onChange={setValueInput}
 							// {...register("name", {
 							//   required: { value: true, message: "Nombre requerido" },
@@ -97,7 +98,7 @@ const Step1 = (props) => {
 					<div className="col-12 col-xl-7">
 						<input
 							type="text"
-							name="mainCode"
+							name="main_code"
 							placeholder="Código Principal"
 							onChange={setValueInput}
 						/>
@@ -105,7 +106,7 @@ const Step1 = (props) => {
 					<div className="col-12 col-lg-4 ml-lg-4">
 						<input
 							type="text"
-							name="auxiliaryCode"
+							name="auxiliary_code"
 							placeholder="Código Auxiliar"
 							onChange={setValueInput}
 						/>

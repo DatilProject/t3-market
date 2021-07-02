@@ -11,8 +11,9 @@ const ToggleButton = ({ active = true, onChange, name }) => {
 				type="checkbox"
 				name={name}
 				onClick={() => setActive(!activate)}
-				// onChange={onChange}
 				className={isActive(activate)}
+				value={activate}
+				onChange={onChange}
 			/>
 			<span className="slider round"></span>
 		</label>

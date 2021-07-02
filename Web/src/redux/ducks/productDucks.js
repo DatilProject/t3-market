@@ -1,12 +1,11 @@
 import axios from "axios";
-import { ENDPOINT_PRODUCT } from "./endPoints";
-import { root } from "../components/utils/constants";
+import { ENDPOINT_PRODUCT } from "../endPoints";
+import { getValueFromCookie } from "../../components/utils/auth";
 
 //constants
 const data = {
 	array: [],
 };
-
 const GET_PRODUCTS = "GET_PRODUCTS";
 const POST_PRODUCTS = "POST_PRODUCTS";
 const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
@@ -32,7 +31,8 @@ export default function productReducer(state = data, action) {
 //Actions
 export const getProductsAction = () => async (dispatch) => {
 	try {
-		const res = await axios.get(ENDPOINT_PRODUCT);
+		const idUser = getValueFromCookie("id");
+		const res = await axios.get(ENDPOINT_PRODUCT + "commerce/" + idUser);
 		dispatch({
 			type: GET_PRODUCTS,
 			payload: res.data,

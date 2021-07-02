@@ -4,7 +4,6 @@ import ToggleButton from "../../../../common/toggle/ToggleButton";
 
 const Step2 = (props) => {
 	const setValueInput = props.setValueInput;
-	const [onMarket, setOnMarket] = useState(false);
 
 	return (
 		<fieldset>
@@ -57,7 +56,7 @@ const Step2 = (props) => {
 
 				<div className="from-row mx-md-n1 sell-on-granel">
 					<div className="row ml-2">
-						<ToggleButton active={onMarket} name="onSale" onChange={setValueInput} />
+						<ToggleButton active={false} name="on_granel" onChange={setValueInput} />
 						<div className="col-auto font-weight-bold d-xl-inline-block mb-0 my-auto">
 							Venta Granel
 						</div>
@@ -69,7 +68,7 @@ const Step2 = (props) => {
 
 				<div className="from-row mx-md-n1 sell-on-market">
 					<div className="row ml-2">
-						<ToggleButton active={false} />
+						<ToggleButton active={false} name="on_sale" onChange={setValueInput} />
 						<div className="col-auto font-weight-bold d-xl-inline-block mb-0 my-auto">
 							Market
 						</div>

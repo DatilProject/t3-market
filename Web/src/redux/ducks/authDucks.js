@@ -1,6 +1,6 @@
-import { ENDPOINT_AUTH } from "./endPoints";
-import { setCokies } from "../components/utils/auth";
-import { root } from "../components/utils/constants";
+import { ENDPOINT_AUTH } from "../endPoints";
+import { setCokies } from "../../components/utils/auth";
+import { root } from "../../components/utils/constants";
 
 const data = {
 	auth: false,

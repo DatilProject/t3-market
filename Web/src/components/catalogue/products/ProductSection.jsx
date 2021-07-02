@@ -4,7 +4,7 @@ import { AiOutlineCamera, AiOutlineSearch } from "react-icons/ai";
 import ModalNewProduct from "./newproduct/ModalNewProduct";
 import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductsAction } from "../../../redux/productDucks";
+import { getProductsAction } from "../../../redux/ducks/productDucks";
 
 const ProductSection = () => {
 	const [showModalNewProduct, setShowModalNewProduct] = useState(false);

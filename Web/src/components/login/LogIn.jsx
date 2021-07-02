@@ -3,7 +3,7 @@ import { Container, Row, Col, Figure, Button } from "react-bootstrap";
 import LogoDatil from "./../../assets/logo_datil.png";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { getAuthAction } from "../../redux/authDucks";
+import { getAuthAction } from "../../redux/ducks/authDucks";
 import { setCokies, isLogIn } from "../utils/auth";
 import { root } from "../utils/constants";
 import "./LogIn.css";

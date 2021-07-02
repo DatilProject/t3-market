@@ -4,7 +4,7 @@ import ToggleButton from "../../common/toggle/ToggleButton";
 import OverOptions from "../OverOptions";
 import "./Product.css";
 import { useDispatch } from "react-redux";
-import { deleteProductsAction } from "../../../redux/productDucks";
+import { deleteProductsAction } from "../../../redux/ducks/productDucks";
 
 const Product = ({ product }) => {
 	const dispatch = useDispatch();
