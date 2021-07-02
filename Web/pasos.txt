@@ -42,3 +42,4 @@ npm install universal-cookie
 8. npm i -D eslint-config-prettier
 npm i -D eslint-plugin-prettier prettier
 
+firebase emulators:start
