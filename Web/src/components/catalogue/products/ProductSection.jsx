@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { AiOutlineCamera, AiOutlineSearch } from "react-icons/ai";
 import ModalNewProduct from "./newproduct/ModalNewProduct";
@@ -10,12 +10,22 @@ const ProductSection = () => {
 	const [showModalNewProduct, setShowModalNewProduct] = useState(false);
 	const handleShowModalNewProduct = () => setShowModalNewProduct(true);
 	const dispatch = useDispatch();
+	const [searchProducts, setSearchProducts] = useState("");
 
 	useEffect(() => {
 		dispatch(getProductsAction());
 	}, []);
 
+	const handleSearch = (event) => {
+		const filter = event.target.value;
+		setSearchProducts(filter.toLowerCase());
+	};
+
 	const listProducts = useSelector((store) => store.products.array);
+	const filterProducts = useMemo(
+		() => listProducts.filter((product) => product.name.toLowerCase().includes(searchProducts)),
+		[listProducts, searchProducts],
+	);
 
 	return (
 		<Container className="border border-secondary p-0 shadow-sm table">
@@ -30,6 +40,8 @@ const ProductSection = () => {
 									placeholder="Buscar Producto"
 									aria-label="Buscar Producto"
 									aria-describedby="basic-addon2"
+									value={searchProducts}
+									onChange={handleSearch}
 								></input>
 							</Col>
 							<Col className="pl-1">
@@ -72,7 +84,7 @@ const ProductSection = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{listProducts.map((product, index) => (
+					{filterProducts.map((product, index) => (
 						<Product key={index} product={product} />
 					))}
 				</tbody>
