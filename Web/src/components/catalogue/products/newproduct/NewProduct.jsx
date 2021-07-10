@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import eventsMultiSteps from "./NewProductosActions.js";
 import "./NewProduct.css";
 import Step1 from "./steps/Step1";
@@ -9,11 +9,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { postProductsAction } from "../../../../redux/ducks/productDucks";
 import { getValueFromCookie } from "../../../utils/auth.js";
 import { getIdCategory } from "../../../utils/utils.js";
+import { getCategoryAction } from "../../../../redux/ducks/categoryDucks";
 
 const NewProducto = () => {
 	eventsMultiSteps();
 	const idUser = getValueFromCookie("id");
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getCategoryAction());
+	}, []);
+
 	const listCategories = useSelector((store) => store.categories.array);
 
 	const [product, setProduct] = useState({
@@ -37,7 +43,7 @@ const NewProducto = () => {
 		iceId: 1,
 	});
 
-	const setValueInput = (event) => {
+	const setValueInput = useCallback((event) => {
 		setProduct({
 			...product,
 			[event.target.name]: event.target.value,
@@ -55,7 +61,7 @@ const NewProducto = () => {
 				[event.target.name]: event.target.value === "false",
 			});
 		}
-	};
+	}, []);
 
 	const submitNewProduct = () => {
 		dispatch(postProductsAction(product));

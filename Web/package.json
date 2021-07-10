@@ -43,6 +43,7 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
+		"format": "prettier --write src/**/*.{jsx,js}",
 		"lint": "eslint src/components",
 		"lint-fix": "eslint src/App.js --fix"
 	},

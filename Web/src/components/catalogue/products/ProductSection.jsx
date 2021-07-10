@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { AiOutlineCamera, AiOutlineSearch } from "react-icons/ai";
 import ModalNewProduct from "./newproduct/ModalNewProduct";
@@ -11,13 +11,14 @@ const ProductSection = () => {
 	const handleShowModalNewProduct = () => setShowModalNewProduct(true);
 	const dispatch = useDispatch();
 	const [searchProducts, setSearchProducts] = useState("");
+	const filterProduct = useRef(null);
 
 	useEffect(() => {
 		dispatch(getProductsAction());
 	}, []);
 
-	const handleSearch = (event) => {
-		const filter = event.target.value;
+	const handleSearch = () => {
+		const filter = filterProduct.current.value;
 		setSearchProducts(filter.toLowerCase());
 	};
 
@@ -41,6 +42,7 @@ const ProductSection = () => {
 									aria-label="Buscar Producto"
 									aria-describedby="basic-addon2"
 									value={searchProducts}
+									ref={filterProduct}
 									onChange={handleSearch}
 								></input>
 							</Col>
