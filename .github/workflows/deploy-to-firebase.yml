@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - continuos_deployment
+    # paths:
+    #   - Web/**
 
 jobs:
   build:
@@ -20,12 +22,13 @@ jobs:
         env:
           CI: false
       - name: Archive Production Artifact
+        working-directory: Web/
         uses: actions/upload-artifact@master
         with:
           name: build
           path: build
-      - name: Check pwd Web
-        run: ls ./Web/build -la
+      # - name: Check pwd Web
+      #   run: ls ./Web/build -la
 
   deploy:
     name: Deploy
