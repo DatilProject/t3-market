@@ -11,12 +11,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@main
-      - name: Check PWD
-        run: |
-          pwd
-          ls -la
       - name: Open Web Client Directory
-        working-directory: web/
+        working-directory: Web/
         run: |
           pwd
           ls -la
