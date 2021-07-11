@@ -12,10 +12,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Check PWD
-        run: pwd
-      - name: Change path to Web Folder
-        shell: bash
-        run: cd web
+        run: |
+          pwd
+          ls -la
+      - name: Open Web Client Directory
+        working-directory: web/
+        run: |
+          pwd
+          ls -la
       - name: Install Dependencies
         run: npm install
       - name: Build
