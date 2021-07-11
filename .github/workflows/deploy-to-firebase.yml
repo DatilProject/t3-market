@@ -24,9 +24,8 @@ jobs:
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
-          working-directory: Web/
           name: build
-          path: build
+          path: Web/build
       # - name: Check pwd Web
       #   run: ls ./Web/build -la
 
@@ -41,7 +40,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: build
-          path: build
+          path: Web/build
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
