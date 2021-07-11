@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - Web/**
 
 jobs:
   build:
@@ -11,19 +13,20 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@main
-      - name: Change path to Web Folder
-        run: |
-          cd web
-          pwd
       - name: Install Dependencies
+        working-directory: Web/
         run: npm install
       - name: Build
+        working-directory: Web/
         run: npm run build
+        env:
+          CI: false
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: build
-          path: build
+          path: Web/build
+
   deploy:
     name: Deploy
     needs: build
@@ -35,7 +38,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: build
-          path: build
+          path: Web/build
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
