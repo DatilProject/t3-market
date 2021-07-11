@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - continuos_deployment
-    # paths:
-    #   - Web/**
+    paths:
+      - Web/**
 
 jobs:
   build:
