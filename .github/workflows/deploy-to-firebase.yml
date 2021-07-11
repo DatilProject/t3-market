@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@main
+      - name: Change path to Web Folder
+        run: |
+          cd web
+          pwd
       - name: Install Dependencies
         run: npm install
       - name: Build
