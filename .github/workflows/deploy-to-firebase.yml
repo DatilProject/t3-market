@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@main
       - name: Install Dependencies
         working-directory: Web/
-        run: npm install --legacy-peer-deps
+        run: npm install
       - name: Build
         working-directory: Web/
         run: npm run build
