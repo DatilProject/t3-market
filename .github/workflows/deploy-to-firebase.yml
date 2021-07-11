@@ -12,7 +12,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Enter Web Path
-        run: cd web/
+        run: sudo cd web/
       - name: Install Dependencies
         run: npm install
       - name: Build
