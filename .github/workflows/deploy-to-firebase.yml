@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - continuos_deployment
+      - main
     paths:
       - Web/**
 
@@ -26,8 +26,6 @@ jobs:
         with:
           name: build
           path: Web/build
-      # - name: Check pwd Web
-      #   run: ls ./Web/build -la
 
   deploy:
     name: Deploy
