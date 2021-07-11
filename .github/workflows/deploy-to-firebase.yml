@@ -24,10 +24,8 @@ jobs:
         with:
           name: build
           path: build
-      - name: Check pwd root
-        run: ls -la
       - name: Check pwd Web
-        run: ls ./Web -la
+        run: ls ./Web/build -la
 
   deploy:
     name: Deploy
