@@ -37,7 +37,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Download Artifact
-        working-directory: Web/
         uses: actions/download-artifact@master
         with:
           name: build
