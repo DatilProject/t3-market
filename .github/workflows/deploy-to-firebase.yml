@@ -11,11 +11,11 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@main
-      - name: Change web to path
-        run: cd Web/
       - name: Install Dependencies
+        working-directory: Web/
         run: npm install
       - name: Build
+        working-directory: Web/
         run: npm run build
         env:
           CI: false
@@ -24,6 +24,10 @@ jobs:
         with:
           name: build
           path: build
+      - name: Check pwd root
+        run: ls -la
+      - name: Check pwd Web
+        run: ls ./Web -la
 
   deploy:
     name: Deploy
@@ -33,6 +37,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Download Artifact
+        working-directory: Web/
         uses: actions/download-artifact@master
         with:
           name: build
