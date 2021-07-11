@@ -22,9 +22,9 @@ jobs:
         env:
           CI: false
       - name: Archive Production Artifact
-        working-directory: Web/
         uses: actions/upload-artifact@master
         with:
+          working-directory: Web/
           name: build
           path: build
       # - name: Check pwd Web
