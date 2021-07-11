@@ -11,14 +11,11 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@main
-      - name: Open Web Client Directory
-        working-directory: Web/
-        run: |
-          pwd
-          ls -la
       - name: Install Dependencies
+        working-directory: Web/
         run: npm install
       - name: Build
+        working-directory: Web/
         run: npm run build
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
