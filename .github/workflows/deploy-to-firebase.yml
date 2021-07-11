@@ -20,10 +20,17 @@ jobs:
         env:
           CI: false
       - name: Archive Production Artifact
+        working-directory: Web/
         uses: actions/upload-artifact@master
         with:
           name: build
           path: build
+      - name: Check pwd root
+        run: ls -la
+      - name: Check pwd
+        working-directory: Web/
+        run: ls -la
+
   deploy:
     name: Deploy
     needs: build
@@ -32,6 +39,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Download Artifact
+        working-directory: Web/
         uses: actions/download-artifact@master
         with:
           name: build
