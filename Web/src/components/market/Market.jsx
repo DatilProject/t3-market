@@ -1,10 +1,13 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import RoutesContainer from "./components/routes/RoutesContainer";
 
 const Market = () => {
 	return (
 		<Container fluid className="section-container">
-			Market
+        <div className="app">
+          <RoutesContainer/>
+        </div>		
 		</Container>
 	);
 };
