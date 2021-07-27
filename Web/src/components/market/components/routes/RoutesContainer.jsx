@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import RoutesView from "./RoutesView";
 
 class RoutesContainer extends Component {
-  render() {
-    return <RoutesView />;
-  }
+	render() {
+		return <RoutesView />;
+	}
 }
 
 export default RoutesContainer;
