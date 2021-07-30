@@ -1,23 +1,19 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
 import "./styles/PageView.css";
-import ParticlesBg from "particles-bg";
 import { Link } from "react-router-dom";
-import NavbarMain from "../common/Navbar";
 
 const PortfolioPageView = () => {
 	return (
 		<>
-			<div>
-				<ParticlesBg num={200} type="circle" bg={true} />
-				<div className="mx-4">
-					<NavbarMain />
-				</div>
-				<div className="page">
-					<div className="overview mx-5">
+			<Container fluid className="section-container">
+				<Container fluid className="head-container">
+					<div className="p-4 mb-5">
 						<h1>Plantillas</h1>
-						<p className="lead">Escoge una plantilla</p>
+						<p className="lead">Elige una plantilla para tu página web</p>
 					</div>
-
+				</Container>
+				<Container className="p-6 mb-5">
 					<div className="row mx-5 popup">
 						<div className="col">
 							<div className="card">
@@ -42,8 +38,9 @@ const PortfolioPageView = () => {
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+				</Container>
+			</Container>
+			<div className="p-5"></div>
 		</>
 	);
 };

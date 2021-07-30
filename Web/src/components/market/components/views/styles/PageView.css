@@ -6,12 +6,16 @@
 }
 
 .page{
-  color: #fff;
+  color: #6c757d;
 }
 
 .navbar-width {
   max-width: 42em;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+
+.page-main{
+  padding: 3em;
 }
 
 .overview {
@@ -33,4 +37,9 @@
   width: 271px;
   height: 200px;
   object-fit: cover;
+}
+
+.section-container {
+	padding-right: 0 !important;
+	padding-left: 33px !important;
 }

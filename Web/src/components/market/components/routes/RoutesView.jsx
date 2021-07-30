@@ -5,8 +5,7 @@ import { HomePageContainer, PortfolioPageContainer } from "../containers";
 const RoutesView = () => {
 	return (
 		<Switch>
-			<Route exact path="/market" component={HomePageContainer} />
-			<Route exact path="/market/templates" component={PortfolioPageContainer} />
+			<Route exact path="/market" component={PortfolioPageContainer} />
 		</Switch>
 	);
 };
