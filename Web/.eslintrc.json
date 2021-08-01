@@ -20,7 +20,8 @@
 	},
 	"plugins": ["react", "prettier"],
 	"rules": {
-		"quotes": ["error", "double"],
+		"quotes": ["warn", "double"],
+		"react/no-unescaped-entities": "warn",
 		"prettier/prettier": "off",
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
 		"react/prop-types": "off",
