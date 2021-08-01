@@ -11,6 +11,7 @@ import { ReactComponent as IconBellFill } from "bootstrap-icons/icons/bell-fill.
 import { ReactComponent as IconInfoCircleFill } from "bootstrap-icons/icons/info-circle-fill.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Logo from "../images/logo.webp";
 
 const Header = () => {
 	return (
@@ -20,7 +21,7 @@ const Header = () => {
 					<div className="row g-3">
 						<div className="col-md-3 text-center">
 							<Link to="/">
-								<img alt="logo" src="../../images/logo.webp" />
+								<img alt="logo" src={Logo} />
 							</Link>
 						</div>
 						<div className="col-md-5">

@@ -1,20 +1,24 @@
+import Banner1 from "../images/banner/Banner_1.webp";
+import Banner2 from "../images/banner/Banner_2.webp";
+import Banner3 from "../images/banner/Banner_3.webp";
+
 export const data = {
 	banner: [
 		{
 			to: "/link",
-			img: "../../images/banner/Banner_2.webp",
+			img: Banner2,
 			title: "First slide label",
 			description: "Nulla vitae elit libero, a pharetra augue mollis interdum",
 		},
 		{
 			to: "/link",
-			img: "../../images/banner/Banner_3.webp",
+			img: Banner3,
 			title: "Second slide label",
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 		},
 		{
 			to: "/link",
-			img: "../../images/banner/Banner_1.webp",
+			img: Banner1,
 			title: "Third slide label",
 			description: " Praesent commodo cursus magna, vel scelerisque nisl.",
 		},

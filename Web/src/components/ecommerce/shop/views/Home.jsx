@@ -108,13 +108,13 @@ class HomeView extends Component {
 						<div className="col-md-3">
 							<Link to="/" className="text-decoration-none">
 								<img src={Male} className="img-fluid rounded-circle" alt="..." />
-								<div className="text-center h6">Men's Clothing</div>
+								<div className="text-center h6">{"Men's Clothing"}</div>
 							</Link>
 						</div>
 						<div className="col-md-3">
 							<Link to="/" className="text-decoration-none">
 								<img src={Female} className="img-fluid rounded-circle" alt="..." />
-								<div className="text-center h6">Women's Clothing</div>
+								<div className="text-center h6">{"Women's Clothing"}</div>
 							</Link>
 						</div>
 						<div className="col-md-3">
