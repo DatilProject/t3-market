@@ -24,6 +24,9 @@ const Product = (sequelize, type) =>{
     price: {
       type: type.FLOAT
     },
+    discount: {
+      type: type.FLOAT
+    },
     stock: {
       type: type.INTEGER
     },

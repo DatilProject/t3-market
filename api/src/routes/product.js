@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { Product,Image,Category, Iva, Ice} = require("../db/db");
-
+const {preProcessProducts} = require("../middlewares/products")
 router.get('/', async (req, res, next) => {
 
     const products =  await Product.findAll({
@@ -21,9 +21,11 @@ router.get('/', async (req, res, next) => {
             model: Image,
             attributes: ['location']
         }, 
-        ]
-        });
-    res.status(200).json(products)
+        ],
+        raw: true    
+    });
+
+    res.status(200).json(preProcessProducts(products))
 });
 
 router.get('/commerce/:id', async (req, res, next) => {

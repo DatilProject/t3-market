@@ -28,10 +28,19 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      unit: {
+        type: Sequelize.STRING
+      },
       on_sale: {
         type: Sequelize.BOOLEAN
       },
       price: {
+        type: Sequelize.FLOAT
+      },
+      discount: {
+        type: Sequelize.FLOAT
+      },
+      weight: {
         type: Sequelize.FLOAT
       },
       stock: {
