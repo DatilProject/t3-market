@@ -50,9 +50,11 @@ router.get('/commerce/:id', async (req, res, next) => {
             model: Image,
             attributes: ['location']
         }, 
-        ]
+        ],
+        raw: true
         });
-    res.status(200).json(products)
+
+    res.status(200).json(preProcessProducts(products))
 });
 
 router.post('/', async (req, res, next) => {

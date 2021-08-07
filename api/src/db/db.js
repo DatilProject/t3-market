@@ -76,4 +76,4 @@ conn.sync({force:false})
     console.log("Postgres connnection successful");
 })
 
-module.exports = {conn, Product, Image, Category, Iva, Ice}
+module.exports = {conn, Product, Image, Category, Iva, Ice, AccountCredentials}
