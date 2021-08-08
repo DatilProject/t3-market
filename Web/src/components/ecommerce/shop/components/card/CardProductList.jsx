@@ -11,7 +11,7 @@ const CardProductList = (props) => {
 		<div className="card">
 			<div className="row g-0">
 				<div className="col-md-3 text-center">
-					<img src={product.img} className="img-fluid" alt="..." />
+					<img src={product.images[0]} className="img-fluid" alt="..." />
 				</div>
 				<div className="col-md-6">
 					<div className="card-body">

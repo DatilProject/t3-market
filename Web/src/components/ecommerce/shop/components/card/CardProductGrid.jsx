@@ -6,9 +6,10 @@ import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const CardProductGrid = (props) => {
 	const product = props.data;
+
 	return (
 		<div className="card">
-			<img src={product.img} className="card-img-top" alt="..." />
+			<img src={product.images[0]} className="card-img-top" alt="..." />
 			{product.isNew && (
 				<span className="badge bg-success position-absolute mt-2 ml-2">New</span>
 			)}
