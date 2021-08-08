@@ -11,12 +11,16 @@ const CardProductList = (props) => {
 		<div className="card">
 			<div className="row g-0">
 				<div className="col-md-3 text-center">
-					<img src={product.images[0]} className="img-fluid" alt="..." />
+					<img
+						src={product.images[0].location}
+						className="img-fluid"
+						alt={product.name}
+					/>
 				</div>
 				<div className="col-md-6">
 					<div className="card-body">
 						<h6 className="card-subtitle mr-2 d-inline">
-							<Link to={product.link} className="text-decoration-none">
+							<Link to={"/product/detail"} className="text-decoration-none">
 								{product.name}
 							</Link>
 						</h6>
@@ -81,13 +85,13 @@ const CardProductList = (props) => {
 							>
 								<FontAwesomeIcon icon={faCartPlus} />
 							</button>
-							<button
+							{/* <button
 								type="button"
 								className="btn btn-sm btn-outline-secondary"
 								title="Add to wishlist"
 							>
 								<FontAwesomeIcon icon={faHeart} />
-							</button>
+							</button> */}
 						</div>
 					</div>
 				</div>

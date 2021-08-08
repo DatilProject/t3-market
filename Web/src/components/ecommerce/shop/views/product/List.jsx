@@ -19,40 +19,31 @@ const CardProductGrid = lazy(() => import("../../components/card/CardProductGrid
 const CardProductList = lazy(() => import("../../components/card/CardProductList"));
 
 const ProductListView = () => {
+	const dispatch = useDispatch();
+
+	const listProducts = useSelector((store) => store.products.array);
 	const [state, setState] = useState({
 		currentProducts: [],
 		currentPage: null,
 		totalPages: null,
-		totalItems: 5,
+		totalItems: listProducts.length,
 		view: "list",
 	});
 
 	useEffect(() => {
-		const totalItems = getProducts().length;
-		setState({ ...state, totalItems });
+		dispatch(getProductsAction());
+		// setState({ ...state, currentProducts: listProducts });
 	}, []);
 
 	const onPageChanged = (page) => {
-		let products = getProducts();
 		const { currentPage, totalPages, pageLimit } = page;
 		const offset = (currentPage - 1) * pageLimit;
-		const currentProducts = products.slice(offset, offset + pageLimit);
+		const currentProducts = listProducts.slice(offset, offset + pageLimit);
 		setState({ ...state, currentPage, currentProducts, totalPages });
 	};
 
 	const onChangeView = (view) => {
 		setState({ ...state, view });
-	};
-
-	const getProducts = () => {
-		let products = data.products;
-		// TODO: Remove this
-		products = products.concat(products);
-		products = products.concat(products);
-		products = products.concat(products);
-		products = products.concat(products);
-		products = products.concat(products);
-		return products;
 	};
 
 	return (
@@ -64,7 +55,7 @@ const ProductListView = () => {
 				}}
 			>
 				<div className="container text-center">
-					<span className="display-5 px-3 bg-white rounded shadow">T-Shirts</span>
+					<span className="display-5 px-3 bg-white rounded shadow">Products</span>
 				</div>
 			</div>
 			<Breadcrumb />
@@ -73,19 +64,19 @@ const ProductListView = () => {
 					<div className="col-md-3">
 						<FilterCategory />
 						<FilterPrice />
-						<FilterSize />
-						<FilterStar />
-						<FilterColor />
+						{/* <FilterSize /> */}
+						{/* <FilterStar /> */}
+						{/* <FilterColor /> */}
 						<FilterClear />
 						<FilterTag />
-						<CardServices />
+						{/* <CardServices /> */}
 					</div>
 					<div className="col-md-9">
 						<div className="row">
 							<div className="col-md-8">
 								<span className="align-middle font-weight-bold">
 									{state.totalItems} results for{" "}
-									<span className="text-warning">{"'t-shirts'"}</span>
+									<span className="text-warning">{"'Products'"}</span>
 								</span>
 							</div>
 							<div className="col-md-4">
@@ -130,7 +121,7 @@ const ProductListView = () => {
 						<hr />
 						<div className="row g-3">
 							{state.view === "grid" &&
-								state.currentProducts.map((product, idx) => {
+								listProducts.map((product, idx) => {
 									return (
 										<div key={idx} className="col-md-4">
 											<CardProductGrid data={product} />
@@ -138,7 +129,7 @@ const ProductListView = () => {
 									);
 								})}
 							{state.view === "list" &&
-								state.currentProducts.map((product, idx) => {
+								listProducts.map((product, idx) => {
 									return (
 										<div key={idx} className="col-md-12">
 											<CardProductList data={product} />
