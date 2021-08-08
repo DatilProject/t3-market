@@ -4,7 +4,7 @@ module.exports = {
     "development": {
       "username": "postgres",
       "password": "rodemore",
-      "database": "datil_market_dev",
+      "database": "datil_market",
       "host": "localhost",
       "dialect": "postgres"
     },
