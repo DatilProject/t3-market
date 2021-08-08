@@ -21,11 +21,11 @@ router.get('/', async (req, res, next) => {
             model: Image,
             attributes: ['location']
         }, 
-        ],
-        raw: true    
-    });
-
-    res.status(200).json(preProcessProducts(products))
+        ]
+        });
+        let jsonString = JSON.stringify(products)
+        let productsObj = JSON.parse(jsonString)
+        res.status(200).json(preProcessProducts(productsObj))
 });
 
 router.get('/commerce/:id', async (req, res, next) => {
@@ -50,11 +50,11 @@ router.get('/commerce/:id', async (req, res, next) => {
             model: Image,
             attributes: ['location']
         }, 
-        ],
-        raw: true
-        });
-
-    res.status(200).json(preProcessProducts(products))
+    ]
+    });
+    let jsonString = JSON.stringify(products)
+    let productsObj = JSON.parse(jsonString)
+    res.status(200).json(preProcessProducts(productsObj));
 });
 
 router.post('/', async (req, res, next) => {
