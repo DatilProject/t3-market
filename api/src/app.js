@@ -22,10 +22,12 @@ app.set('port' , process.env.PORT || 3000);
 const authRouter = require('./routes/auth')
 const productRouter = require('./routes/product')
 const categoryRouter = require('./routes/category')
+const reportsRouter = require('./routes/reports')
 
 
 app.use('/api/product', productRouter);
 app.use('/api/category', categoryRouter);
+app.use('/api/reports', reportsRouter);
 app.use('/auth', authRouter);
 
 app.use(
