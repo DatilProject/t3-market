@@ -14,9 +14,6 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      id_type: {
-        type: Sequelize.STRING
-      },
       phone: {
         type: Sequelize.STRING
       },
@@ -28,6 +25,14 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'accounts',
+          key: 'id'
+        }
+      },
+      marketId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'markets',
           key: 'id'
         }
       },

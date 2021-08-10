@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
   commerce.init({
     business_name: DataTypes.STRING,
     email: DataTypes.STRING,
-    id_type: DataTypes.STRING,
     phone: DataTypes.STRING,
     trade_name: DataTypes.STRING,
     accountId: DataTypes.INTEGER

@@ -16,6 +16,14 @@ module.exports = {
           key: 'id'
         }
       },
+      marketId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'markets',
+          key: 'id'
+        }
+      },
       is_paid_up: {
         type: Sequelize.BOOLEAN
       },

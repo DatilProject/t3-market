@@ -15,6 +15,8 @@ const CommerceModel = require("../db/models/commerce");
 const ClientModel = require("../db/models/client");
 const AccountCredentialsModel = require("../db/models/account");
 const ImageModel = require("../db/models/image");
+const OrderModel = require("../db/models/order");
+const BillModel = require("../db/models/bill");
 
 
 const conn = new Sequelize(connData.database,
@@ -38,11 +40,12 @@ const Commerce = CommerceModel(conn,Sequelize);
 const AccountCredentials = AccountCredentialsModel(conn,Sequelize);
 const Client = ClientModel(conn,Sequelize);
 const Image = ImageModel(conn,Sequelize);
+const Order = OrderModel(conn,Sequelize);
+const Bill = BillModel(conn,Sequelize);
 
 Category.hasOne(Product);
 Product.belongsTo(Category);
 
- 
 Iva.hasOne(Product);
 Product.belongsTo(Iva);
 
@@ -70,10 +73,18 @@ Client.belongsTo(AccountCredentials);
 AccountCredentials.hasOne(Commerce);
 Commerce.belongsTo(AccountCredentials);
 
+Client.hasMany(Order);
+Order.belongsTo(Client);
+
+Commerce.hasMany(Order);
+Order.belongsTo(Commerce);
+
+Bill.hasOne(Order);
+Order.belongsTo(Bill);
 
 conn.sync({force:false})
 .then(()=> {
     console.log("Postgres connnection successful");
 })
 
-module.exports = {conn, Product, Image, Category, Iva, Ice, AccountCredentials}
+module.exports = {conn, Product, Image, Category, Iva, Ice, AccountCredentials, Commerce, Client}
