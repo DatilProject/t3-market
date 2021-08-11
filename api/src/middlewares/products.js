@@ -21,7 +21,16 @@ preProcessProducts = (productList) =>{
                           price: getDiscountedPrice(p), 
                           isNew: p.updatedAt >= today.subtract(7, 'days')
                         }));
-
 }
 
-module.exports = {preProcessProducts}
+preProcessItem = (itemList) =>{
+    let today = moment();
+    return itemList
+        .map(i => ({...i, originPrice: i.product.price, 
+                          discountPricePerUnit: getDiscount(i.product),
+                          pricePerUnit: getDiscountedPrice(i.product)
+                        }))
+        .map(i => ({...i, totalPrice: roundToTwo(i.pricePerUnit * i.quantity)}));
+}
+
+module.exports = {preProcessProducts, preProcessItem}
