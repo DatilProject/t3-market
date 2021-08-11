@@ -44,7 +44,7 @@ router.get('/commerce/:commerceId/:clientId', async (req, res, next) => {
                         .map(o => ({...o, items: preProcessItem(o.items)})))
     });
 
-    router.get('old/commerce/:commerceId/:clientId', async (req, res, next) => {
+    router.get('/old/commerce/:commerceId/:clientId', async (req, res, next) => {
         const orders =  await Order.findAll({
             where: {is_paid_up: true, clientId:req.params.clientId },
             attributes:["id", "is_paid_up","createdAt", "updatedAt" ], 
@@ -85,5 +85,25 @@ router.get('/commerce/:commerceId/:clientId', async (req, res, next) => {
                             .map(o => ({...o, items: preProcessItem(o.items)})))
         });
 
+
+    router.post('/commerce/:commerceId/:clientId', async (req, res, next) => {
+        const activeOrder =  await Order.findOne({where: {is_paid_up: false, clientId:req.params.clientId, marketId: req.params.commerceId }});
+        if (activeOrder){
+            return res.status(200).json(activeOrder)
+        }
+        let newOrder = Order.build({ clientId: req.params.clientId , is_paid_up: false,marketId:req.params.commerceId , createdAt: new Date(), updatedAt: new Date() });
+        await newOrder.save();
+        res.status(200).json(newOrder)
+    });
+
+    router.post('/item/:orderId', async (req, res, next) => {
+        let newItem = Item.build({ productId: req.body.productId , 
+            quantity: req.body.quantity,
+            orderId:req.params.orderId, 
+            createdAtorderId: new Date(),
+            updatedAt: new Date() });
+        await newItem.save();
+        res.status(200).json(newItem)
+    });
 
 module.exports = router;
