@@ -106,4 +106,9 @@ router.get('/commerce/:commerceId/:clientId', async (req, res, next) => {
         res.status(200).json(newItem)
     });
 
+    router.delete('/item/:itemId', async (req, res, next) => {
+        let newItem = await Item.findOne({where: { id: req.params.itemId}});
+        await newItem.destroy();
+        res.status(200).json({"deleted":true})
+    });
 module.exports = router;
