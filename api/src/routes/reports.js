@@ -170,4 +170,18 @@ router.get('/topproducts/commerce/:id', async (req, res, next) => {
     res.status(200).json(results)
 });
 
+router.get('/topproductsbycategory/commerce/:productId/:categoryId', async (req, res, next) => {
+    query= `select i."productId",p."name",p.description,p.price ,p.discount ,c."name" as category,SUM(i.quantity) as "itemsSold" from items i
+    inner join products p on i."productId" = p.id 
+    inner join categories c on p."categoryId" = c.id 
+    inner join orders o on i."orderId" = o.id
+    where p."marketId" = ${req.params.productId} and o.is_paid_up = true and c.id = ${req.params.categoryId}
+    group by "productId",p."name",description,category, p.price ,p.discount 
+    order by "itemsSold" desc
+    limit 10`
+
+    const [results, metadata] = await conn.query(query);
+    res.status(200).json(results)
+});
+
 module.exports = router;
