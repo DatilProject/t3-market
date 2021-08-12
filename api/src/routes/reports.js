@@ -91,7 +91,83 @@ router.get('/profit/commerce/:id/:range', async (req, res, next) => {
     res.status(200).json(results)
 });
 
+router.get('/order/commerce/:id/:range', async (req, res, next) => {
+    switch (req.params.range) {
+        case "1":
+            query= `select date(o."createdAt"), COUNT(id) as "count" 
+            from orders o
+            where o."marketId" = ${req.params.id}
+            group by date(o."createdAt")
+            ORDER BY date DESC;`
+            break
+        case "2":
+            query = `select EXTRACT(YEAR FROM o."createdAt") as year, EXTRACT(MONTH FROM o."createdAt") as month, COUNT(id) as "count" 
+            from orders o
+            where o."marketId"=1
+            group by year, month
+            order by year desc,month desc;`
+            break
+        case "3":
+            query = `select EXTRACT(YEAR FROM o."createdAt") as year, COUNT(id) as "count"  
+            from orders o
+            where o."marketId" = ${req.params.id}
+            group by year
+            order by year desc ;`
+            break
+        default:
+            res.status(404).send({message: 
+            'Range parameter not valid: 1 to group by day, 2 by month, 3 by year' });
+            break
+      }
+    const [results, metadata] = await conn.query(query);
+    res.status(200).json(results)
+});
 
 
+router.get('/order/commerce/:id/:range', async (req, res, next) => {
+    switch (req.params.range) {
+        case "1":
+            query= `select date(o."createdAt"), COUNT(id) as "count" 
+            from orders o
+            where o."marketId" = ${req.params.id}
+            group by date(o."createdAt")
+            ORDER BY date DESC;`
+            break
+        case "2":
+            query = `select EXTRACT(YEAR FROM o."createdAt") as year, EXTRACT(MONTH FROM o."createdAt") as month, COUNT(id) as "count" 
+            from orders o
+            where o."marketId"=1
+            group by year, month
+            order by year desc,month desc;`
+            break
+        case "3":
+            query = `select EXTRACT(YEAR FROM o."createdAt") as year, COUNT(id) as "count"  
+            from orders o
+            where o."marketId" = ${req.params.id}
+            group by year
+            order by year desc ;`
+            break
+        default:
+            res.status(404).send({message: 
+            'Range parameter not valid: 1 to group by day, 2 by month, 3 by year' });
+            break
+      }
+    const [results, metadata] = await conn.query(query);
+    res.status(200).json(results)
+});
+
+router.get('/topproducts/commerce/:id', async (req, res, next) => {
+    query= `select i."productId",p."name",p.description,p.price ,p.discount ,c."name" as category,SUM(i.quantity) as "itemsSold" from items i
+    inner join products p on i."productId" = p.id 
+    inner join categories c on p."categoryId" = c.id 
+    inner join orders o on i."orderId" = o.id
+    where p."marketId" = ${req.params.id} and o.is_paid_up = true 
+    group by "productId",p."name",description,category, p.price ,p.discount 
+    order by "itemsSold" desc
+    limit 10`
+
+    const [results, metadata] = await conn.query(query);
+    res.status(200).json(results)
+});
 
 module.exports = router;
