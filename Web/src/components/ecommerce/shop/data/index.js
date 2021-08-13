@@ -1,6 +1,10 @@
 import Banner1 from "../images/banner/Banner_1.webp";
 import Banner2 from "../images/banner/Banner_2.webp";
 import Banner3 from "../images/banner/Banner_3.webp";
+import Product1 from "../images/products/tshirt_red_480x400.webp";
+import Product2 from "../images/products/tshirt_grey_480x400.webp";
+import Product3 from "../images/products/tshirt_black_480x400.webp";
+import Product4 from "../images/products/tshirt_green_480x400.webp";
 
 export const data = {
 	banner: [
@@ -92,28 +96,85 @@ export const data = {
 	products: [
 		{
 			id: 1,
-			sku: "FAS-01",
-			link: "/product/detail",
+			main_code: "003",
+			auxiliary_code: "353",
 			name: "Great product name goes here",
-			img: "../../images/products/tshirt_red_480x400.webp",
+			on_sale: true,
 			price: 180,
+			stock: 3,
+			weight: 120,
+			unit: "lb",
+			createdAt: "2021-06-28T00:00:00.000Z",
+			updatedAt: "2021-06-28T00:00:00.000Z",
+			categoryId: 2,
+			ivaId: 2,
+			iceId: 1,
+			marketId: 1,
+			category: {
+				name: "Inmuebles",
+			},
+			iva: {
+				name: "12%",
+				percentage: 12,
+			},
+			ice: {
+				name: "0%",
+				percentage: 0,
+			},
+			images: [
+				Product1,
+				Product2,
+				Product3,
+				Product4,
+				"https://imagenes.elcomercio.com/files/article_main_simple/uploads/2020/07/29/5f2204d3f2c62.jpeg",
+			],
+
 			originPrice: 200,
 			discountPrice: 20,
 			discountPercentage: 10,
 			isNew: true,
-			isHot: false,
-			star: 4,
-			isFreeShipping: true,
+			// isHot: false,
+			// star: 4,
+			// isFreeShipping: true,
+			// link: "/product/detail",
+
 			description:
 				"Nulla sodales sit amet orci eu vehicula. Curabitur metus velit, fermentum a velit ac, sodales egestas lacus. Etiam congue velit vel luctus dictum. Pellentesque at pellentesque sapien.",
 		},
 		{
 			id: 2,
-			sku: "FAS-02",
-			link: "/product/detail",
+			main_code: "003",
+			auxiliary_code: "353",
 			name: "Great product name goes here",
-			img: "../../images/products/tshirt_grey_480x400.webp",
+			on_sale: true,
 			price: 475,
+			stock: 3,
+			weight: 120,
+			unit: "lb",
+			createdAt: "2021-06-28T00:00:00.000Z",
+			updatedAt: "2021-06-28T00:00:00.000Z",
+			categoryId: 2,
+			ivaId: 2,
+			iceId: 1,
+			marketId: 1,
+			category: {
+				name: "Inmuebles",
+			},
+			iva: {
+				name: "12%",
+				percentage: 12,
+			},
+			ice: {
+				name: "0%",
+				percentage: 0,
+			},
+			images: [
+				Product2,
+				Product1,
+				Product3,
+				Product4,
+				"https://imagenes.elcomercio.com/files/article_main_simple/uploads/2020/07/29/5f2204d3f2c62.jpeg",
+			],
 			originPrice: 0,
 			discountPrice: 0,
 			discountPercentage: 0,
@@ -121,16 +182,45 @@ export const data = {
 			isHot: true,
 			star: 3,
 			isFreeShipping: true,
+			link: "/product/detail",
 			description:
 				"Maecenas suscipit volutpat gravida. Nulla hendrerit nisi a lectus blandit aliquam. Integer enim magna, consequat sed justo nec, auctor sagittis urna.",
 		},
 		{
 			id: 3,
-			sku: "FAS-03",
-			link: "/product/detail",
+			main_code: "003",
+			auxiliary_code: "353",
 			name: "Great product name goes here",
-			img: "../../images/products/tshirt_black_480x400.webp",
+			on_sale: true,
 			price: 1900,
+			stock: 3,
+			weight: 120,
+			unit: "lb",
+			createdAt: "2021-06-28T00:00:00.000Z",
+			updatedAt: "2021-06-28T00:00:00.000Z",
+			categoryId: 2,
+			ivaId: 2,
+			iceId: 1,
+			marketId: 1,
+			category: {
+				name: "Inmuebles",
+			},
+			iva: {
+				name: "12%",
+				percentage: 12,
+			},
+			ice: {
+				name: "0%",
+				percentage: 0,
+			},
+			images: [
+				Product3,
+				Product1,
+				Product2,
+				Product4,
+				"https://imagenes.elcomercio.com/files/article_main_simple/uploads/2020/07/29/5f2204d3f2c62.jpeg",
+			],
+
 			originPrice: 2000,
 			discountPrice: 100,
 			discountPercentage: 0,
@@ -138,23 +228,52 @@ export const data = {
 			isHot: true,
 			star: 2,
 			isFreeShipping: true,
+			link: "/product/detail",
 			description:
 				"Vivamus sapien eros, molestie sed lacus vitae, lacinia volutpat ipsum. Nam sollicitudin lorem eget ornare vulputate.",
 		},
 		{
 			id: 4,
-			sku: "FAS-04",
-			link: "/product/detail",
+			main_code: "003",
+			auxiliary_code: "353",
 			name: "Great product name goes here",
-			img: "../../images/products/tshirt_green_480x400.webp",
+			on_sale: true,
 			price: 10,
-			originPrice: 0,
+			stock: 3,
+			weight: 120,
+			unit: "lb",
+			createdAt: "2021-06-28T00:00:00.000Z",
+			updatedAt: "2021-06-28T00:00:00.000Z",
+			categoryId: 2,
+			ivaId: 2,
+			iceId: 1,
+			marketId: 1,
+			category: {
+				name: "Inmuebles",
+			},
+			iva: {
+				name: "12%",
+				percentage: 12,
+			},
+			ice: {
+				name: "0%",
+				percentage: 0,
+			},
+			images: [
+				Product4,
+				Product1,
+				Product2,
+				Product3,
+				"https://imagenes.elcomercio.com/files/article_main_simple/uploads/2020/07/29/5f2204d3f2c62.jpeg",
+			],
+			originPrice: 2,
 			discountPrice: 0,
 			discountPercentage: 0,
 			isNew: false,
 			isHot: false,
 			star: 0,
 			isFreeShipping: false,
+			link: "/product/detail",
 			description:
 				"Morbi lobortis velit non consectetur porta.|Duis auctor risus ac purus vehicula tempor.|Fusce at ipsum a leo tempor malesuada.|Curabitur tincidunt justo vel volutpat suscipit.",
 		},

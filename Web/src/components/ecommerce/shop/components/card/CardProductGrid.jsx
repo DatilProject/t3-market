@@ -6,9 +6,12 @@ import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const CardProductGrid = (props) => {
 	const product = props.data;
+	console.log(product);
+	console.log(product.images[0].location);
+
 	return (
 		<div className="card">
-			<img src={product.img} className="card-img-top" alt="..." />
+			<img src={product.images[0].location} className="card-img-top" alt={product.name} />
 			{product.isNew && (
 				<span className="badge bg-success position-absolute mt-2 ml-2">New</span>
 			)}
@@ -29,7 +32,7 @@ const CardProductGrid = (props) => {
 			)}
 			<div className="card-body">
 				<h6 className="card-subtitle mb-2">
-					<Link to={product.link} className="text-decoration-none">
+					<Link to={"/product/detail"} className="text-decoration-none">
 						{product.name}
 					</Link>
 				</h6>
@@ -48,13 +51,13 @@ const CardProductGrid = (props) => {
 					<button type="button" className="btn btn-sm btn-primary" title="Add to cart">
 						<FontAwesomeIcon icon={faCartPlus} />
 					</button>
-					<button
+					{/* <button
 						type="button"
 						className="btn btn-sm btn-outline-secondary"
 						title="Add to wishlist"
 					>
 						<FontAwesomeIcon icon={faHeart} />
-					</button>
+					</button> */}
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,10 @@
-import React, { lazy, Component } from "react";
+import React, { lazy, useState, useEffect } from "react";
 import { data } from "../../data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTh, faBars } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsAction } from "../../../../../redux/ducks/productDucks";
+
 const Paging = lazy(() => import("../../components/Paging"));
 const Breadcrumb = lazy(() => import("../../components/Breadcrumb"));
 const FilterCategory = lazy(() => import("../../components/filter/Category"));
@@ -15,149 +18,139 @@ const CardServices = lazy(() => import("../../components/card/CardServices"));
 const CardProductGrid = lazy(() => import("../../components/card/CardProductGrid"));
 const CardProductList = lazy(() => import("../../components/card/CardProductList"));
 
-class ProductListView extends Component {
-	state = {
+const ProductListView = () => {
+	const dispatch = useDispatch();
+
+	const listProducts = useSelector((store) => store.products.array);
+	const [state, setState] = useState({
 		currentProducts: [],
 		currentPage: null,
 		totalPages: null,
-		totalItems: 0,
+		totalItems: listProducts.length,
 		view: "list",
-	};
+	});
 
-	UNSAFE_componentWillMount() {
-		const totalItems = this.getProducts().length;
-		this.setState({ totalItems });
-	}
+	useEffect(() => {
+		dispatch(getProductsAction());
+		// setState({ ...state, currentProducts: listProducts });
+	}, []);
 
-	onPageChanged = (page) => {
-		let products = this.getProducts();
+	const onPageChanged = (page) => {
 		const { currentPage, totalPages, pageLimit } = page;
 		const offset = (currentPage - 1) * pageLimit;
-		const currentProducts = products.slice(offset, offset + pageLimit);
-		this.setState({ currentPage, currentProducts, totalPages });
+		const currentProducts = listProducts.slice(offset, offset + pageLimit);
+		setState({ ...state, currentPage, currentProducts, totalPages });
 	};
 
-	onChangeView = (view) => {
-		this.setState({ view });
+	const onChangeView = (view) => {
+		setState({ ...state, view });
 	};
 
-	getProducts = () => {
-		let products = data.products;
-		products = products.concat(products);
-		products = products.concat(products);
-		products = products.concat(products);
-		products = products.concat(products);
-		products = products.concat(products);
-		return products;
-	};
-
-	render() {
-		return (
-			<React.Fragment>
-				<div
-					className="p-5 bg-primary bs-cover"
-					style={{
-						backgroundImage: "url(../../images/banner/50-Banner.webp)",
-					}}
-				>
-					<div className="container text-center">
-						<span className="display-5 px-3 bg-white rounded shadow">T-Shirts</span>
-					</div>
+	return (
+		<React.Fragment>
+			<div
+				className="p-5 bg-primary bs-cover"
+				style={{
+					backgroundImage: "url(../../images/banner/50-Banner.webp)",
+				}}
+			>
+				<div className="container text-center">
+					<span className="display-5 px-3 bg-white rounded shadow">Products</span>
 				</div>
-				<Breadcrumb />
-				<div className="container-fluid mb-3">
-					<div className="row">
-						<div className="col-md-3">
-							<FilterCategory />
-							<FilterPrice />
-							<FilterSize />
-							<FilterStar />
-							<FilterColor />
-							<FilterClear />
-							<FilterTag />
-							<CardServices />
-						</div>
-						<div className="col-md-9">
-							<div className="row">
-								<div className="col-md-8">
-									<span className="align-middle font-weight-bold">
-										{this.state.totalItems} results for{" "}
-										<span className="text-warning">"t-shirts"</span>
-									</span>
-								</div>
-								<div className="col-md-4">
-									<select
-										className="form-select mw-180 float-left"
-										aria-label="Default select"
+			</div>
+			<Breadcrumb />
+			<div className="container-fluid mb-3">
+				<div className="row">
+					<div className="col-md-3">
+						<FilterCategory />
+						<FilterPrice />
+						{/* <FilterSize /> */}
+						{/* <FilterStar /> */}
+						{/* <FilterColor /> */}
+						<FilterClear />
+						<FilterTag />
+						{/* <CardServices /> */}
+					</div>
+					<div className="col-md-9">
+						<div className="row">
+							<div className="col-md-8">
+								<span className="align-middle font-weight-bold">
+									{state.totalItems} results for{" "}
+									<span className="text-warning">{"'Products'"}</span>
+								</span>
+							</div>
+							<div className="col-md-4">
+								<select
+									className="form-select mw-180 float-left"
+									aria-label="Default select"
+								>
+									<option value={1}>Most Popular</option>
+									<option value={2}>Latest items</option>
+									<option value={3}>Trending</option>
+									<option value={4}>Price low to high</option>
+									<option value={4}>Price high to low</option>
+								</select>
+								<div className="btn-group ml-3" role="group">
+									<button
+										aria-label="Grid"
+										type="button"
+										onClick={() => onChangeView("grid")}
+										className={`btn ${
+											state.view === "grid"
+												? "btn-primary"
+												: "btn-outline-primary"
+										}`}
 									>
-										<option value={1}>Most Popular</option>
-										<option value={2}>Latest items</option>
-										<option value={3}>Trending</option>
-										<option value={4}>Price low to high</option>
-										<option value={4}>Price high to low</option>
-									</select>
-									<div className="btn-group ml-3" role="group">
-										<button
-											aria-label="Grid"
-											type="button"
-											onClick={() => this.onChangeView("grid")}
-											className={`btn ${
-												this.state.view === "grid"
-													? "btn-primary"
-													: "btn-outline-primary"
-											}`}
-										>
-											<FontAwesomeIcon icon={faTh} />
-										</button>
-										<button
-											aria-label="List"
-											type="button"
-											onClick={() => this.onChangeView("list")}
-											className={`btn ${
-												this.state.view === "list"
-													? "btn-primary"
-													: "btn-outline-primary"
-											}`}
-										>
-											<FontAwesomeIcon icon={faBars} />
-										</button>
-									</div>
+										<FontAwesomeIcon icon={faTh} />
+									</button>
+									<button
+										aria-label="List"
+										type="button"
+										onClick={() => onChangeView("list")}
+										className={`btn ${
+											state.view === "list"
+												? "btn-primary"
+												: "btn-outline-primary"
+										}`}
+									>
+										<FontAwesomeIcon icon={faBars} />
+									</button>
 								</div>
 							</div>
-							<hr />
-							<div className="row g-3">
-								{this.state.view === "grid" &&
-									this.state.currentProducts.map((product, idx) => {
-										return (
-											<div key={idx} className="col-md-4">
-												<CardProductGrid data={product} />
-											</div>
-										);
-									})}
-								{this.state.view === "list" &&
-									this.state.currentProducts.map((product, idx) => {
-										return (
-											<div key={idx} className="col-md-12">
-												<CardProductList data={product} />
-											</div>
-										);
-									})}
-							</div>
-							<hr />
-							<Paging
-								totalRecords={this.state.totalItems}
-								pageLimit={9}
-								pageNeighbours={3}
-								onPageChanged={this.onPageChanged}
-								sizing=""
-								alignment="justify-content-center"
-							/>
 						</div>
+						<hr />
+						<div className="row g-3">
+							{state.view === "grid" &&
+								listProducts.map((product, idx) => {
+									return (
+										<div key={idx} className="col-md-4">
+											<CardProductGrid data={product} />
+										</div>
+									);
+								})}
+							{state.view === "list" &&
+								listProducts.map((product, idx) => {
+									return (
+										<div key={idx} className="col-md-12">
+											<CardProductList data={product} />
+										</div>
+									);
+								})}
+						</div>
+						<hr />
+						<Paging
+							totalRecords={state.totalItems}
+							pageLimit={9}
+							pageNeighbours={3}
+							onPageChanged={onPageChanged}
+							sizing=""
+							alignment="justify-content-center"
+						/>
 					</div>
 				</div>
-			</React.Fragment>
-		);
-	}
-}
+			</div>
+		</React.Fragment>
+	);
+};
 
 export default ProductListView;
