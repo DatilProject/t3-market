@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const {Order, Item, Product, Category, Iva, Ice, Image} = require("../db/db");
 const {preProcessItem} = require("../middlewares/products")
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 router.get('/commerce/:commerceId/:clientId', async (req, res, next) => {
     const orders =  await Order.findAll({
@@ -113,7 +114,7 @@ router.delete('/item/:itemId', async (req, res, next) => {
 });
 
 const calculateOrderAmount = () => {
-    return 5;
+    return 50;
   };
 
 router.post("/create-payment-intent", async (req, res) => {
