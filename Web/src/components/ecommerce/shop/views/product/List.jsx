@@ -68,7 +68,7 @@ const ProductListView = () => {
 						{/* <FilterStar /> */}
 						{/* <FilterColor /> */}
 						<FilterClear />
-						<FilterTag />
+						{/* <FilterTag /> */}
 						{/* <CardServices /> */}
 					</div>
 					<div className="col-md-9">

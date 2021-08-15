@@ -59,7 +59,7 @@ const CardProductList = (props) => {
 					<div className="card-body">
 						<div className="mb-2">
 							<span className="font-weight-bold h5">${product.price}</span>
-							{product.originPrice > 0 && (
+							{product.originPrice !== product.price && (
 								<del className="small text-muted ml-2">${product.originPrice}</del>
 							)}
 							{(product.discountPercentage > 0 || product.discountPrice > 0) && (

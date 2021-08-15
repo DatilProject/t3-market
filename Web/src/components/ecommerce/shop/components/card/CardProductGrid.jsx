@@ -38,7 +38,7 @@ const CardProductGrid = (props) => {
 				</h6>
 				<div className="my-2">
 					<span className="font-weight-bold h5">${product.price}</span>
-					{product.originPrice > 0 && (
+					{product.originPrice !== product.price && (
 						<del className="small text-muted ml-2">${product.originPrice}</del>
 					)}
 					<span className="ml-2">
