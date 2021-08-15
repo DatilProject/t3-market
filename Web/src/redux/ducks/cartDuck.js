@@ -11,7 +11,7 @@ const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
 const UPDATE_ORDER = "UPDATE_ORDER";
 const DELETE_PRODUCT_FROM_CART = "DELETE_PRODUCT_FROM_CART";
 
-export default function categoryReducer(state = data, action) {
+export default function cartReducer(state = data, action) {
 	switch (action.type) {
 		case GET_ORDERS:
 			return { ...state, array: action.payload };

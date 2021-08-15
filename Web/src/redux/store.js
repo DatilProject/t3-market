@@ -4,11 +4,15 @@ import thunk from "redux-thunk";
 import productReducer from "./ducks/productDucks";
 import authReducer from "./ducks/authDucks";
 import categoryReducer from "./ducks/categoryDucks";
+import authClientReducer from "./ducks/authClientDuck";
+import cartReducer from "./ducks/cartDuck";
 
 const rootReducer = combineReducers({
 	products: productReducer,
 	auth: authReducer,
 	categories: categoryReducer,
+	client: authClientReducer,
+	cart: cartReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

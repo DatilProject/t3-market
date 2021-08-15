@@ -57,7 +57,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"format": "prettier --write src/**/*.{jsx,js}",
-		"lint": "eslint src/components",
+		"lint": "eslint src/**/*.{jsx,js}",
 		"lint-fix": "eslint src/App.js --fix"
 	},
 	"browserslist": {

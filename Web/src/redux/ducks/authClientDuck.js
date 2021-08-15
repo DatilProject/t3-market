@@ -10,7 +10,7 @@ const data = {
 
 const GET_AUTH_CLIENT = "GET_AUTH_CLIENT";
 
-export default function authReducer(state = data, action) {
+export default function authClientReducer(state = data, action) {
 	switch (action.type) {
 		case GET_AUTH_CLIENT:
 			var userLogIn = {
@@ -18,6 +18,7 @@ export default function authReducer(state = data, action) {
 				token: action.payload.token,
 				user: action.payload.user,
 			};
+			console.log(userLogIn);
 			if (userLogIn.auth) {
 				setCokiesClient(userLogIn);
 				window.location.href = root + "/panel";
@@ -35,7 +36,7 @@ export default function authReducer(state = data, action) {
 	}
 }
 
-export const getAuthCommerceAction = (authObject) => async (dispatch) => {
+export const getAuthClientAction = (authObject) => async (dispatch) => {
 	const dataLogIn = {
 		email: authObject.username,
 		password: authObject.password,
@@ -54,18 +55,11 @@ export const getAuthCommerceAction = (authObject) => async (dispatch) => {
 			return res.json();
 		})
 		.then((res) => {
+			console.log(res);
 			dispatch({
 				type: GET_AUTH_CLIENT,
 				payload: res,
 			});
-			// if (res.auth) {
-			//   // navigation.navigate("Panel", { token: res.token, correo: email });
-			//   console.log("1");
-			// } else {
-			//   console.log("2");
-
-			//   // Alert.alert("Error de Inicio de Sesión", res.message);
-			// }
 		})
 		.catch((err) => console.log("Error:", err));
 };
