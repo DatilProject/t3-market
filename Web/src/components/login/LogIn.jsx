@@ -3,8 +3,8 @@ import { Container, Row, Col, Figure, Button } from "react-bootstrap";
 import LogoDatil from "./../../assets/logo_datil.png";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { getAuthAction } from "../../redux/ducks/authDucks";
-import { setCokies, isLogIn } from "../utils/auth";
+import { getAuthCommerceAction } from "../../redux/ducks/authDucks";
+import { isCommerceLogIn } from "../utils/auth";
 import { root } from "../utils/constants";
 import "./LogIn.css";
 
@@ -23,14 +23,14 @@ const LogIn = () => {
 	} = useForm();
 
 	const onSubmit = (data, event) => {
-		dispatch(getAuthAction(data));
+		dispatch(getAuthCommerceAction(data));
 		setUser({
 			...user,
 			[event.target.name]: event.target.value,
 		});
 	};
 
-	if (isLogIn()) {
+	if (isCommerceLogIn()) {
 		window.location.href = root + "/panel";
 	}
 

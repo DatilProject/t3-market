@@ -208,6 +208,7 @@ class ProductDetailView extends Component {
 								</div>
 							</div>
 						</div>
+						{/* 						
 						<div className="row">
 							<div className="col-md-12">
 								<nav>
@@ -320,7 +321,7 @@ class ProductDetailView extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="col-md-4">
+					<div className="col-md-4"> */}
 						<CardFeaturedProduct data={data.products} />
 						<CardServices />
 					</div>
