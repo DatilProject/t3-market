@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTh, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsAction } from "../../../../../redux/ducks/productDucks";
+import { addItemToCartAction } from "../../../../../redux/ducks/cartDuck";
+import { connect } from "react-redux";
 
 const Paging = lazy(() => import("../../components/Paging"));
 const Breadcrumb = lazy(() => import("../../components/Breadcrumb"));
@@ -18,8 +20,15 @@ const CardServices = lazy(() => import("../../components/card/CardServices"));
 const CardProductGrid = lazy(() => import("../../components/card/CardProductGrid"));
 const CardProductList = lazy(() => import("../../components/card/CardProductList"));
 
-const ProductListView = () => {
+const ProductListView = ({ productsCart }) => {
 	const dispatch = useDispatch();
+	const [currentOrdenID, setCurrentOrdenID] = useState(-1);
+
+	useEffect(() => {
+		if (productsCart[0]) {
+			setCurrentOrdenID(productsCart[0].id);
+		}
+	}, [productsCart]);
 
 	const listProducts = useSelector((store) => store.products.array);
 	const [state, setState] = useState({
@@ -34,6 +43,11 @@ const ProductListView = () => {
 		dispatch(getProductsAction());
 		// setState({ ...state, currentProducts: listProducts });
 	}, []);
+
+	const handleAddItemToCart = (idProduct) => {
+		console.log("add");
+		dispatch(addItemToCartAction(currentOrdenID, idProduct));
+	};
 
 	const onPageChanged = (page) => {
 		const { currentPage, totalPages, pageLimit } = page;
@@ -124,7 +138,10 @@ const ProductListView = () => {
 								listProducts.map((product, idx) => {
 									return (
 										<div key={idx} className="col-md-4">
-											<CardProductGrid data={product} />
+											<CardProductGrid
+												data={product}
+												handleAddItemToCart={handleAddItemToCart}
+											/>
 										</div>
 									);
 								})}
@@ -132,7 +149,10 @@ const ProductListView = () => {
 								listProducts.map((product, idx) => {
 									return (
 										<div key={idx} className="col-md-12">
-											<CardProductList data={product} />
+											<CardProductList
+												data={product}
+												handleAddItemToCart={handleAddItemToCart}
+											/>
 										</div>
 									);
 								})}
@@ -153,4 +173,10 @@ const ProductListView = () => {
 	);
 };
 
-export default ProductListView;
+const mapStateToProps = (state) => {
+	return {
+		productsCart: state.cart.array,
+	};
+};
+
+export default connect(mapStateToProps, null)(ProductListView);

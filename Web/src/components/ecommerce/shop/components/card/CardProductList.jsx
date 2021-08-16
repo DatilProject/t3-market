@@ -7,6 +7,8 @@ import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const CardProductList = (props) => {
 	const product = props.data;
+	const handleAddItemToCart = props.handleAddItemToCart;
+
 	return (
 		<div className="card">
 			<div className="row g-0">
@@ -82,6 +84,7 @@ const CardProductList = (props) => {
 								type="button"
 								className="btn btn-sm btn-primary"
 								title="Add to cart"
+								onClick={() => handleAddItemToCart(product.id)}
 							>
 								<FontAwesomeIcon icon={faCartPlus} />
 							</button>

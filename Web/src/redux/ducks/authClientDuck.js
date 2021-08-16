@@ -1,6 +1,6 @@
 import { ENDPOINT_AUTH_CLIENT } from "../endPoints";
 import { setCokiesClient } from "../../components/utils/auth";
-import { root } from "../../components/utils/constants";
+import { root, rootCommerce } from "../../components/utils/constants";
 
 const data = {
 	auth: false,
@@ -21,7 +21,7 @@ export default function authClientReducer(state = data, action) {
 			console.log(userLogIn);
 			if (userLogIn.auth) {
 				setCokiesClient(userLogIn);
-				// window.location.href = root + "/panel";
+				// window.location.href = root;
 			} else {
 				alert("Usuario o Contaseña Incorrectos");
 			}

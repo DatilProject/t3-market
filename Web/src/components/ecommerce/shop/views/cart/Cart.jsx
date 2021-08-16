@@ -12,16 +12,14 @@ const CouponApplyForm = lazy(() => import("../../components/others/CouponApplyFo
 const CartView = ({ productsCart }) => {
 	const [totalValue, setTotalValue] = useState(0);
 	const [totalDiscount, setTotalDiscount] = useState(0);
-
-	const onSubmitApplyCouponCode = async (values) => {
-		alert(JSON.stringify(values));
-	};
+	const [currentOrdenID, setCurrentOrdenID] = useState(-1);
 
 	useEffect(() => {
 		if (productsCart[0]) {
 			const totalValueAndDiscount = getTotalValueAndDiscount(productsCart[0].items);
 			setTotalValue(totalValueAndDiscount[0]);
 			setTotalDiscount(totalValueAndDiscount[1]);
+			setCurrentOrdenID(productsCart[0].id);
 		}
 	}, [productsCart]);
 
@@ -56,11 +54,7 @@ const CartView = ({ productsCart }) => {
 													<ItemCart
 														key={item.id}
 														item={item}
-														value={{ totalValue, setTotalValue }}
-														discount={{
-															totalDiscount,
-															setTotalDiscount,
-														}}
+														currentOrdenID={currentOrdenID}
 													/>
 											  ))
 											: null}
@@ -93,11 +87,11 @@ const CartView = ({ productsCart }) => {
 							<div className="card-body">
 								<dl className="row border-bottom">
 									<dt className="col-6">Total:</dt>
-									<dd className="col-6 text-right">${totalValue}</dd>
+									<dd className="col-6 text-right">${totalValue.toFixed(2)}</dd>
 
 									<dt className="col-6 text-success">Discount:</dt>
 									<dd className="col-6 text-success text-right">
-										-${totalDiscount}
+										-${totalDiscount.toFixed(2)}
 									</dd>
 									{/* <dt className="col-6 text-success">
 										Coupon:{" "}
@@ -108,7 +102,7 @@ const CartView = ({ productsCart }) => {
 								<dl className="row">
 									<dt className="col-6">Total:</dt>
 									<dd className="col-6 text-right  h5">
-										<strong>${totalValue - totalDiscount}</strong>
+										<strong>${(totalValue - totalDiscount).toFixed(2)}</strong>
 									</dd>
 								</dl>
 								<hr />

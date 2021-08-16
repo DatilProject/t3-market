@@ -1,24 +1,25 @@
 import axios from "axios";
 import { getValueFromCookieClient } from "../../components/utils/auth";
-import { ENDPOINT_CLIENT_ORDER } from "../endPoints";
+import { ENDPOINT_CLIENT_ORDER, ENDPOINT_ITEM_CART } from "../endPoints";
 
 //constants
 const data = {
 	array: [],
 };
 
-const GET_ORDERS = "GET_ORDERS";
+const GET_CURRENT_ORDER = "GET_CURRENT_ORDER";
 const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
-const UPDATE_ORDER = "UPDATE_ORDER";
+const UPDATE_PRODUCT_ORDER = "UPDATE_PRODUCT_ORDER";
 const DELETE_PRODUCT_FROM_CART = "DELETE_PRODUCT_FROM_CART";
 
 export default function cartReducer(state = data, action) {
 	switch (action.type) {
-		case GET_ORDERS:
+		case GET_CURRENT_ORDER:
 			return { ...state, array: action.payload };
 		case ADD_PRODUCT_TO_CART:
+			window.location.reload();
 			return state;
-		case UPDATE_ORDER:
+		case UPDATE_PRODUCT_ORDER:
 			return state;
 		case DELETE_PRODUCT_FROM_CART:
 			window.location.reload();
@@ -35,7 +36,7 @@ export const getProductsCartAction = () => async (dispatch) => {
 		const idClient = getValueFromCookieClient("id");
 		const res = await axios.get(ENDPOINT_CLIENT_ORDER + idEcommerce + "/" + idClient);
 		dispatch({
-			type: GET_ORDERS,
+			type: GET_CURRENT_ORDER,
 			payload: res.data,
 		});
 	} catch (error) {
@@ -43,9 +44,13 @@ export const getProductsCartAction = () => async (dispatch) => {
 	}
 };
 
-export const postCategoryAction = (category) => async (dispatch) => {
+export const addItemToCartAction = (idOrder, idProduct) => async (dispatch) => {
 	try {
-		const res = await axios.post(ENDPOINT_CLIENT_ORDER, category);
+		const data = {
+			productId: idProduct,
+			quantity: 1,
+		};
+		const res = await axios.post(ENDPOINT_ITEM_CART + idOrder, data);
 		dispatch({
 			type: ADD_PRODUCT_TO_CART,
 		});
@@ -54,11 +59,24 @@ export const postCategoryAction = (category) => async (dispatch) => {
 	}
 };
 
-export const deleteCategoryAction = (IdCategory) => async (dispatch) => {
+export const deleteItemFromCartAction = (idItem) => async (dispatch) => {
 	try {
-		const res = await axios.delete(ENDPOINT_CLIENT_ORDER + IdCategory);
+		const res = await axios.delete(ENDPOINT_ITEM_CART + idItem);
+		console.log(res.data);
 		dispatch({
 			type: DELETE_PRODUCT_FROM_CART,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const updateItemFromCartAction = (idItem) => async (dispatch) => {
+	try {
+		const res = await axios.delete(ENDPOINT_ITEM_CART + idItem);
+		console.log(res.data);
+		dispatch({
+			type: UPDATE_PRODUCT_ORDER,
 		});
 	} catch (error) {
 		console.log(error);

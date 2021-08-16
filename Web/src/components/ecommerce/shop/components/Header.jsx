@@ -38,7 +38,11 @@ const Header = () => {
 					<div className="row g-3">
 						<div className="col-md-3 text-center">
 							<Link to="/">
-								<img alt="logo" src={Logo} />
+								<img
+									alt="logo"
+									src="https://massets.appsflyer.com/wp-content/uploads/sites/7/2019/08/01114152/logos_shopping_shoee.png"
+									width="60em"
+								/>
 							</Link>
 						</div>
 						<div className="col-md-5">
