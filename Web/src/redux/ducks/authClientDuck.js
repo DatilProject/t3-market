@@ -21,7 +21,7 @@ export default function authClientReducer(state = data, action) {
 			console.log(userLogIn);
 			if (userLogIn.auth) {
 				setCokiesClient(userLogIn);
-				window.location.href = root + "/panel";
+				// window.location.href = root + "/panel";
 			} else {
 				alert("Usuario o Contaseña Incorrectos");
 			}

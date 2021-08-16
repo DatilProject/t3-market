@@ -27,7 +27,7 @@ export const logOutCommerce = () => {
 // CLIENT
 export const setCokiesClient = (client) => {
 	cookies.set("tokenClient", client.token, { path: "/" });
-	cookies.set("client", client.user, { path: "/" });
+	cookies.set("client", client.user.client, { path: "/" });
 };
 
 export const isClientLogIn = () => {

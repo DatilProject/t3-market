@@ -9,7 +9,6 @@ const data = {
 };
 
 const GET_AUTH_COMMERCE = "GET_AUTH_COMMERCE";
-const GET_AUTH_CLIENT = "GET_AUTH_CLIENT";
 
 export default function authReducer(state = data, action) {
 	switch (action.type) {

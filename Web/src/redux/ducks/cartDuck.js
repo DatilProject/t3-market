@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getValueFromCookieClient } from "../../components/utils/auth";
 import { ENDPOINT_CLIENT_ORDER } from "../endPoints";
 
 //constants
@@ -28,10 +29,10 @@ export default function cartReducer(state = data, action) {
 }
 
 //Actions
-export const getCategoryAction = () => async (dispatch) => {
+export const getProductsCartAction = () => async (dispatch) => {
 	try {
 		const idEcommerce = 1;
-		const idClient = 2;
+		const idClient = getValueFromCookieClient("id");
 		const res = await axios.get(ENDPOINT_CLIENT_ORDER + idEcommerce + "/" + idClient);
 		dispatch({
 			type: GET_ORDERS,

@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Search from "./Search";
 import { ReactComponent as IconCart3 } from "bootstrap-icons/icons/cart3.svg";
 import { ReactComponent as IconPersonBadgeFill } from "bootstrap-icons/icons/person-badge-fill.svg";
 import { ReactComponent as IconStarFill } from "bootstrap-icons/icons/star-fill.svg";
 import { ReactComponent as IconListCheck } from "bootstrap-icons/icons/list-check.svg";
 import { ReactComponent as IconDoorClosedFill } from "bootstrap-icons/icons/door-closed-fill.svg";
+import { ReactComponent as IconDoorOpeneddFill } from "bootstrap-icons/icons/door-open-fill.svg";
 import { ReactComponent as IconHeartFill } from "bootstrap-icons/icons/heart-fill.svg";
 import { ReactComponent as IconBellFill } from "bootstrap-icons/icons/bell-fill.svg";
 import { ReactComponent as IconInfoCircleFill } from "bootstrap-icons/icons/info-circle-fill.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../images/logo.webp";
+import { getProductsCartAction } from "../../../../redux/ducks/cartDuck";
+import { logOutClient, isClientLogIn } from "../../../utils/auth";
 
 const Header = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getProductsCartAction());
+	}, []);
+
+	const listProductsCart = useSelector((store) => store.cart.array);
+
+	const handleLogOut = () => {
+		logOutClient();
+		console.log("logOut");
+	};
+
 	return (
 		<React.Fragment>
 			<header className="p-3 border-bottom bg-light">
@@ -32,7 +49,7 @@ const Header = () => {
 								<Link to="/cart" className="btn btn-primary">
 									<IconCart3 className="i-va" />
 									<div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
-										5
+										{listProductsCart[0] ? listProductsCart[0].items.length : 0}
 									</div>
 								</Link>
 							</div>
@@ -47,7 +64,7 @@ const Header = () => {
 									<FontAwesomeIcon icon={faUser} className="text-light" />
 								</button>
 								<ul className="dropdown-menu">
-									<li>
+									{/* <li>
 										<Link className="dropdown-item" to="/account/profile">
 											<IconPersonBadgeFill /> My Profile
 										</Link>
@@ -56,21 +73,21 @@ const Header = () => {
 										<Link className="dropdown-item" to="/star/zone">
 											<IconStarFill className="text-warning" /> Star Zone
 										</Link>
-									</li>
+									</li> */}
 									<li>
 										<Link className="dropdown-item" to="/account/orders">
 											<IconListCheck className="text-primary" /> Orders
 										</Link>
 									</li>
-									<li>
+									{/* <li>
 										<Link className="dropdown-item" to="/account/wishlist">
 											<IconHeartFill className="text-danger" /> Wishlist
 										</Link>
-									</li>
+									</li> */}
 									<li>
 										<hr className="dropdown-divider" />
 									</li>
-									<li>
+									{/* <li>
 										<Link className="dropdown-item" to="/account/notification">
 											<IconBellFill className="text-primary" /> Notification
 										</Link>
@@ -79,18 +96,30 @@ const Header = () => {
 										<Link className="dropdown-item" to="/support">
 											<IconInfoCircleFill className="text-success" /> Support
 										</Link>
-									</li>
+									</li> */}
 									<li>
 										<hr className="dropdown-divider" />
 									</li>
+
 									<li>
-										<Link className="dropdown-item" to="/">
-											<IconDoorClosedFill className="text-danger" /> Logout
-										</Link>
+										{isClientLogIn() ? (
+											<Link className="dropdown-item" to="/">
+												<IconDoorClosedFill
+													className="text-danger"
+													onClick={handleLogOut}
+												/>
+												Logout
+											</Link>
+										) : (
+											<Link className="dropdown-item" to="/account/signin">
+												<IconDoorOpeneddFill className="text-success" />
+												LogIn
+											</Link>
+										)}
 									</li>
 								</ul>
 							</div>
-							<a
+							{/* <a
 								href="https://www.buymeacoffee.com/bhaumik"
 								target="_blank"
 								rel="noopener noreferrer"
@@ -100,7 +129,7 @@ const Header = () => {
 									alt="BuyMeACoffee"
 									width="120"
 								/>
-							</a>
+							</a> */}
 							{/* <Link to="/account/signin">Sign In</Link> |{" "}
               <Link to="/account/signup"> Sign Up</Link> */}
 						</div>
