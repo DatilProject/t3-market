@@ -97,7 +97,7 @@ router.post('/commerce/:commerceId/:clientId', async (req, res, next) => {
     res.status(200).json(newOrder)
 });
 
-router.post("/item/:itemId'", async (req, res) => {    
+router.post("/updateitem/:itemId'", async (req, res) => {    
     const item = await Item.create({ id: req.params.itemId });
     item.quantity = req.body.quantity
     await item.save();
