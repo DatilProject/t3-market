@@ -97,6 +97,13 @@ router.post('/commerce/:commerceId/:clientId', async (req, res, next) => {
     res.status(200).json(newOrder)
 });
 
+router.put("/item/:itemId'", async (req, res) => {    
+    const item = await Item.create({ id: req.params.itemId });
+    item.quantity = req.body.quantity
+    await item.save();
+    res.status(200).json(item)
+});
+
 router.post('/item/:orderId', async (req, res, next) => {
     let newItem = Item.build({ productId: req.body.productId , 
         quantity: req.body.quantity,
@@ -107,12 +114,6 @@ router.post('/item/:orderId', async (req, res, next) => {
     res.status(200).json(newItem)
 });
 
-router.put("/item/:itemId'", async (req, res) => {    
-    const item = await Item.create({ id: req.params.itemId });
-    item.quantity = req.body.quantity
-    await item.save();
-    res.status(200).json(item)
-});
 
 router.delete('/item/:itemId', async (req, res, next) => {
     let newItem = await Item.findOne({where: { id: req.params.itemId}});
