@@ -128,5 +128,17 @@ router.post("/create-payment-intent", async (req, res) => {
       clientSecret: paymentIntent.client_secret
     });
   });
+
+
+  router.put("/item/:itemId'", async (req, res) => {    
+    const item = await Item.create({ id: req.params.itemId });
+    item.quantity = req.body.quantity
+    await item.save();
+    res.status(200).json(item)
+});
+
+
+
   
+
 module.exports = router;
