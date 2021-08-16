@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getValueFromCookieClient } from "../../components/utils/auth";
-import { ENDPOINT_CLIENT_ORDER, ENDPOINT_ITEM_CART } from "../endPoints";
+import { ENDPOINT_CLIENT_ORDER, ENDPOINT_ITEM_CART, ENDPOINT_UPDATE_ITEM_CART } from "../endPoints";
 
 //constants
 const data = {
@@ -20,6 +20,7 @@ export default function cartReducer(state = data, action) {
 			window.location.reload();
 			return state;
 		case UPDATE_PRODUCT_ORDER:
+			window.location.reload();
 			return state;
 		case DELETE_PRODUCT_FROM_CART:
 			window.location.reload();
@@ -62,7 +63,6 @@ export const addItemToCartAction = (idOrder, idProduct) => async (dispatch) => {
 export const deleteItemFromCartAction = (idItem) => async (dispatch) => {
 	try {
 		const res = await axios.delete(ENDPOINT_ITEM_CART + idItem);
-		console.log(res.data);
 		dispatch({
 			type: DELETE_PRODUCT_FROM_CART,
 		});
@@ -71,10 +71,10 @@ export const deleteItemFromCartAction = (idItem) => async (dispatch) => {
 	}
 };
 
-export const updateItemFromCartAction = (idItem) => async (dispatch) => {
+export const updateItemFromCartAction = (idItem, quantity) => async (dispatch) => {
 	try {
-		const res = await axios.delete(ENDPOINT_ITEM_CART + idItem);
-		console.log(res.data);
+		const data = { quantity };
+		const res = await axios.post(ENDPOINT_UPDATE_ITEM_CART + idItem, data);
 		dispatch({
 			type: UPDATE_PRODUCT_ORDER,
 		});

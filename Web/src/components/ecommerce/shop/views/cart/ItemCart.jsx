@@ -6,7 +6,10 @@ import { ReactComponent as IconHeartFill } from "bootstrap-icons/icons/heart-fil
 import { ReactComponent as IconTrash } from "bootstrap-icons/icons/trash.svg";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { deleteItemFromCartAction } from "../../../../../redux/ducks/cartDuck";
+import {
+	deleteItemFromCartAction,
+	updateItemFromCartAction,
+} from "../../../../../redux/ducks/cartDuck";
 
 const ItemCart = ({ item, currentOrdenID }) => {
 	const { id, product, pricePerUnit, totalPrice, quantity } = item;
@@ -15,16 +18,16 @@ const ItemCart = ({ item, currentOrdenID }) => {
 
 	const handleUpdateItem = (type) => {
 		if (type === "add") {
-			setQuantityItem(quantityItem + 1);
+			dispatch(updateItemFromCartAction(id, quantityItem + 1));
+			// setQuantityItem(quantityItem + 1);
 		}
 		if (type === "minus" && quantityItem > 0) {
-			setQuantityItem(quantityItem - 1);
+			dispatch(updateItemFromCartAction(id, quantityItem - 1));
+			// setQuantityItem(quantityItem - 1);
 		}
 	};
 
 	const handleDeleteItem = () => {
-		console.log("delete");
-		console.log(id);
 		dispatch(deleteItemFromCartAction(id));
 	};
 

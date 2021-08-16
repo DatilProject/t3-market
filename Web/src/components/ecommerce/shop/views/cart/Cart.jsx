@@ -23,8 +23,6 @@ const CartView = ({ productsCart }) => {
 		}
 	}, [productsCart]);
 
-	console.log(productsCart);
-
 	return (
 		<React.Fragment>
 			<div className="bg-secondary border-top p-4 text-white mb-3">

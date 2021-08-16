@@ -3,7 +3,6 @@ export function getTotalValueAndDiscount(products) {
 	let totalDiscount = 0;
 
 	products.map((item) => {
-		console.log(item);
 		const { totalPrice, discountPricePerUnit } = item;
 		totalValue += totalPrice;
 		totalDiscount += totalPrice * discountPricePerUnit;
