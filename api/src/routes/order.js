@@ -107,6 +107,13 @@ router.post('/item/:orderId', async (req, res, next) => {
     res.status(200).json(newItem)
 });
 
+router.put("/item/:itemId'", async (req, res) => {    
+    const item = await Item.create({ id: req.params.itemId });
+    item.quantity = req.body.quantity
+    await item.save();
+    res.status(200).json(item)
+});
+
 router.delete('/item/:itemId', async (req, res, next) => {
     let newItem = await Item.findOne({where: { id: req.params.itemId}});
     await newItem.destroy();
@@ -130,12 +137,7 @@ router.post("/create-payment-intent", async (req, res) => {
   });
 
 
-  router.put("/item/:itemId'", async (req, res) => {    
-    const item = await Item.create({ id: req.params.itemId });
-    item.quantity = req.body.quantity
-    await item.save();
-    res.status(200).json(item)
-});
+
 
 
 
