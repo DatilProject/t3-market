@@ -98,7 +98,7 @@ router.post('/commerce/:commerceId/:clientId', async (req, res, next) => {
 });
 
 router.post("/updateitem/:itemId", async (req, res) => {    
-    const item = await Item.create({ id: req.params.itemId });
+    const item = await Item.findOne({where:{ id: req.params.itemId }});
     item.quantity = req.body.quantity
     await item.save();
     res.status(200).send(item)
