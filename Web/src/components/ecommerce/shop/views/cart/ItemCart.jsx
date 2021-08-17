@@ -11,8 +11,8 @@ import {
 	updateItemFromCartAction,
 } from "../../../../../redux/ducks/cartDuck";
 
-const ItemCart = ({ item, currentOrdenID }) => {
-	const { id, product, pricePerUnit, totalPrice, quantity } = item;
+const ItemCart = ({ item }) => {
+	const { id, product, pricePerUnit, quantity } = item;
 	const [quantityItem, setQuantityItem] = useState(quantity);
 	const dispatch = useDispatch();
 

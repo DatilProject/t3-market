@@ -12,14 +12,12 @@ const CouponApplyForm = lazy(() => import("../../components/others/CouponApplyFo
 const CartView = ({ productsCart }) => {
 	const [totalValue, setTotalValue] = useState(0);
 	const [totalDiscount, setTotalDiscount] = useState(0);
-	const [currentOrdenID, setCurrentOrdenID] = useState(-1);
 
 	useEffect(() => {
 		if (productsCart[0]) {
 			const totalValueAndDiscount = getTotalValueAndDiscount(productsCart[0].items);
 			setTotalValue(totalValueAndDiscount[0]);
 			setTotalDiscount(totalValueAndDiscount[1]);
-			setCurrentOrdenID(productsCart[0].id);
 		}
 	}, [productsCart]);
 
@@ -49,11 +47,7 @@ const CartView = ({ productsCart }) => {
 									<tbody>
 										{productsCart[0]
 											? productsCart[0].items.map((item) => (
-													<ItemCart
-														key={item.id}
-														item={item}
-														currentOrdenID={currentOrdenID}
-													/>
+													<ItemCart key={item.id} item={item} />
 											  ))
 											: null}
 									</tbody>

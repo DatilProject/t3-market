@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-export default function CheckoutForm() {
+import { connect } from "react-redux";
+
+const CheckoutForm = ({ productsCart }) => {
 	const [succeeded, setSucceeded] = useState(false);
 	const [error, setError] = useState(null);
 	const [processing, setProcessing] = useState("");
@@ -8,7 +10,15 @@ export default function CheckoutForm() {
 	const [clientSecret, setClientSecret] = useState("");
 	const stripe = useStripe();
 	const elements = useElements();
+	const [currentOrdenID, setCurrentOrdenID] = useState(-1);
+	console.log("currentOrdenID");
+	console.log(currentOrdenID);
+
 	useEffect(() => {
+		if (productsCart[0]) {
+			setCurrentOrdenID(productsCart[0].id);
+		}
+
 		// Create PaymentIntent as soon as the page loads
 		window
 			.fetch("http/206.81.3.107:3000/api/order/create-payment-intent", {
@@ -93,4 +103,12 @@ export default function CheckoutForm() {
 			</form>
 		</div>
 	);
-}
+};
+
+const mapStateToProps = (state) => {
+	return {
+		productsCart: state.cart.array,
+	};
+};
+
+export default connect(mapStateToProps, null)(CheckoutForm);
