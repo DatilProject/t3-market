@@ -51,13 +51,13 @@
     },
     {
       "name": "data_table_2",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/data_table_2-2.0.3",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/data_table_2-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "equatable",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/equatable-2.0.2",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/equatable-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -69,19 +69,19 @@
     },
     {
       "name": "ffi",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/ffi-1.1.1",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/ffi-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "file",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/file-6.1.1",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/file-6.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "fl_chart",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/fl_chart-0.36.1",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/fl_chart-0.36.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -165,13 +165,13 @@
     },
     {
       "name": "path_provider_linux",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_linux-2.0.0",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_linux-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "path_provider_macos",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_macos-2.0.0",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_macos-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -183,13 +183,13 @@
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_windows-2.0.1",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_windows-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "pedantic",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/pedantic-1.11.0",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/pedantic-1.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -207,13 +207,13 @@
     },
     {
       "name": "plugin_platform_interface",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.0",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "process",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/process-4.2.1",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/process-4.2.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -279,7 +279,7 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/win32-2.1.1",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/win32-2.2.5",
       "packageUri": "lib/",
       "languageVersion": "2.13"
     },
@@ -291,7 +291,7 @@
     },
     {
       "name": "xml",
-      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/xml-5.1.1",
+      "rootUri": "file:///C:/Users/josie/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/xml-5.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -302,7 +302,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-07-21T18:28:02.173477Z",
+  "generated": "2021-08-16T03:28:41.132124Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }
