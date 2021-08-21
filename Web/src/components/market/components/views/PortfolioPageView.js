@@ -17,7 +17,7 @@ const PortfolioPageView = () => {
 					<div className="row mx-5 popup">
 						<div className="col">
 							<div className="card">
-								<Link to="/myPortfolio">
+								<Link to="/ecommerce/josueStore" target="_blank">
 									<img
 										className="card-img-top "
 										alt="card-img-top"
@@ -28,7 +28,7 @@ const PortfolioPageView = () => {
 						</div>
 						<div className="col">
 							<div className="card">
-								<Link to="/myPortfolio">
+								<Link to="/ecommerce/josueStore" target="_blank">
 									<img
 										className="card-img-top"
 										alt="card-img-top"
