@@ -10,7 +10,7 @@ const ProductSection = () => {
 
 	useEffect(() => {
 		dispatch(getCategoryAction());
-	}, []);
+	}, [dispatch]);
 
 	const listCategories = useSelector((store) => store.categories.array);
 

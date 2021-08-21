@@ -18,7 +18,7 @@ const NewProducto = () => {
 
 	useEffect(() => {
 		dispatch(getCategoryAction());
-	}, []);
+	}, [dispatch]);
 
 	const listCategories = useSelector((store) => store.categories.array);
 
@@ -43,25 +43,28 @@ const NewProducto = () => {
 		iceId: 1,
 	});
 
-	const setValueInput = useCallback((event) => {
-		setProduct({
-			...product,
-			[event.target.name]: event.target.value,
-		});
-		if (event.target.name === "category") {
+	const setValueInput = useCallback(
+		(event) => {
 			setProduct({
 				...product,
-				categoryId: getIdCategory(event.target.value, listCategories),
+				[event.target.name]: event.target.value,
 			});
-		}
-		//check if we can improve this
-		if (event.target.name === "on_granel" || event.target.name === "on_sale") {
-			setProduct({
-				...product,
-				[event.target.name]: event.target.value === "false",
-			});
-		}
-	}, []);
+			if (event.target.name === "category") {
+				setProduct({
+					...product,
+					categoryId: getIdCategory(event.target.value, listCategories),
+				});
+			}
+			//check if we can improve this
+			if (event.target.name === "on_granel" || event.target.name === "on_sale") {
+				setProduct({
+					...product,
+					[event.target.name]: event.target.value === "false",
+				});
+			}
+		},
+		[listCategories, product],
+	);
 
 	const submitNewProduct = () => {
 		dispatch(postProductsAction(product));

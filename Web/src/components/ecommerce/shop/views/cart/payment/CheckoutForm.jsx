@@ -34,7 +34,7 @@ const CheckoutForm = ({ productsCart }) => {
 			.then((data) => {
 				setClientSecret(data.clientSecret);
 			});
-	}, []);
+	}, [productsCart]);
 
 	const cardStyle = {
 		style: {

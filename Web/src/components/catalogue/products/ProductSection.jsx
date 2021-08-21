@@ -15,7 +15,7 @@ const ProductSection = () => {
 
 	useEffect(() => {
 		dispatch(getProductsAction());
-	}, []);
+	}, [dispatch]);
 
 	const handleSearch = () => {
 		const filter = filterProduct.current.value;

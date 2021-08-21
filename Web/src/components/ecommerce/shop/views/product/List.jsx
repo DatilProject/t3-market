@@ -42,7 +42,7 @@ const ProductListView = ({ productsCart }) => {
 	useEffect(() => {
 		dispatch(getProductsAction());
 		// setState({ ...state, currentProducts: listProducts });
-	}, []);
+	}, [dispatch]);
 
 	const handleAddItemToCart = (idProduct) => {
 		console.log("add");

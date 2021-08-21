@@ -9,7 +9,7 @@ const Step1 = (props) => {
 
 	useEffect(() => {
 		dispatch(getCategoryAction());
-	}, []);
+	}, [dispatch]);
 
 	const listCategories = useSelector((store) => store.categories.array);
 

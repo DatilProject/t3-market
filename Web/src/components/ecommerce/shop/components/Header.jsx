@@ -22,7 +22,7 @@ const Header = () => {
 
 	useEffect(() => {
 		dispatch(getProductsCartAction());
-	}, []);
+	}, [dispatch]);
 
 	const listProductsCart = useSelector((store) => store.cart.array);
 
