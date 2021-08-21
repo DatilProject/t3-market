@@ -17,14 +17,12 @@ export default function cartReducer(state = data, action) {
 		case GET_CURRENT_ORDER:
 			return { ...state, array: action.payload };
 		case ADD_PRODUCT_TO_CART:
-			window.location.reload();
-			return state;
+			return { ...state, array: action.payload };
 		case UPDATE_PRODUCT_ORDER:
 			window.location.reload();
 			return state;
 		case DELETE_PRODUCT_FROM_CART:
-			window.location.reload();
-			return state;
+			return { ...state, array: action.payload };
 		default:
 			return state;
 	}
@@ -35,10 +33,11 @@ export const getProductsCartAction = () => async (dispatch) => {
 	try {
 		const idEcommerce = 1;
 		const idClient = getValueFromCookieClient("id");
-		const res = await axios.get(ENDPOINT_CLIENT_ORDER + idEcommerce + "/" + idClient);
+		await axios.post(ENDPOINT_CLIENT_ORDER + idEcommerce + "/" + idClient);
+		const resProducts = await axios.get(ENDPOINT_CLIENT_ORDER + idEcommerce + "/" + idClient);
 		dispatch({
 			type: GET_CURRENT_ORDER,
-			payload: res.data,
+			payload: resProducts.data,
 		});
 	} catch (error) {
 		console.log(error);
@@ -51,9 +50,13 @@ export const addItemToCartAction = (idOrder, idProduct) => async (dispatch) => {
 			productId: idProduct,
 			quantity: 1,
 		};
-		const res = await axios.post(ENDPOINT_ITEM_CART + idOrder, data);
+		await axios.post(ENDPOINT_ITEM_CART + idOrder, data);
+		const idEcommerce = 1;
+		const idClient = getValueFromCookieClient("id");
+		const res = await axios.get(ENDPOINT_CLIENT_ORDER + idEcommerce + "/" + idClient);
 		dispatch({
 			type: ADD_PRODUCT_TO_CART,
+			payload: res.data,
 		});
 	} catch (error) {
 		console.log(error);
@@ -62,9 +65,13 @@ export const addItemToCartAction = (idOrder, idProduct) => async (dispatch) => {
 
 export const deleteItemFromCartAction = (idItem) => async (dispatch) => {
 	try {
-		const res = await axios.delete(ENDPOINT_ITEM_CART + idItem);
+		await axios.delete(ENDPOINT_ITEM_CART + idItem);
+		const idEcommerce = 1;
+		const idClient = getValueFromCookieClient("id");
+		const res = await axios.get(ENDPOINT_CLIENT_ORDER + idEcommerce + "/" + idClient);
 		dispatch({
 			type: DELETE_PRODUCT_FROM_CART,
+			payload: res.data,
 		});
 	} catch (error) {
 		console.log(error);
@@ -74,7 +81,7 @@ export const deleteItemFromCartAction = (idItem) => async (dispatch) => {
 export const updateItemFromCartAction = (idItem, quantity) => async (dispatch) => {
 	try {
 		const data = { quantity };
-		const res = await axios.post(ENDPOINT_UPDATE_ITEM_CART + idItem, data);
+		await axios.post(ENDPOINT_UPDATE_ITEM_CART + idItem, data);
 		dispatch({
 			type: UPDATE_PRODUCT_ORDER,
 		});

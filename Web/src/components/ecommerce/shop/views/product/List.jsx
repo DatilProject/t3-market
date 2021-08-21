@@ -23,6 +23,7 @@ const CardProductList = lazy(() => import("../../components/card/CardProductList
 const ProductListView = ({ productsCart }) => {
 	const dispatch = useDispatch();
 	const [currentOrdenID, setCurrentOrdenID] = useState(-1);
+	const listProducts = useSelector((store) => store.products.array);
 
 	useEffect(() => {
 		if (productsCart[0]) {
@@ -30,12 +31,11 @@ const ProductListView = ({ productsCart }) => {
 		}
 	}, [productsCart]);
 
-	const listProducts = useSelector((store) => store.products.array);
 	const [state, setState] = useState({
 		currentProducts: [],
 		currentPage: null,
 		totalPages: null,
-		totalItems: listProducts.length,
+		totalItems: 0,
 		view: "list",
 	});
 
@@ -43,6 +43,12 @@ const ProductListView = ({ productsCart }) => {
 		dispatch(getProductsAction());
 		// setState({ ...state, currentProducts: listProducts });
 	}, [dispatch]);
+
+	useEffect(() => {
+		const totalItems = listProducts.length;
+		setState({ ...state, totalItems });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [listProducts]);
 
 	const handleAddItemToCart = (idProduct) => {
 		console.log("add");

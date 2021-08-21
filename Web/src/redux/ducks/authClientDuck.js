@@ -18,6 +18,7 @@ export default function authClientReducer(state = data, action) {
 				token: action.payload.token,
 				user: action.payload.user,
 			};
+			console.log(userLogIn);
 			if (userLogIn.auth) {
 				setCokiesClient(userLogIn);
 				window.location.href = root + rootCommerce;
