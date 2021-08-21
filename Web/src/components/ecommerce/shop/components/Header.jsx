@@ -19,16 +19,16 @@ import { logOutClient, isClientLogIn } from "../../../utils/auth";
 
 const Header = () => {
 	const dispatch = useDispatch();
+	const isLogin = isClientLogIn();
 
 	useEffect(() => {
 		dispatch(getProductsCartAction());
-	}, [dispatch]);
+	}, [dispatch, isLogin]);
 
 	const listProductsCart = useSelector((store) => store.cart.array);
 
 	const handleLogOut = () => {
 		logOutClient();
-		console.log("logOut");
 	};
 
 	return (
@@ -106,12 +106,13 @@ const Header = () => {
 									</li>
 
 									<li>
-										{isClientLogIn() ? (
-											<Link className="dropdown-item" to="/">
-												<IconDoorClosedFill
-													className="text-danger"
-													onClick={handleLogOut}
-												/>
+										{isLogin ? (
+											<Link
+												className="dropdown-item"
+												onClick={handleLogOut}
+												to="/"
+											>
+												<IconDoorClosedFill className="text-danger" />
 												Logout
 											</Link>
 										) : (

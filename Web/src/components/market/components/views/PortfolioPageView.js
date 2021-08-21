@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row } from "react-bootstrap";
 import "./styles/PageView.css";
 import { Link } from "react-router-dom";
+import { rootCommerce } from "../../../utils/constants";
 
 const PortfolioPageView = () => {
 	return (
@@ -17,7 +18,7 @@ const PortfolioPageView = () => {
 					<div className="row mx-5 popup">
 						<div className="col">
 							<div className="card">
-								<Link to="/ecommerce/josueStore" target="_blank">
+								<Link to={rootCommerce} target="_blank">
 									<img
 										className="card-img-top "
 										alt="card-img-top"
@@ -28,7 +29,7 @@ const PortfolioPageView = () => {
 						</div>
 						<div className="col">
 							<div className="card">
-								<Link to="/ecommerce/josueStore" target="_blank">
+								<Link to={rootCommerce} target="_blank">
 									<img
 										className="card-img-top"
 										alt="card-img-top"

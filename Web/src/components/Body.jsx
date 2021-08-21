@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, HashRouter } from "react-router
 import Login from "./login/LogIn";
 import SideBar from "./common/sidebar/SideBar";
 import EcommerceShop from "../pages/EcommerceShop";
+import { rootCommerce } from "./utils/constants";
 
 const Body = () => {
 	return (
@@ -11,7 +12,7 @@ const Body = () => {
 				<Route exact path="/">
 					<Login />
 				</Route>
-				<Route path="/ecommerce/josueStore">
+				<Route path={rootCommerce}>
 					<EcommerceShop />
 				</Route>
 				<Route path="/">

@@ -6,6 +6,7 @@ import TopMenu from "./components/TopMenu";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.min.css";
+import { rootCommerce } from "../../utils/constants";
 //const Header = lazy(() => import("./components/Header"));
 //const TopMenu = lazy(() => import("./components/TopMenu"));
 const HomeView = lazy(() => import("./views/Home"));
@@ -31,7 +32,7 @@ const BlogDetailView = lazy(() => import("./views/blog/Detail"));
 
 function App() {
 	return (
-		<HashRouter basename="/ecommerce/josueStore">
+		<HashRouter basename={rootCommerce}>
 			<React.Fragment>
 				<Header />
 				<TopMenu />

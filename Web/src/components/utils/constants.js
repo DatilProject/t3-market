@@ -1,2 +1,2 @@
 export const root = "./#";
-export const rootCommerce = "/";
+export const rootCommerce = "/ecommerce/josueStore";

@@ -18,10 +18,10 @@ export default function authClientReducer(state = data, action) {
 				token: action.payload.token,
 				user: action.payload.user,
 			};
-			console.log(userLogIn);
 			if (userLogIn.auth) {
 				setCokiesClient(userLogIn);
-				// window.location.href = root;
+				window.location.href = root + rootCommerce;
+				window.location.reload();
 			} else {
 				alert("Usuario o Contaseña Incorrectos");
 			}
@@ -55,7 +55,6 @@ export const getAuthClientAction = (authObject) => async (dispatch) => {
 			return res.json();
 		})
 		.then((res) => {
-			console.log(res);
 			dispatch({
 				type: GET_AUTH_CLIENT,
 				payload: res,

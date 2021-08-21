@@ -1,4 +1,5 @@
 import Cookies from "universal-cookie";
+import { rootCommerce, root } from "./constants";
 const cookies = new Cookies();
 
 // COMMERCE
@@ -44,5 +45,6 @@ export const getValueFromCookieClient = (key) => {
 export const logOutClient = () => {
 	cookies.remove("tokenClient", { path: "/" });
 	cookies.remove("client", { path: "/" });
-	window.location.href = "./";
+	window.location.href = root + rootCommerce;
+	window.location.reload();
 };
