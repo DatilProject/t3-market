@@ -60,7 +60,44 @@ router.post('/client', async (req, res, next) => {
     }
 });
 
+router.post('/client/createaccount', async (req, res, next) => {
+    req.body.password = bcrypt.hashSync(req.body.password,7);
+    let emailValidation = await AccountCredentials.findOne( {where: {email: req.body.email}});
+    if (emailValidation){
+        return res.status(401).send({"message":"El correo ingresado ya posee una cuenta activa"})
+    }
+    let usernameValidation = await AccountCredentials.findOne( {where: {username: req.body.username}});
+    if (usernameValidation){
+        return res.status(401).send({"message":"El username ingresado ya posee una cuenta activa"})
+    }
+    
+    try{
+        const newUser = await AccountCredentials.create({
+            "email": req.body.email,
+            "password": req.body.password,
+            "username": req.body.username, 
+        });
+        if (newUser){
+            const newClient = await Client.create({
+                "name": req.body.name,
+                "addres": req.body.addres,
+                "phone": req.body.phone,
+                "accountId": newUser.id
+            });
+            if (newClient){
+                return res.status(200).send({message: "Usuario creado exitosamente"})
+            }
+        }
+        return res.status(401).send({message: "No se pudo crear el usuario"});
+    } catch (error){ 
+        return res.status(401).send({message:"No se pudo crear el nuevo usuario"})      
+    }
+
+    
+    
+});
 module.exports = router;
+
 
 
 
