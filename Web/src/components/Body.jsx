@@ -9,10 +9,9 @@ const Body = () => {
 		<HashRouter>
 			<Switch>
 				<Route exact path="/">
-					{/* <Login /> */}
-					<EcommerceShop />
+					<Login />
 				</Route>
-				<Route exact path="/ecommerce">
+				<Route path="/ecommerce/josueStore">
 					<EcommerceShop />
 				</Route>
 				<Route path="/">

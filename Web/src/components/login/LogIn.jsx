@@ -116,7 +116,7 @@ const LogIn = () => {
 
 				<Row className="mb-4">
 					<Col className="text-center">
-						<a href="#" className="txt2 bo1 ml-2">
+						<a href="/" className="txt2 bo1 ml-2">
 							Olvidé mi contraseña
 						</a>
 					</Col>

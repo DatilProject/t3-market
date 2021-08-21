@@ -24,7 +24,7 @@ const PortfolioPageView = () => {
 								<Link to="/myPortfolio">
 									<img
 										className="card-img-top "
-										alt="Image"
+										alt="card-img-top"
 										src="https://i.imgur.com/r5Etjcw.png"
 									/>
 								</Link>
@@ -35,7 +35,7 @@ const PortfolioPageView = () => {
 								<Link to="/myPortfolio">
 									<img
 										className="card-img-top"
-										alt="Image"
+										alt="card-img-top"
 										src="https://i.imgur.com/r5Etjcw.png"
 									/>
 								</Link>

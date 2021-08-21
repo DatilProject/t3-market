@@ -36,7 +36,7 @@ const CardProductList2 = (props) => {
 								<del className="small text-muted mr-2">${product.originPrice}</del>
 							)}
 							{(product.discountPercentage > 0 || product.discountPrice > 0) && (
-								<span className={`rounded p-1 bg-warning mr-2 small`}>
+								<span className={"rounded p-1 bg-warning mr-2 small"}>
 									-
 									{product.discountPercentage > 0
 										? product.discountPercentage + "%"
