@@ -1,5 +1,5 @@
-import { ENDPOINT_AUTH } from "../endPoints";
-import { setCokies } from "../../components/utils/auth";
+import { ENDPOINT_AUTH_COMMERCE } from "../endPoints";
+import { setCokiesCommerce } from "../../components/utils/auth";
 import { root } from "../../components/utils/constants";
 
 const data = {
@@ -8,18 +8,18 @@ const data = {
 	user: {},
 };
 
-const GET_AUTH = "GET_AUTH";
+const GET_AUTH_COMMERCE = "GET_AUTH_COMMERCE";
 
 export default function authReducer(state = data, action) {
 	switch (action.type) {
-		case GET_AUTH:
+		case GET_AUTH_COMMERCE:
 			var userLogIn = {
 				auth: action.payload.auth,
 				token: action.payload.token,
 				user: action.payload.user,
 			};
 			if (userLogIn.auth) {
-				setCokies(userLogIn);
+				setCokiesCommerce(userLogIn);
 				window.location.href = root + "/panel";
 			} else {
 				alert("Usuario o Contaseña Incorrectos");
@@ -35,14 +35,14 @@ export default function authReducer(state = data, action) {
 	}
 }
 
-export const getAuthAction = (authObject) => async (dispatch) => {
+export const getAuthCommerceAction = (authObject) => async (dispatch) => {
 	const dataLogIn = {
 		email: authObject.username,
 		password: authObject.password,
 	};
 
 	// eslint-disable-next-line no-undef
-	await fetch(ENDPOINT_AUTH, {
+	await fetch(ENDPOINT_AUTH_COMMERCE, {
 		method: "POST",
 		headers: {
 			Accept: "application/json",
@@ -55,7 +55,7 @@ export const getAuthAction = (authObject) => async (dispatch) => {
 		})
 		.then((res) => {
 			dispatch({
-				type: GET_AUTH,
+				type: GET_AUTH_COMMERCE,
 				payload: res,
 			});
 			// if (res.auth) {

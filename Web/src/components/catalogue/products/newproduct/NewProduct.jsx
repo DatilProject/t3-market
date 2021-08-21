@@ -7,13 +7,13 @@ import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import { useDispatch, useSelector } from "react-redux";
 import { postProductsAction } from "../../../../redux/ducks/productDucks";
-import { getValueFromCookie } from "../../../utils/auth.js";
+import { getValueFromCookieCommerce } from "../../../utils/auth.js";
 import { getIdCategory } from "../../../utils/utils.js";
 import { getCategoryAction } from "../../../../redux/ducks/categoryDucks";
 
 const NewProducto = () => {
 	eventsMultiSteps();
-	const idUser = getValueFromCookie("id");
+	const idUser = getValueFromCookieCommerce("id");
 	const dispatch = useDispatch();
 
 	useEffect(() => {

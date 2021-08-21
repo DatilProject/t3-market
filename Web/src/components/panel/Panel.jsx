@@ -4,10 +4,10 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { BiCheck } from "react-icons/bi";
 import { GiHand } from "react-icons/gi";
-import { getValueFromCookie } from "../utils/auth";
+import { getValueFromCookieCommerce } from "../utils/auth";
 
 const Panel = () => {
-	const nameUser = getValueFromCookie("name");
+	const nameUser = getValueFromCookieCommerce("name");
 
 	return (
 		<Container fluid className="section-container">

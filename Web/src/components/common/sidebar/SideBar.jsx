@@ -9,10 +9,10 @@ import "./SideBar.css";
 import Panel from "../../panel/Panel";
 import Market from "../../market/Market";
 import Catalogue from "../../catalogue/Catalogue";
-import { logOut, isLogIn } from "../../utils/auth";
+import { logOutCommerce, isCommerceLogIn } from "../../utils/auth";
 
 const SideBar = () => {
-	if (!isLogIn()) {
+	if (!isCommerceLogIn()) {
 		window.location.href = "./";
 	}
 
@@ -53,7 +53,7 @@ const SideBar = () => {
 									<NavText>Market</NavText>
 								</NavItem>
 
-								<NavItem eventKey="logout" onClick={() => logOut()}>
+								<NavItem eventKey="logout" onClick={() => logOutCommerce()}>
 									<NavIcon>
 										<IoLogOut className="menu-icon" size="2rem" />
 									</NavIcon>
