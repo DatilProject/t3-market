@@ -55,7 +55,11 @@ const CartView = ({ productsCart }) => {
 							</div>
 
 							<div className="card-footer">
-								<Link to="/checkout" className="btn btn-primary float-right">
+								<Link
+									to="/checkout"
+									className="btn btn-primary float-right"
+									id="pay-for-order"
+								>
 									Efectuar Compra <IconChevronRight className="i-va" />
 								</Link>
 								<Link to="/" className="btn btn-secondary">

@@ -11,8 +11,6 @@ const CheckoutForm = ({ productsCart }) => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const [currentOrdenID, setCurrentOrdenID] = useState(-1);
-	console.log("currentOrdenID");
-	console.log(currentOrdenID);
 
 	useEffect(() => {
 		if (productsCart[0]) {

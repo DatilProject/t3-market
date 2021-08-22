@@ -10,7 +10,7 @@ const CardProductList = (props) => {
 	const handleAddItemToCart = props.handleAddItemToCart;
 
 	return (
-		<div className="card">
+		<div className="card info-product">
 			<div className="row g-0">
 				<div className="col-md-3 text-center">
 					<img

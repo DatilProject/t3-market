@@ -32,7 +32,7 @@ const TopMenu = () => {
 									All Pages
 								</button>
 								<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li>
+									<li id="singIn-option">
 										<Link className="dropdown-item" to="/account/signin">
 											Sign In
 										</Link>
@@ -85,7 +85,7 @@ const TopMenu = () => {
 									Fashion
 								</Link>
 							</li> */}
-							<li className="nav-item">
+							<li className="nav-item" id="nav-supermarket">
 								<Link className="nav-link" to="/category">
 									Supermarket
 								</Link>
