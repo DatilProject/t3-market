@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import ProviderMock from "../___mocks__/ProviderMock";
+import ProviderMock from "../__mocks__/ProviderMock";
 import Catalogue from "../../components/catalogue/Catalogue";
 
 describe("Test Login Page", () => {

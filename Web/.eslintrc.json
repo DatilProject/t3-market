@@ -29,6 +29,7 @@
 		"no-constant-condition": "off",
 		"react/react-in-jsx-scope": "off",
 		"jest/valid-expect": "off",
-		"no-unused-expressions": "off"
+		"no-unused-expressions": "off",
+		"jest/no-mocks-import": "off"
 	}
 }

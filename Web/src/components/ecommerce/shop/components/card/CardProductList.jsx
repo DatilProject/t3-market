@@ -82,7 +82,7 @@ const CardProductList = (props) => {
 						<div className="btn-group btn-block" role="group">
 							<button
 								type="button"
-								className="btn btn-sm btn-primary"
+								className="btn btn-sm btn-primary add-to-cart-btn"
 								title="Add to cart"
 								onClick={() => handleAddItemToCart(product.id)}
 							>

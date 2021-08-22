@@ -8,6 +8,7 @@ describe("Test SideBar Component", () => {
 		const sidebar = mount(<SideBar />);
 		expect(sidebar.length).toEqual(1);
 	});
+
 	test("Must display a Panel section", () => {
 		render(<SideBar />);
 		const linkElement = screen.getByText(/Panel/i);

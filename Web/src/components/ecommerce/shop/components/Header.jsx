@@ -52,7 +52,7 @@ const Header = () => {
 							<div className="position-relative d-inline mr-3">
 								<Link to="/cart" className="btn btn-primary">
 									<IconCart3 className="i-va" />
-									<div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
+									<div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle cart-btn">
 										{listProductsCart[0] ? listProductsCart[0].items.length : 0}
 									</div>
 								</Link>
