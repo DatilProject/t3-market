@@ -11,9 +11,7 @@ class CheckoutView extends Component {
 	}
 
 	render() {
-		const promise = loadStripe(
-			"pk_test_TYooMQauvdEDq54NiTphI7jx",
-		);
+		const promise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 		return (
 			<React.Fragment>
 				<div className="bg-secondary border-top p-4 text-white mb-3">

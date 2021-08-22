@@ -26,7 +26,7 @@ const CheckoutForm = ({ productsCart }) => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ items: [{ orderId: currentOrdenID}] }),
+				body: JSON.stringify({ items: [{ orderId: currentOrdenID }] }),
 			})
 			.then((res) => {
 				return res.json();

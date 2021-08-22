@@ -20,6 +20,7 @@ import { ReactComponent as IconShieldLockFill } from "bootstrap-icons/icons/shie
 
 const SignUpForm = (props) => {
 	const { handleSubmit, submitting, onSubmit, submitFailed } = props;
+
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
@@ -29,39 +30,37 @@ const SignUpForm = (props) => {
 			<div className="row mb-3">
 				<div className="col-md-6">
 					<Field
-						name="firstName"
+						name="name"
 						type="text"
-						label="First Name"
+						label="Name"
 						component={renderFormField}
-						placeholder="First Name"
+						placeholder="Name"
 						validate={[required, name]}
 						required={true}
 					/>
 				</div>
 				<div className="col-md-6">
 					<Field
-						name="lastName"
+						name="username"
 						type="text"
-						label="Last Name"
+						label="Username"
 						component={renderFormField}
-						placeholder="Last Name"
+						placeholder="Username"
 						validate={[required, name]}
 						required={true}
 					/>
 				</div>
 			</div>
+
 			<Field
-				name="mobileNo"
-				type="number"
+				name="Email"
+				type="email"
 				label="Mobile no"
 				component={renderFormGroupField}
-				placeholder="Mobile no without country code"
+				placeholder="Email"
 				icon={IconPhoneFill}
 				validate={[required, maxLengthMobileNo, minLengthMobileNo, digit]}
 				required={true}
-				max="999999999999999"
-				min="9999"
-				className="mb-3"
 			/>
 			<Field
 				name="password"
@@ -76,18 +75,19 @@ const SignUpForm = (props) => {
 				minLength="8"
 				className="mb-3"
 			/>
+
 			<button type="submit" className="btn btn-primary btn-block mb-3" disabled={submitting}>
 				Create
 			</button>
 			<Link className="float-left" to="/account/signin" title="Sign In">
 				Sing In
 			</Link>
-			<Link className="float-right" to="/account/forgotpassword" title="Forgot Password">
+			{/* <Link className="float-right" to="/account/forgotpassword" title="Forgot Password">
 				Forgot password?
-			</Link>
+			</Link> */}
 			<div className="clearfix"></div>
 			<hr></hr>
-			<div className="row">
+			{/* <div className="row">
 				<div className="col- text-center">
 					<p className="text-muted small">Or you can join with</p>
 				</div>
@@ -102,7 +102,7 @@ const SignUpForm = (props) => {
 						<FontAwesomeIcon icon={faGoogle} className="mx-1" />
 					</Link>
 				</div>
-			</div>
+			</div> */}
 		</form>
 	);
 };

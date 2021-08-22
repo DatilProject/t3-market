@@ -1,5 +1,7 @@
 import React, { lazy, Component } from "react";
 import { Link } from "react-router-dom";
+import DellImg from "../../images/banner/Dell.webp";
+import LaptopsImg from "../../images/banner/Laptops.webp";
 const SingUpForm = lazy(() => import("../../components/account/SignUpForm"));
 
 class SignUpView extends Component {
@@ -12,18 +14,10 @@ class SignUpView extends Component {
 				<div className="row border">
 					<div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block">
 						<Link to="/">
-							<img
-								src="../../images/banner/Dell.webp"
-								alt="..."
-								className="img-fluid"
-							/>
+							<img src={DellImg} alt="Dell img" className="img-fluid" />
 						</Link>
 						<Link to="/">
-							<img
-								src="../../images/banner/Laptops.webp"
-								alt="..."
-								className="img-fluid"
-							/>
+							<img src={LaptopsImg} alt="Laptops img" className="img-fluid" />
 						</Link>
 					</div>
 					<div className="col-md-6 p-3">
