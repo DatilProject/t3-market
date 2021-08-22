@@ -133,9 +133,13 @@ router.post("/create-payment-intent", async (req, res) => {
       amount: calculateOrderAmount(),
       currency: "usd"
     });
+
+    const order = await Order.findOne({where:{ id: req.params.orderId }});
+    order.is_paid_up = true
+    await order.save();
     res.send({
-      clientSecret: paymentIntent.client_secret
-    });
+        clientSecret: paymentIntent.client_secret
+      });
   });
 
 
