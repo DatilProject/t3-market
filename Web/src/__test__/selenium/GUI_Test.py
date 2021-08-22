@@ -14,6 +14,7 @@ commerce_password = "123456789"
 
 password_credict_card = "4242 4242 4242 4242 424242424"
 url = "https://datil-market.web.app/"
+driver_chrome = ".\src\__test__\selenium\chromedriver.exe"
 
 
 
@@ -93,7 +94,9 @@ def go_to_payment_order(browser, password_credict_card):
     browser.implicitly_wait(1)
     time.sleep(2)
     payment_btn.click()
+    time.sleep(1)
     
+    browser.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.HOME)
     credict_card_input = browser.find_element_by_id("payment-card-element")
     browser.implicitly_wait(1)
     credict_card_input = credict_card_input.find_element_by_class_name("__PrivateStripeElement-input")
@@ -101,7 +104,7 @@ def go_to_payment_order(browser, password_credict_card):
 
 
 
-browser = webdriver.Chrome("chromedriver.exe")
+browser = webdriver.Chrome(driver_chrome)
 browser.get(url)
 time.sleep(1)
 

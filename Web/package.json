@@ -55,6 +55,7 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --verbose",
+		"test-GUI": "python ./src/__test__/selenium/GUI_Test.py",
 		"eject": "react-scripts eject",
 		"format": "prettier --write src/**/*.{jsx,js}",
 		"lint": "eslint src/**/*.{jsx,js}",
