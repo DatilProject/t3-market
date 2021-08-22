@@ -21,12 +21,12 @@ const CheckoutForm = ({ productsCart }) => {
 
 		// Create PaymentIntent as soon as the page loads
 		window
-			.fetch("http/206.81.3.107:3000/api/order/create-payment-intent", {
+			.fetch("https://206.81.3.107/api/order/create-payment-intent", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ items: [{ orderId: "2" }] }),
+				body: JSON.stringify({ items: [{ orderId: currentOrdenID}] }),
 			})
 			.then((res) => {
 				return res.json();

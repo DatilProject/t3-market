@@ -12,7 +12,7 @@ class CheckoutView extends Component {
 
 	render() {
 		const promise = loadStripe(
-			"pk_test_51JLrfnJ9ifkv8fqPKRQcI1CULUcVCBMeAWHcWe5AGsdbM2X3y5UI4ZK5tAahEtowdTwBYaulYPJKqE2tfIBDhSEu005emRRyVI",
+			"pk_test_TYooMQauvdEDq54NiTphI7jx",
 		);
 		return (
 			<React.Fragment>
