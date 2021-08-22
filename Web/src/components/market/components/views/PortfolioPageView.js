@@ -17,7 +17,7 @@ const PortfolioPageView = () => {
 				<Container className="p-6 mb-5">
 					<div className="row mx-5 popup">
 						<div className="col">
-							<div className="card">
+							<div className="card" id="commerce-template-1">
 								<Link to={rootCommerce} target="_blank">
 									<img
 										className="card-img-top "
@@ -27,7 +27,7 @@ const PortfolioPageView = () => {
 								</Link>
 							</div>
 						</div>
-						<div className="col">
+						<div className="col" id="commerce-template-2">
 							<div className="card">
 								<Link to={rootCommerce} target="_blank">
 									<img

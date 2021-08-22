@@ -139,7 +139,7 @@ const ProductListView = ({ productsCart }) => {
 							</div>
 						</div>
 						<hr />
-						<div className="row g-3">
+						<div className="row g-3 products-container">
 							{state.view === "grid" &&
 								listProducts.map((product, idx) => {
 									return (

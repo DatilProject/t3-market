@@ -46,7 +46,7 @@ const SideBar = () => {
 									<NavText>Catalogo</NavText>
 								</NavItem>
 
-								<NavItem eventKey="market">
+								<NavItem eventKey="market" id="sideNav-market-option">
 									<NavIcon>
 										<AiOutlineShopping className="menu-icon" size="2rem" />
 									</NavIcon>
