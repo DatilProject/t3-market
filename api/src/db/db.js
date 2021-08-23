@@ -58,7 +58,7 @@ Market.hasMany(Product);
 Product.belongsTo(Market);
 
 Product.hasMany(Image);
-Image.belongsTo(Product);
+Image.belongsTo(Product, { onDelete: 'CASCADE'});
 
 Template.hasOne(Market);
 Market.belongsTo(Template);
