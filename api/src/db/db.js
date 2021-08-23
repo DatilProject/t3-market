@@ -90,7 +90,7 @@ Bill.belongsTo(Order);
 Order.hasMany(Item);
 Item.belongsTo(Order);
 
-conn.sync({force:false})
+conn.sync({force:true})
 .then(()=> {
     console.log("Postgres connnection successful");
 })
