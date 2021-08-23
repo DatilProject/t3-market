@@ -85,16 +85,20 @@ router.put('/:id', async (req,res,next)=>{
 
 
 router.delete('/:id', async (req, res, next) => {
-    Product.destroy({
-        where: {id:req.params.id}
+
+    Image.destroy(
+        {where: {productId: req.params.id}}
+        ).then(()=>{
+        Product.destroy({
+            where: {id:req.params.id}
+            })
+            .then(() => {
+            res.status(204).json({deleted: true, message: "Se eliminó el producto correctamente"}).end();
+            })
+            .catch(() => {
+            res.status(404).json({deleted: false, message: "No se eliminó correctamente el producto"});
         })
-        .then(() => {
-        res.status(204).json({deleted: true, message: "Se eliminó el producto correctamente"}).end();
-        })
-        .catch(() => {
-        res.status(404).json({deleted: false, message: "No se eliminó correctamente el producto"});
-    })
-        
+    });
 });
 
 module.exports = router;
