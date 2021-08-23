@@ -66,8 +66,8 @@ Market.belongsTo(Template);
 Theme.hasOne(Market);
 Market.belongsTo(Theme);
 
-Commerce.hasOne(Market);
-Market.belongsTo(Commerce);
+Market.hasOne(Commerce);
+Commerce.belongsTo(Market);
 
 Product.hasOne(Item);
 Item.belongsTo(Product);
