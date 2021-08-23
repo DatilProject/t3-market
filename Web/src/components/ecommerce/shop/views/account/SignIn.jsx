@@ -34,7 +34,7 @@ const SignInView = () => {
 					</Link>
 				</div>
 				<div className="col-md-6 p-3">
-					<h4 className="text-center">Iniciar Sesion con Datil</h4>
+					<h4 className="text-center">Iniciar Sesion</h4>
 					<SignInForm LogInClient={handleLoginClient} handleOnChange={handleOnChange} />
 				</div>
 			</div>

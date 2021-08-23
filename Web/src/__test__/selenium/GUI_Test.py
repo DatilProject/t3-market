@@ -9,7 +9,7 @@ commerce_username = "jedavalo@fiec.espol.edu.ec"
 commerce_password = "123456789"
 
 password_credict_card = "4242 4242 4242 4242 424242424"
-url = "https://datil-market.web.app/"
+url = "https://market-project-decb1.web.app/"
 driver_chrome = ".\src\__test__\selenium\chromedriver.exe"
 
 

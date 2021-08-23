@@ -22,7 +22,7 @@ const Panel = () => {
 
 			<Container>
 				<Card className="pt-3">
-					<Card.Title className="ml-3 mb-1">Empieza con Dátil</Card.Title>
+					<Card.Title className="ml-3 mb-1">Empieza con Nosotros</Card.Title>
 					<Card.Text className="ml-3">
 						Sigue estos pasos para empezar a emitir comprobantes electrónicos:
 					</Card.Text>

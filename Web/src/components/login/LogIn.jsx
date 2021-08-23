@@ -46,7 +46,7 @@ const LogIn = () => {
 							<Figure.Image
 								className="my-auto"
 								width={171}
-								height={180}
+								height={200}
 								alt="Producto"
 								src={LogoDatil}
 							/>
@@ -54,11 +54,11 @@ const LogIn = () => {
 					</Col>
 				</Row>
 
-				<Row className="mx-auto mb-5">
+				<Row className="mx-auto mb-5 mt-4">
 					<div className="col-12 col-lg-8 mx-auto">
 						<div className="card">
 							<Col className="text-center">
-								<h3>Inicia sesión en Dátil</h3>
+								<h3>Inicia sesión</h3>
 							</Col>
 							<div className="card-body">
 								<form onSubmit={handleSubmit(onSubmit)}>
