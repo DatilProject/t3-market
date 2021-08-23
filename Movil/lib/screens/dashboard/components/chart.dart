@@ -28,14 +28,14 @@ class Chart extends StatelessWidget {
               children: [
                 SizedBox(height: defaultPadding),
                 Text(
-                  "29.1",
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                        color: Colors.white10,
+                  "Total",
+                  style: Theme.of(context).textTheme.headline5!.copyWith(
+                        color: Colors.black,
                         fontWeight: FontWeight.w600,
                         height: 0.5,
                       ),
                 ),
-                Text("of 128GB")
+                Text("\$2810.127")
               ],
             ),
           ),
@@ -46,34 +46,34 @@ class Chart extends StatelessWidget {
 }
 
 List<PieChartSectionData> paiChartSelectionDatas = [
-  PieChartSectionData(
-    color: primaryColor,
-    value: 25,
-    showTitle: false,
-    radius: 25,
-  ),
+  // PieChartSectionData(
+  //   color: primaryColor,
+  //   value: 25,
+  //   showTitle: false,
+  //   radius: 25,
+  // ),
   PieChartSectionData(
     color: Color(0xFF26E5FF),
-    value: 20,
+    value: 60,
     showTitle: false,
     radius: 22,
   ),
   PieChartSectionData(
     color: Color(0xFFFFCF26),
-    value: 10,
+    value: 2750.127,
     showTitle: false,
     radius: 19,
   ),
-  PieChartSectionData(
-    color: Color(0xFFEE2727),
-    value: 15,
-    showTitle: false,
-    radius: 16,
-  ),
-  PieChartSectionData(
-    color: primaryColor.withOpacity(0.1),
-    value: 25,
-    showTitle: false,
-    radius: 13,
-  ),
+  // PieChartSectionData(
+  //   color: Color(0xFFEE2727),
+  //   value: 15,
+  //   showTitle: false,
+  //   radius: 16,
+  // ),
+  // PieChartSectionData(
+  //   color: primaryColor.withOpacity(0.1),
+  //   value: 25,
+  //   showTitle: false,
+  //   radius: 13,
+  // ),
 ];
