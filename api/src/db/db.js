@@ -48,6 +48,7 @@ const Item = ItemModel(conn,Sequelize);
 Category.hasOne(Product);
 Product.belongsTo(Category);
 
+
 Iva.hasOne(Product);
 Product.belongsTo(Iva);
 
@@ -59,6 +60,9 @@ Product.belongsTo(Market);
 
 Product.hasMany(Image);
 Image.belongsTo(Product, { onDelete: 'CASCADE'});
+
+Market.hasMany(Category);
+Category.belongsTo(Market);
 
 Template.hasOne(Market);
 Market.belongsTo(Template);
@@ -90,7 +94,7 @@ Bill.belongsTo(Order);
 Order.hasMany(Item);
 Item.belongsTo(Order);
 
-conn.sync({force:false})
+conn.sync({force:true})
 .then(()=> {
     console.log("Postgres connnection successful");
 })

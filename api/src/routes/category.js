@@ -22,4 +22,15 @@ router.get('/commerce/:id', async (req, res, next) => {
     res.status(200).json(categories)
 });
 
+router.post('/', async (req, res, next) => {
+    try{
+        const newCategory = await Category.create(req.body);
+        res.status(200).send(newCategory);
+    }
+    catch{
+        res.status(404).send({updated: false, message:'Categoría no pudo ser agregada'})
+    }
+
+});
+
 module.exports = router;
