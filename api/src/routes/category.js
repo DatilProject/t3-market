@@ -49,4 +49,17 @@ router.post('/update/:id', async (req,res,next)=>{
         res.status(200).json({updated: true, message: "Se ha actualizado correctamente"});
     }
     });
+
+
+router.delete('/:id', async (req, res, next) => {
+    Category.destroy({
+        where: {id:req.params.id}
+        })
+        .then(() => {
+        res.status(204).json({deleted: true, message: "Se eliminó la categoría correctamente"}).end();
+        })
+        .catch(() => {
+        res.status(404).json({deleted: false, message: "No se eliminó correctamente la categoría"});
+    })
+});
 module.exports = router;
