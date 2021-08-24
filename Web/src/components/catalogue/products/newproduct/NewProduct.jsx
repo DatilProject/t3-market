@@ -11,18 +11,16 @@ import { getValueFromCookieCommerce } from "../../../utils/auth.js";
 import { getIdCategory } from "../../../utils/utils.js";
 import { getCategoryAction } from "../../../../redux/ducks/categoryDucks";
 
-const NewProducto = () => {
+const NewProducto = ({ infoProduct }) => {
 	eventsMultiSteps();
-	const idUser = getValueFromCookieCommerce("id");
+	const idMarket = getValueFromCookieCommerce("id");
 	const dispatch = useDispatch();
-
 	useEffect(() => {
 		dispatch(getCategoryAction());
 	}, [dispatch]);
 
 	const listCategories = useSelector((store) => store.categories.array);
-
-	const [product, setProduct] = useState({
+	let templateProduct = {
 		name: "",
 		description: "",
 		category: "",
@@ -37,29 +35,38 @@ const NewProducto = () => {
 		stock: 0,
 		ice: 0,
 		images: [],
-		marketId: idUser,
+		marketId: idMarket,
 		categoryId: 1,
 		ivaId: 2,
 		iceId: 1,
-	});
+	};
+	templateProduct = { ...templateProduct, ...infoProduct };
+	const [product, setProduct] = useState(templateProduct);
+	console.log(product);
 
 	const setValueInput = useCallback(
 		(event) => {
-			setProduct({
-				...product,
-				[event.target.name]: event.target.value,
-			});
 			if (event.target.name === "category") {
 				setProduct({
 					...product,
 					categoryId: getIdCategory(event.target.value, listCategories),
 				});
-			}
-			//check if we can improve this
-			if (event.target.name === "on_granel" || event.target.name === "on_sale") {
+			} else if (event.target.name === "images") {
+				let photo = event.target.files[0];
+				setProduct({
+					...product,
+					[event.target.name]: photo,
+				});
+			} else if (event.target.name === "on_granel" || event.target.name === "on_sale") {
+				//check if we can improve this
 				setProduct({
 					...product,
 					[event.target.name]: event.target.value === "false",
+				});
+			} else {
+				setProduct({
+					...product,
+					[event.target.name]: event.target.value,
 				});
 			}
 		},
@@ -84,9 +91,13 @@ const NewProducto = () => {
 					</div>
 
 					<div id="form-new-product">
-						<Step1 setValueInput={setValueInput} />
-						<Step2 setValueInput={setValueInput} />
-						<Step3 setValueInput={setValueInput} submitNewProduct={submitNewProduct} />
+						<Step1 setValueInput={setValueInput} infoProduct={templateProduct} />
+						<Step2 setValueInput={setValueInput} infoProduct={templateProduct} />
+						<Step3
+							setValueInput={setValueInput}
+							submitNewProduct={submitNewProduct}
+							infoProduct={templateProduct}
+						/>
 						<Step4 />
 					</div>
 				</div>

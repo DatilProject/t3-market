@@ -31,10 +31,8 @@ export default function productReducer(state = data, action) {
 //Actions
 export const getProductsAction = () => async (dispatch) => {
 	try {
-		const idUser = getValueFromCookieCommerce("id");
-		const res = await axios.get(ENDPOINT_PRODUCT + "commerce/1");
-
-		// const res = await axios.get(ENDPOINT_PRODUCT + "commerce/" + idUser);
+		const idCommerce = getValueFromCookieCommerce("id");
+		const res = await axios.get(ENDPOINT_PRODUCT + "commerce/" + idCommerce);
 		dispatch({
 			type: GET_PRODUCTS,
 			payload: res.data,
@@ -44,9 +42,21 @@ export const getProductsAction = () => async (dispatch) => {
 	}
 };
 
+function getBase64(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = (error) => reject(error);
+	});
+}
+
 export const postProductsAction = (product) => async (dispatch) => {
 	try {
-		const res = await axios.post(ENDPOINT_PRODUCT, product);
+		const imgToBase64 = await getBase64(product.images);
+		const infoProduct = { ...product, images: imgToBase64 };
+		const res = await axios.post(ENDPOINT_PRODUCT, infoProduct);
+
 		dispatch({
 			type: POST_PRODUCTS,
 		});
