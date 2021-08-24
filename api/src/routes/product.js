@@ -59,7 +59,7 @@ router.get('/commerce/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
-        console.log(req.body.image)
+        console.log(req.body)
         console.log(typeof(req.body.image))
         
         const newProduct = await Product.create(req.body);
