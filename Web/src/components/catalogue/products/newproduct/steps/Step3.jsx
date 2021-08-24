@@ -12,7 +12,7 @@ const Step3 = (props) => {
 					<input
 						type="file"
 						className="form-control-file"
-						id="exampleFormControlFile1"
+						id="product-image"
 						name="images"
 						onChange={setValueInput}
 					></input>

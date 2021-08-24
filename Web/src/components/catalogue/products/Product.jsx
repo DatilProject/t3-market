@@ -54,7 +54,7 @@ const Product = ({ product }) => {
 						<div className="m-0 p-0">{product.main_code}</div>
 					</div>
 				</td>
-				<td>{product.category.name}</td>
+				<td>{product.category ? product.category.name : null}</td>
 				<td>{"$" + product.price}</td>
 				<td>{"$" + priceWithIVA}</td>
 				<td>{product.stock}</td>

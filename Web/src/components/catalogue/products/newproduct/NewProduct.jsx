@@ -46,21 +46,27 @@ const NewProducto = ({ infoProduct }) => {
 
 	const setValueInput = useCallback(
 		(event) => {
-			setProduct({
-				...product,
-				[event.target.name]: event.target.value,
-			});
 			if (event.target.name === "category") {
 				setProduct({
 					...product,
 					categoryId: getIdCategory(event.target.value, listCategories),
 				});
-			}
-			//check if we can improve this
-			if (event.target.name === "on_granel" || event.target.name === "on_sale") {
+			} else if (event.target.name === "images") {
+				let photo = event.target.files[0];
+				setProduct({
+					...product,
+					[event.target.name]: photo,
+				});
+			} else if (event.target.name === "on_granel" || event.target.name === "on_sale") {
+				//check if we can improve this
 				setProduct({
 					...product,
 					[event.target.name]: event.target.value === "false",
+				});
+			} else {
+				setProduct({
+					...product,
+					[event.target.name]: event.target.value,
 				});
 			}
 		},

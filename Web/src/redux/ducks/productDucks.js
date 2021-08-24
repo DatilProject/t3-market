@@ -42,11 +42,20 @@ export const getProductsAction = () => async (dispatch) => {
 	}
 };
 
+function getBase64(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = (error) => reject(error);
+	});
+}
+
 export const postProductsAction = (product) => async (dispatch) => {
 	try {
-		console.log(product);
-		const res = await axios.post(ENDPOINT_PRODUCT, product);
-		console.log(res.data);
+		const imgToBase64 = await getBase64(product.images);
+		const infoProduct = { ...product, images: imgToBase64 };
+		const res = await axios.post(ENDPOINT_PRODUCT, infoProduct);
 
 		dispatch({
 			type: POST_PRODUCTS,
