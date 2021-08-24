@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const fs = require("fs");
 const { Product,Image,Category, Iva, Ice} = require("../db/db");
 const {preProcessProducts} = require("../middlewares/products")
 router.get('/', async (req, res, next) => {
@@ -59,12 +60,16 @@ router.get('/commerce/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
-        console.log(req)
-        console.log(req.body)
-        console.log(typeof(req.body.images))
-        
-        const newProduct = await Product.create(req.body);
-        res.status(200).send(newProduct);
+        const newProduct = await Product.create(req.body).then(async (p)=>{
+            var base64Data = req.body.images.replace(/^data:image\/png;base64,/, "");
+            fs.writeFile(`src/public/products/${p.id}.png`, base64Data, 'base64', function(err) {
+            });
+
+            let image = await Image.create({productId: p.id, 
+                    location: `https://206.81.3.107/products/${p.id}.png`})
+
+            res.status(200).send(p);
+        });
     }
     catch{
         res.status(404).send({updated: false, message:'Producto no pudo ser agregado'})
