@@ -13,8 +13,7 @@ app.use(cors());
 app.options('*', cors());
 app.use(express.static(__dirname + '/public'));
 
-const swaggerUi = require('swagger-ui-express'),
-swaggerDocument = require('../swagger.json');
+
 
 
 app.set('port' , process.env.PORT || 3000);
@@ -32,11 +31,7 @@ app.use('/api/order', orderRouter);
 app.use('/api/reports', reportsRouter);
 app.use('/auth', authRouter);
 
-app.use(
-    '/api-docs',
-    swaggerUi.serve, 
-    swaggerUi.setup(swaggerDocument)
-  );
+
   
 app.get('/', (req, res) =>{
     res.status(200).send("Welcome to Datil-Market API")
