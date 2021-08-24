@@ -60,7 +60,6 @@ router.get('/commerce/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
-        console.log(req.body);
         const newProduct = await Product.create(req.body).then(async (p)=>{
             var base64Data = req.body.images.replace(/^data:image\/png;base64,/, "");
             fs.writeFile(`src/public/products/${p.id}.png`, base64Data, 'base64', function(err) {
