@@ -7,9 +7,10 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser({limit:'100mb'}));
+//app.use(bodyParser({limit:'50mb'}));
+app.use(bodyParser.json({limit:'50mb'}));
+app.use(bodyParser.urlencoded({ extended: true , limit:'50mb'}));
+
 app.use(cors());
 app.options('*', cors());
 app.use(express.static(__dirname + '/public'));
