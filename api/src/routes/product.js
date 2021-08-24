@@ -59,6 +59,7 @@ router.get('/commerce/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
+        console.log(req)
         console.log(req.body)
         console.log(typeof(req.body.images))
         
