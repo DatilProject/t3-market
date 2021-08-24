@@ -15,7 +15,7 @@ const ModalNewProduct = ({ show, setShow, infoProduct }) => {
 			centered
 		>
 			<Modal.Header closeButton className="pt-2 pb-2">
-				<Modal.Title>Nuevo Producto</Modal.Title>
+				<Modal.Title> {infoProduct ? "Actualizar" : "Nuevo"} Producto</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<NewProducto infoProduct={infoProduct} />

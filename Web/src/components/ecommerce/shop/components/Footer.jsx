@@ -66,10 +66,8 @@ const Footer = () => {
 				</div>
 				*/}
 				<div className="container-fluid bg-dark text-white">
-						<div className="text-center col-md-3 py-2">
-							© 2021 E-Commerce
-						</div>
-					
+					<div className="text-center col-md-3 py-2">© 2021 E-Commerce</div>
+
 					{/*
 					<div className="row ">
 						<div className="col-md-3 py-3">
@@ -230,7 +228,6 @@ const Footer = () => {
 					
 				</div>
 				*/}
-
 			</footer>
 		</React.Fragment>
 	);

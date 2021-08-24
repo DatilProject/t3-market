@@ -6,7 +6,7 @@ import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import { useDispatch, useSelector } from "react-redux";
-import { postProductsAction } from "../../../../redux/ducks/productDucks";
+import { postProductsAction, updateProductAction } from "../../../../redux/ducks/productDucks";
 import { getValueFromCookieCommerce } from "../../../utils/auth.js";
 import { getIdCategory } from "../../../utils/utils.js";
 import { getCategoryAction } from "../../../../redux/ducks/categoryDucks";
@@ -40,9 +40,9 @@ const NewProducto = ({ infoProduct }) => {
 		ivaId: 2,
 		iceId: 1,
 	};
+
 	templateProduct = { ...templateProduct, ...infoProduct };
 	const [product, setProduct] = useState(templateProduct);
-	console.log(product);
 
 	const setValueInput = useCallback(
 		(event) => {
@@ -74,7 +74,11 @@ const NewProducto = ({ infoProduct }) => {
 	);
 
 	const submitNewProduct = () => {
-		dispatch(postProductsAction(product));
+		if (infoProduct) {
+			dispatch(updateProductAction(product));
+		} else {
+			dispatch(postProductsAction(product));
+		}
 	};
 
 	return (
@@ -98,7 +102,7 @@ const NewProducto = ({ infoProduct }) => {
 							submitNewProduct={submitNewProduct}
 							infoProduct={templateProduct}
 						/>
-						<Step4 />
+						<Step4 isUpdate={infoProduct ? true : false} />
 					</div>
 				</div>
 			</div>

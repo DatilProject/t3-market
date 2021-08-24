@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 import Category from "./Category";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategoryAction } from "../../../redux/ducks/categoryDucks";
+import ModalNewCategory from "./ModalNewCategory";
 
 const ProductSection = () => {
 	const dispatch = useDispatch();
+	const [showModalNewCategory, setShowModalNewCategory] = useState(false);
 
 	useEffect(() => {
 		dispatch(getCategoryAction());
@@ -15,8 +17,14 @@ const ProductSection = () => {
 	const listCategories = useSelector((store) => store.categories.array);
 	console.log(listCategories);
 
+	const handleNewCategory = () => {
+		setShowModalNewCategory(true);
+		// dispatch(postCategoryAction());
+	};
+
 	return (
 		<Container className="border border-secondary p-0 shadow-sm table">
+			<ModalNewCategory show={showModalNewCategory} setShow={setShowModalNewCategory} />
 			<Container className="text-center">
 				<Row className="p-2 row  text-sm-left">
 					<Col xs="12" sm="6">
@@ -37,7 +45,9 @@ const ProductSection = () => {
 					</Col>
 
 					<Col xs="12" sm="6" className="text-sm-right">
-						<Button variant="primary">Nueva Categoría</Button>
+						<Button variant="primary" onClick={handleNewCategory}>
+							Nueva Categoría
+						</Button>
 					</Col>
 				</Row>
 			</Container>

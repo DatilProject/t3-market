@@ -23,7 +23,9 @@ const CardProductList = lazy(() => import("../../components/card/CardProductList
 const ProductListView = ({ productsCart }) => {
 	const dispatch = useDispatch();
 	const [currentOrdenID, setCurrentOrdenID] = useState(-1);
-	const listProducts = useSelector((store) => store.products.array);
+	const listProducts = useSelector((store) =>
+		store.products.array.filter((product) => product.on_sale),
+	);
 
 	useEffect(() => {
 		if (productsCart[0]) {
@@ -81,7 +83,6 @@ const ProductListView = ({ productsCart }) => {
 			<Breadcrumb />
 			<div className="container-fluid mb-3">
 				<div className="row">
-				
 					<div className="col-md-1">
 						{/*
 						<FilterCategory />
@@ -94,7 +95,7 @@ const ProductListView = ({ productsCart }) => {
 						<CardServices /> 
 						*/}
 					</div>
-					
+
 					<div className="col-md-11">
 						<div className="row">
 							<div className="col-md-8">

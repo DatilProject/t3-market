@@ -59,7 +59,7 @@ const Product = ({ product }) => {
 				<td>{"$" + priceWithIVA}</td>
 				<td>{product.stock}</td>
 				<td>
-					<ToggleButton active={product.on_sale} />
+					<ToggleButton active={product.on_sale} block />
 				</td>
 				<td>
 					<OverOptions

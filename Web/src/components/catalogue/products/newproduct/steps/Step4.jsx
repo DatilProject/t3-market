@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const Step4 = () => {
+const Step4 = ({ isUpdate }) => {
 	return (
 		<fieldset id="step4">
 			<div className="form-card">
@@ -17,7 +17,7 @@ const Step4 = () => {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-7 text-center">
-						<h5>Producto Registrado</h5>
+						<h5>Producto {isUpdate ? "Actualizado" : "Registrado"}</h5>
 					</div>
 				</div>
 			</div>
