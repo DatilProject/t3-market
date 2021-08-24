@@ -32,9 +32,10 @@ const CardProductGrid = (props) => {
 			)}
 			<div className="card-body">
 				<h6 className="card-subtitle mb-2">
-					<Link to={"/product/detail"} className="text-decoration-none">
+					{product.name}
+					{/*<Link to={"/product/detail"} className="text-decoration-none">
 						{product.name}
-					</Link>
+					</Link>*/}
 				</h6>
 				<div className="my-2">
 					<span className="font-weight-bold h5">${product.price}</span>
