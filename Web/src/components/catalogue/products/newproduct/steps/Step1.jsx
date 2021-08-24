@@ -3,8 +3,7 @@ import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategoryAction } from "../../../../../redux/ducks/categoryDucks";
 
-const Step1 = (props) => {
-	const setValueInput = props.setValueInput;
+const Step1 = ({ infoProduct, setValueInput }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -12,6 +11,7 @@ const Step1 = (props) => {
 	}, [dispatch]);
 
 	const listCategories = useSelector((store) => store.categories.array);
+	const { name, description } = infoProduct;
 
 	return (
 		<fieldset>
@@ -29,7 +29,7 @@ const Step1 = (props) => {
 							id="name"
 							name="name"
 							placeholder="Nombre"
-							defaultValue=""
+							defaultValue={name}
 							onChange={setValueInput}
 							// {...register("name", {
 							//   required: { value: true, message: "Nombre requerido" },

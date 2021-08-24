@@ -5,7 +5,7 @@ const Category = ({ category }) => {
 	return (
 		<tr>
 			<td>{category.name}</td>
-			<td>{category.id}</td>
+			<td>{category.product_count}</td>
 			<td>{/* <OverOptions /> */}</td>
 		</tr>
 	);

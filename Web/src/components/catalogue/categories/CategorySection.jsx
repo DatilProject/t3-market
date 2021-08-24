@@ -13,6 +13,7 @@ const ProductSection = () => {
 	}, [dispatch]);
 
 	const listCategories = useSelector((store) => store.categories.array);
+	console.log(listCategories);
 
 	return (
 		<Container className="border border-secondary p-0 shadow-sm table">

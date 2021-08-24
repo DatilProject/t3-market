@@ -31,10 +31,8 @@ export default function productReducer(state = data, action) {
 //Actions
 export const getProductsAction = () => async (dispatch) => {
 	try {
-		const idUser = getValueFromCookieCommerce("id");
-		const res = await axios.get(ENDPOINT_PRODUCT + "commerce/1");
-
-		// const res = await axios.get(ENDPOINT_PRODUCT + "commerce/" + idUser);
+		const idCommerce = getValueFromCookieCommerce("id");
+		const res = await axios.get(ENDPOINT_PRODUCT + "commerce/" + idCommerce);
 		dispatch({
 			type: GET_PRODUCTS,
 			payload: res.data,
@@ -46,7 +44,10 @@ export const getProductsAction = () => async (dispatch) => {
 
 export const postProductsAction = (product) => async (dispatch) => {
 	try {
+		console.log(product);
 		const res = await axios.post(ENDPOINT_PRODUCT, product);
+		console.log(res.data);
+
 		dispatch({
 			type: POST_PRODUCTS,
 		});

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ENDPOINT_CATEGORY } from "../endPoints";
+import { getValueFromCookieCommerce } from "../../components/utils/auth";
 
 //constants
 const data = {
@@ -31,7 +32,8 @@ export default function categoryReducer(state = data, action) {
 //Actions
 export const getCategoryAction = () => async (dispatch) => {
 	try {
-		const res = await axios.get(ENDPOINT_CATEGORY);
+		const idCommerce = getValueFromCookieCommerce("id");
+		const res = await axios.get(ENDPOINT_CATEGORY + "commerce/" + idCommerce);
 		dispatch({
 			type: GET_CATEGORIES,
 			payload: res.data,

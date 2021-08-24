@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 const Step3 = (props) => {
-	// const setValueInput = props.setValueInput;
+	const setValueInput = props.setValueInput;
 
 	return (
 		<fieldset>
@@ -13,6 +13,8 @@ const Step3 = (props) => {
 						type="file"
 						className="form-control-file"
 						id="exampleFormControlFile1"
+						name="images"
+						onChange={setValueInput}
 					></input>
 				</div>
 			</div>

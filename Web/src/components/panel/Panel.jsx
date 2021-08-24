@@ -7,7 +7,7 @@ import { GiHand } from "react-icons/gi";
 import { getValueFromCookieCommerce } from "../utils/auth";
 
 const Panel = () => {
-	const nameUser = getValueFromCookieCommerce("name");
+	const nameUser = getValueFromCookieCommerce("username");
 
 	return (
 		<Container fluid className="section-container">
