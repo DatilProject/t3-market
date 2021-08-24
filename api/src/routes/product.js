@@ -78,7 +78,12 @@ router.post('/', async (req, res, next) => {
 
 });
 
-router.put('/:id', async (req,res,next)=>{
+router.post('/update/:id', async (req,res,next)=>{
+    if (req.body.images){
+        var base64Data = req.body.images.replace(/^data:image\/png;base64,/, "");
+        fs.writeFile(`src/public/products/${req.params.id}.png`, base64Data, 'base64', function(err) {
+        });
+    }
     const product = await Product.update(req.body , {
         where: {
           id: req.params.id
