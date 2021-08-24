@@ -81,17 +81,21 @@ const ProductListView = ({ productsCart }) => {
 			<Breadcrumb />
 			<div className="container-fluid mb-3">
 				<div className="row">
-					<div className="col-md-3">
+				
+					<div className="col-md-1">
+						{/*
 						<FilterCategory />
-						<FilterPrice />
-						{/* <FilterSize /> */}
-						{/* <FilterStar /> */}
-						{/* <FilterColor /> */}
+						<FilterPrice /> 
+						<FilterSize />
+						<FilterStar /> 
+						<FilterColor /> 
 						<FilterClear />
-						{/* <FilterTag /> */}
-						{/* <CardServices /> */}
+						<FilterTag /> 
+						<CardServices /> 
+						*/}
 					</div>
-					<div className="col-md-9">
+					
+					<div className="col-md-11">
 						<div className="row">
 							<div className="col-md-8">
 								<span className="align-middle font-weight-bold">
@@ -100,6 +104,7 @@ const ProductListView = ({ productsCart }) => {
 								</span>
 							</div>
 							<div className="col-md-4">
+								{/*
 								<select
 									className="form-select mw-180 float-left"
 									aria-label="Default select"
@@ -110,6 +115,7 @@ const ProductListView = ({ productsCart }) => {
 									<option value={4}>Price low to high</option>
 									<option value={4}>Price high to low</option>
 								</select>
+								*/}
 								<div className="btn-group ml-3" role="group">
 									<button
 										aria-label="Grid"

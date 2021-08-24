@@ -38,7 +38,9 @@ function App() {
 				<TopMenu />
 				<Suspense fallback={<div className="text-white text-center mt-3">Loading...</div>}>
 					<Switch>
-						<Route exact path="/" component={HomeView} />
+						<Route exact path="/" component={ProductListView} />
+
+						{/*<Route exact path="/" component={HomeView} />*/}
 						<Route exact path="/account/signin" component={SignInView} />
 						<Route exact path="/account/signup" component={SignUpView} />
 						<Route
@@ -50,7 +52,6 @@ function App() {
 						<Route exact path="/account/orders" component={OrdersView} />
 						<Route exact path="/account/wishlist" component={WishlistView} />
 						<Route exact path="/account/notification" component={NotificationView} />
-						<Route exact path="/category" component={ProductListView} />
 						<Route exact path="/product/detail" component={ProductDetailView} />
 						<Route exact path="/star/zone" component={StarZoneView} />
 						<Route exact path="/cart" component={CartView} />

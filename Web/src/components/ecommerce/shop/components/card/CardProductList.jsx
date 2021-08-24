@@ -22,9 +22,9 @@ const CardProductList = (props) => {
 				<div className="col-md-6">
 					<div className="card-body">
 						<h6 className="card-subtitle mr-2 d-inline">
-							<Link to={"/product/detail"} className="text-decoration-none">
-								{product.name}
-							</Link>
+							{product.name}
+							{/*<Link to={"/product/detail"} className="text-decoration-none">
+							</Link>*/}
 						</h6>
 						{product.isNew && <span className="badge bg-success mr-2">New</span>}
 						{product.isHot && <span className="badge bg-danger mr-2">Hot</span>}
