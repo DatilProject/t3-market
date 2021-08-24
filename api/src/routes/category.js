@@ -34,4 +34,19 @@ router.post('/', async (req, res, next) => {
 
 });
 
+router.post('/update/:id', async (req,res,next)=>{
+
+    const category = await Product.update(req.body , {
+        where: {
+          id: req.params.id
+        }
+      });
+      
+    if(!category){
+        res.status(404).send({updated: false, message:'Categoria no pudo ser actualizado.'})
+    }else{
+        
+        res.status(200).json({updated: true, message: "Se ha actualizado correctamente"});
+    }
+    });
 module.exports = router;
