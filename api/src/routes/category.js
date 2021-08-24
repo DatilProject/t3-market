@@ -10,6 +10,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/commerce/:id', async (req, res, next) => {
     let categories = await Category.findAll({
+        where: {marketId: req.params.id},
         attributes: ['id','name', [sequelize.fn('COUNT', sequelize.col('product.id')), 'product_count']],
         include: [
         {
