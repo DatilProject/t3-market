@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { connect } from "react-redux";
+import axios from "axios";
 
 const CheckoutForm = ({ productsCart }) => {
 	const [succeeded, setSucceeded] = useState(false);
@@ -41,9 +42,6 @@ const CheckoutForm = ({ productsCart }) => {
 				fontFamily: "Arial, sans-serif",
 				fontSmoothing: "antialiased",
 				fontSize: "16px",
-				"::placeholder": {
-					color: "#32325d",
-				},
 			},
 			invalid: {
 				color: "#fa755a",
@@ -52,37 +50,44 @@ const CheckoutForm = ({ productsCart }) => {
 		},
 	};
 
-	const handleChange = async (event) => {
-		// Listen for changes in the CardElement
-		// and display any errors as the customer types their card details
-		setDisabled(event.empty);
-		setError(event.error ? event.error.message : "");
-	};
 	const handleSubmit = async (ev) => {
 		ev.preventDefault();
 		setProcessing(true);
-		const payload = await stripe.confirmCardPayment(clientSecret, {
-			payment_method: {
-				card: elements.getElement(CardElement),
-			},
+
+		const { error, paymentMethod } = await stripe.createPaymentMethod({
+			type: "card",
+			card: elements.getElement(CardElement),
 		});
-		if (payload.error) {
-			setError(`Payment failed ${payload.error.message}`);
-			setProcessing(false);
-		} else {
-			setError(null);
-			setProcessing(false);
-			setSucceeded(true);
+		if (!error) {
+			try {
+				const { data } = await axios.post(
+					"https://206.81.3.107/api/order/create-payment-intent",
+					{ orderId: currentOrdenID },
+				);
+				setClientSecret(data.clientSecret);
+				const payload = await stripe.confirmCardPayment(data.clientSecret, {
+					payment_method: {
+						card: elements.getElement(CardElement),
+					},
+				});
+				if (payload.error) {
+					setError(`No se pudo realizar el pago`);
+					setProcessing(false);
+				} else {
+					setError(null);
+					setProcessing(false);
+					setSucceeded(true);
+				}
+			} catch {
+				setError("No se pudo realizar el pago");
+				setProcessing(false);
+			}
 		}
 	};
 	return (
 		<div className="root">
 			<form id="payment-form" onSubmit={handleSubmit}>
-				<CardElement
-					id="payment-card-element"
-					options={cardStyle}
-					onChange={handleChange}
-				/>
+				<CardElement id="payment-card-element" options={cardStyle} />
 				<button disabled={processing || disabled || succeeded} id="payment-submit">
 					<span id="button-text">
 						{processing ? <div className="spinner" id="spinner"></div> : "Pagar"}
@@ -94,7 +99,7 @@ const CheckoutForm = ({ productsCart }) => {
 						{error}
 					</div>
 				)}
-				{/* Show a success message upon completion */}
+
 				<p className={succeeded ? "result-message" : "result-message hidden"}>
 					Se realizó el pago
 				</p>
