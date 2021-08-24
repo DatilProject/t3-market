@@ -28,7 +28,7 @@
     "cors": "^2.8.5",
     "datomic-client-js": "^0.1.9",
     "dotenv": "^10.0.0",
-    "express": "^3.21.2",
+    "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",

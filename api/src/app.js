@@ -3,17 +3,16 @@ const app = express();
 const morgan = require('morgan');
 const db = require('./db/db');
 const cors = require('cors')
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.bodyParser({limit: '50mb'}));
+app.use(bodyParser({limit:'100mb'}));
 app.use(cors());
 app.options('*', cors());
 app.use(express.static(__dirname + '/public'));
-
-
 
 
 app.set('port' , process.env.PORT || 3000);
@@ -30,7 +29,6 @@ app.use('/api/category', categoryRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/reports', reportsRouter);
 app.use('/auth', authRouter);
-
 
   
 app.get('/', (req, res) =>{
