@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:admin/screens/loginPage.dart';
+import 'package:admin/screens/LogIn/loginPage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());

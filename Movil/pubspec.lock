@@ -112,7 +112,7 @@ packages:
       name: fl_chart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.36.3"
+    version: "0.36.4"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -130,6 +130,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_vector_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_vector_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -262,7 +269,7 @@ packages:
       name: platform
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.2"
   plugin_platform_interface:
     dependency: transitive
     description:
