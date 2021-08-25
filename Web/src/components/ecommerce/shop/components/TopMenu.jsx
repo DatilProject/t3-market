@@ -6,9 +6,11 @@ const TopMenu = () => {
 		<React.Fragment>
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark p-0">
 				<div className="container-fluid">
+					{/*
 					<Link className="navbar-brand" to="/">
 						E-Commerce
 					</Link>
+					*/}
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -37,11 +39,13 @@ const TopMenu = () => {
 											Sign In
 										</Link>
 									</li>
+									{/*
 									<li>
 										<Link className="dropdown-item" to="/account/signup">
 											Sign Up
 										</Link>
 									</li>
+									*/}
 									<li>
 										<hr className="dropdown-divider" />
 									</li>
@@ -86,7 +90,7 @@ const TopMenu = () => {
 								</Link>
 							</li> */}
 							<li className="nav-item" id="nav-supermarket">
-								<Link className="nav-link" to="/category">
+								<Link className="nav-link" to="/">
 									Supermarket
 								</Link>
 							</li>

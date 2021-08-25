@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { connect } from "react-redux";
+import axios from "axios";
 
 const CheckoutForm = ({ productsCart }) => {
 	const [succeeded, setSucceeded] = useState(false);
@@ -16,22 +17,6 @@ const CheckoutForm = ({ productsCart }) => {
 		if (productsCart[0]) {
 			setCurrentOrdenID(productsCart[0].id);
 		}
-
-		// Create PaymentIntent as soon as the page loads
-		window
-			.fetch("https://206.81.3.107/api/order/create-payment-intent", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ items: [{ orderId: currentOrdenID }] }),
-			})
-			.then((res) => {
-				return res.json();
-			})
-			.then((data) => {
-				setClientSecret(data.clientSecret);
-			});
 	}, [productsCart]);
 
 	const cardStyle = {
@@ -41,9 +26,6 @@ const CheckoutForm = ({ productsCart }) => {
 				fontFamily: "Arial, sans-serif",
 				fontSmoothing: "antialiased",
 				fontSize: "16px",
-				"::placeholder": {
-					color: "#32325d",
-				},
 			},
 			invalid: {
 				color: "#fa755a",
@@ -52,28 +34,41 @@ const CheckoutForm = ({ productsCart }) => {
 		},
 	};
 
-	const handleChange = async (event) => {
-		// Listen for changes in the CardElement
-		// and display any errors as the customer types their card details
-		setDisabled(event.empty);
-		setError(event.error ? event.error.message : "");
-	};
 	const handleSubmit = async (ev) => {
 		ev.preventDefault();
 		setProcessing(true);
-		const payload = await stripe.confirmCardPayment(clientSecret, {
-			payment_method: {
-				card: elements.getElement(CardElement),
-			},
-		});
-		if (payload.error) {
-			setError(`Payment failed ${payload.error.message}`);
-			setProcessing(false);
-		} else {
-			setError(null);
-			setProcessing(false);
-			setSucceeded(true);
+
+		const {error, paymentMethod} = await stripe.createPaymentMethod({
+			type: 'card',
+			card: elements.getElement(CardElement)
+		})
+		if(!error){
+			try{
+				const {data} = await axios.post("https://206.81.3.107/api/order/create-payment-intent",{ orderId: currentOrdenID});
+				setClientSecret(data.clientSecret);
+				const payload = await stripe.confirmCardPayment(data.clientSecret, {
+					payment_method: {
+					  card: elements.getElement(CardElement)
+					}
+				  });
+				  if (payload.error) {
+					setError(`No se pudo realizar el pago`);
+					setProcessing(false);
+				  } else {
+					setError(null);
+					setProcessing(false);
+					setSucceeded(true);
+				  }
+			}catch{
+				setError('No se pudo realizar el pago');
+				setProcessing(false);
+			}
+
 		}
+
+
+
+
 	};
 	return (
 		<div className="root">
@@ -81,7 +76,6 @@ const CheckoutForm = ({ productsCart }) => {
 				<CardElement
 					id="payment-card-element"
 					options={cardStyle}
-					onChange={handleChange}
 				/>
 				<button disabled={processing || disabled || succeeded} id="payment-submit">
 					<span id="button-text">
@@ -94,7 +88,7 @@ const CheckoutForm = ({ productsCart }) => {
 						{error}
 					</div>
 				)}
-				{/* Show a success message upon completion */}
+			
 				<p className={succeeded ? "result-message" : "result-message hidden"}>
 					Se realizó el pago
 				</p>

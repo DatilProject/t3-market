@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ENDPOINT_CATEGORY } from "../endPoints";
+import { getValueFromCookieCommerce } from "../../components/utils/auth";
 
 //constants
 const data = {
@@ -17,7 +18,7 @@ export default function categoryReducer(state = data, action) {
 		case GET_CATEGORIES:
 			return { ...state, array: action.payload };
 		case POST_CATEGORY:
-			return state;
+			return { ...state, array: action.payload };
 		case UPDATE_CATEGORY:
 			return state;
 		case DELETE_CATEGORY:
@@ -31,7 +32,8 @@ export default function categoryReducer(state = data, action) {
 //Actions
 export const getCategoryAction = () => async (dispatch) => {
 	try {
-		const res = await axios.get(ENDPOINT_CATEGORY);
+		const idCommerce = getValueFromCookieCommerce("id");
+		const res = await axios.get(ENDPOINT_CATEGORY + "commerce/" + idCommerce);
 		dispatch({
 			type: GET_CATEGORIES,
 			payload: res.data,
@@ -43,9 +45,17 @@ export const getCategoryAction = () => async (dispatch) => {
 
 export const postCategoryAction = (category) => async (dispatch) => {
 	try {
-		const res = await axios.post(ENDPOINT_CATEGORY, category);
+		const idCommerce = getValueFromCookieCommerce("id");
+		const infoCategory = {
+			...category,
+			marketId: idCommerce,
+		};
+		await axios.post(ENDPOINT_CATEGORY, infoCategory);
+		const res = await axios.get(ENDPOINT_CATEGORY + "commerce/" + idCommerce);
+
 		dispatch({
 			type: POST_CATEGORY,
+			payload: res.data,
 		});
 	} catch (error) {
 		console.log(error);

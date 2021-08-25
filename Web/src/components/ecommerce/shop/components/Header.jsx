@@ -45,8 +45,12 @@ const Header = () => {
 								/>
 							</Link>
 						</div>
+
 						<div className="col-md-5">
+							{/*
+					
 							<Search />
+						*/}
 						</div>
 						<div className="col-md-4">
 							<div className="position-relative d-inline mr-3">

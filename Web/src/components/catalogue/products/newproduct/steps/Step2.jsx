@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import ToggleButton from "../../../../common/toggle/ToggleButton";
 
-const Step2 = (props) => {
-	const setValueInput = props.setValueInput;
+const Step2 = ({ infoProduct, setValueInput }) => {
+	const { price, iva, ice, on_sale, on_granel } = infoProduct;
 
 	return (
 		<fieldset>
@@ -24,6 +24,7 @@ const Step2 = (props) => {
 								name="price"
 								onChange={setValueInput}
 								placeholder="Precio $ 0.00"
+								defaultValue={price !== 0 ? price : ""}
 							/>
 							<p className="ml-2">Valor sin impuestos</p>
 						</div>
@@ -47,16 +48,32 @@ const Step2 = (props) => {
 				</div>
 				<div className="form-row">
 					<div className="col-12 col-lg-6">
-						<input type="text" name="iva" placeholder="IVA" onChange={setValueInput} />
+						<input
+							type="text"
+							name="iva"
+							placeholder="IVA"
+							onChange={setValueInput}
+							defaultValue={iva.percentage ? iva.percentage : ""}
+						/>
 					</div>
 					<div className="col-12 col-lg-5 ml-lg-4">
-						<input type="text" name="ice" placeholder="ICE" onChange={setValueInput} />
+						<input
+							type="text"
+							name="ice"
+							placeholder="ICE"
+							onChange={setValueInput}
+							defaultValue={ice.percentage ? ice.percentage : ""}
+						/>
 					</div>
 				</div>
 
 				<div className="from-row mx-md-n1 sell-on-granel">
 					<div className="row ml-2">
-						<ToggleButton active={false} name="on_granel" onChange={setValueInput} />
+						<ToggleButton
+							active={on_granel}
+							name="on_granel"
+							onChange={setValueInput}
+						/>
 						<div className="col-auto font-weight-bold d-xl-inline-block mb-0 my-auto">
 							Venta Granel
 						</div>
@@ -68,7 +85,7 @@ const Step2 = (props) => {
 
 				<div className="from-row mx-md-n1 sell-on-market">
 					<div className="row ml-2">
-						<ToggleButton active={false} name="on_sale" onChange={setValueInput} />
+						<ToggleButton active={on_sale} name="on_sale" onChange={setValueInput} />
 						<div className="col-auto font-weight-bold d-xl-inline-block mb-0 my-auto">
 							Market
 						</div>

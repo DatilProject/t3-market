@@ -3,8 +3,7 @@ import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategoryAction } from "../../../../../redux/ducks/categoryDucks";
 
-const Step1 = (props) => {
-	const setValueInput = props.setValueInput;
+const Step1 = ({ infoProduct, setValueInput }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -12,6 +11,7 @@ const Step1 = (props) => {
 	}, [dispatch]);
 
 	const listCategories = useSelector((store) => store.categories.array);
+	const { name, category, description, weight, unit, main_code, auxiliary_code } = infoProduct;
 
 	return (
 		<fieldset>
@@ -29,7 +29,7 @@ const Step1 = (props) => {
 							id="name"
 							name="name"
 							placeholder="Nombre"
-							defaultValue=""
+							defaultValue={name}
 							onChange={setValueInput}
 							// {...register("name", {
 							//   required: { value: true, message: "Nombre requerido" },
@@ -47,7 +47,9 @@ const Step1 = (props) => {
 							name="category"
 							onChange={setValueInput}
 						>
-							<option defaultValue>Categoría</option>
+							<option defaultValue>
+								{category.name ? category.name : "Categoría"}
+							</option>
 							{listCategories.map((category) => (
 								<option key={category.id} id={category.id}>
 									{category.name}
@@ -70,6 +72,7 @@ const Step1 = (props) => {
 							placeholder="Descripcion"
 							name="description"
 							onChange={setValueInput}
+							defaultValue={description}
 						></textarea>
 					</div>
 					<div className="col-12 col-lg-2 mx-auto mx-xl-4">
@@ -79,11 +82,12 @@ const Step1 = (props) => {
 							id="weight"
 							placeholder="Peso"
 							onChange={setValueInput}
+							defaultValue={weight !== 0 ? weight : ""}
 						/>
 					</div>
 					<div className="col-12 col-lg-2 mx-auto mx-xl-0">
 						<select className="list-dt" id="unit" name="unit" onChange={setValueInput}>
-							<option defaultValue>Unidad</option>
+							<option defaultValue>{unit !== 0 ? unit : "Unidad"}</option>
 							<option>Kg</option>
 							<option>gr</option>
 							<option>Otros</option>
@@ -101,6 +105,7 @@ const Step1 = (props) => {
 							name="main_code"
 							placeholder="Código Principal"
 							onChange={setValueInput}
+							defaultValue={main_code}
 						/>
 					</div>
 					<div className="col-12 col-lg-4 ml-lg-4">
@@ -109,6 +114,7 @@ const Step1 = (props) => {
 							name="auxiliary_code"
 							placeholder="Código Auxiliar"
 							onChange={setValueInput}
+							defaultValue={auxiliary_code}
 						/>
 					</div>
 				</div>

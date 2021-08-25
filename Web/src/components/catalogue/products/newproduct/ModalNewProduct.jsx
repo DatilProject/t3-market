@@ -2,12 +2,12 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import NewProducto from "./NewProduct";
 
-const ModalNewProduct = (props) => {
-	const handleClose = () => props.setShow(false);
+const ModalNewProduct = ({ show, setShow, infoProduct }) => {
+	const handleClose = () => setShow(false);
 
 	return (
 		<Modal
-			show={props.show}
+			show={show}
 			onHide={handleClose}
 			backdrop="static"
 			size="lg"
@@ -15,17 +15,11 @@ const ModalNewProduct = (props) => {
 			centered
 		>
 			<Modal.Header closeButton className="pt-2 pb-2">
-				<Modal.Title>Nuevo Producto</Modal.Title>
+				<Modal.Title> {infoProduct ? "Actualizar" : "Nuevo"} Producto</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				<NewProducto />
+				<NewProducto infoProduct={infoProduct} />
 			</Modal.Body>
-			{/* <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary">Understood</Button>
-      </Modal.Footer> */}
 		</Modal>
 	);
 };
